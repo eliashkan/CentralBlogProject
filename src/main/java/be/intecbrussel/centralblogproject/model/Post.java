@@ -18,7 +18,7 @@ public class Post {
     @ManyToOne
     private User user;
 
-    @OneToMany
+    @OneToMany(mappedBy ="post", cascade=CascadeType.ALL)
     private List<Comment> comments = new ArrayList<>();
 
     public void cloneFrom(Post post) {

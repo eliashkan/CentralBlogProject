@@ -66,7 +66,7 @@ public class Main {
         comment2 = commentDao.createComment(comment2);
 
 
-        commentDao.deleteComment(comment);
+//        commentDao.deleteComment(comment);
 
 
     }

@@ -1,9 +1,7 @@
 package be.intecbrussel.centralblogproject.dao;
 
-
 import be.intecbrussel.centralblogproject.connection.EntityManagerFactoryProvider;
 import be.intecbrussel.centralblogproject.model.Comment;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
