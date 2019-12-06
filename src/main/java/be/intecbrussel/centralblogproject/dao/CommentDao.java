@@ -3,6 +3,7 @@ package be.intecbrussel.centralblogproject.dao;
 
 import be.intecbrussel.centralblogproject.connection.EntityManagerFactoryProvider;
 import be.intecbrussel.centralblogproject.model.Comment;
+import be.intecbrussel.centralblogproject.model.Post;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -32,8 +33,10 @@ public class CommentDao {
         EntityManager em = EntityManagerFactoryProvider.getEM();
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
+
+        System.out.println(comment.getIdComment());
+
         Comment dbComment = em.find(Comment.class,comment.getIdComment());
-//        System.out.println(dbComment);
         em.remove(dbComment);
         transaction.commit();
         em.close();

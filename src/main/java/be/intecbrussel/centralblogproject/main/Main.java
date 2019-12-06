@@ -51,24 +51,25 @@ public class Main {
         comment2.setText("Very good movie");
 
 
-        //Put the comments to the post.
-        post.getComments().add(comment);
-        post.getComments().add(comment2);
-
-
         //Sending data.
         user1 = userDao.createUser(user1);
-//
         user2 = userDao.createUser(user2);
         post = postDao.createPost(post);
 
-        comment = commentDao.createComment(comment);
-        comment2 = commentDao.createComment(comment2);
+
+        //Put the comments to the post.
+
+        //de comments worden via de DAO.createComment in de lijst bijgevoegd,zodanig dat we de effectieve rowq terug krijgen.
+        post.getComments().add(commentDao.createComment(comment));
+        post.getComments().add(commentDao.createComment(comment2));
 
 
-       commentDao.deleteComment(comment);
+        //testing delete post
+        postDao.deletePost(post);
 
 
+        //testing delete coms
+        commentDao.deleteComment(comment);
 
 
     }

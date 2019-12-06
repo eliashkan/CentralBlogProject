@@ -1,5 +1,7 @@
 package be.intecbrussel.centralblogproject.model;
 
+import org.hibernate.engine.internal.Cascade;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -9,7 +11,7 @@ import java.util.List;
 public class Post {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idPost;
     private String title;
     private String text;
@@ -18,7 +20,7 @@ public class Post {
     @ManyToOne
     private User user;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Comment> comments = new ArrayList<>();
 
     public void cloneFrom(Post post) {
