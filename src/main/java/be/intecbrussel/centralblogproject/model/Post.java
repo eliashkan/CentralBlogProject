@@ -1,6 +1,6 @@
 package be.intecbrussel.centralblogproject.model;
 
-import org.hibernate.engine.internal.Cascade;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -20,7 +20,8 @@ public class Post {
     @ManyToOne
     private User user;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany
+    @JoinColumn(name = "post")
     private List<Comment> comments = new ArrayList<>();
 
     public void cloneFrom(Post post) {

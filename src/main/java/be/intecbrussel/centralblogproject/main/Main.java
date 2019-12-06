@@ -54,7 +54,6 @@ public class Main {
         //Sending data.
         user1 = userDao.createUser(user1);
         user2 = userDao.createUser(user2);
-        post = postDao.createPost(post);
 
 
         //Put the comments to the post.
@@ -64,12 +63,18 @@ public class Main {
         post.getComments().add(commentDao.createComment(comment2));
 
 
+        post = postDao.createPost(post);
+
+
         //testing delete post
-        postDao.deletePost(post);
+        //postDao.deletePost(post);
+
 
 
         //testing delete coms
-        commentDao.deleteComment(comment);
+       commentDao.deleteComment(post.getComments().get(0));
+
+
 
 
     }

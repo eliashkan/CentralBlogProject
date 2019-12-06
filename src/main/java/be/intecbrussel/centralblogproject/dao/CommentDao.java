@@ -33,9 +33,6 @@ public class CommentDao {
         EntityManager em = EntityManagerFactoryProvider.getEM();
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
-
-        System.out.println(comment.getIdComment());
-
         Comment dbComment = em.find(Comment.class,comment.getIdComment());
         em.remove(dbComment);
         transaction.commit();
