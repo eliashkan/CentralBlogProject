@@ -1,4 +1,4 @@
-package be.intecbrussel.centralblogproject.webcomponents;
+package be.intecbrussel.centralblogproject.servlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
