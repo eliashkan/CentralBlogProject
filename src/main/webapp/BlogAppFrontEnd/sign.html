@@ -3,122 +3,84 @@
 <head>
     <meta charset="UTF-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <link href="bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
-    <link href="/style.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet"/>
+
     <link href="" rel="stylesheet"/>
     <title>Blog App</title>
 </head>
 
-<body>
-<nav
-        class="h-25 navbar navbar-expand navbar-transparant fixed-top mb-lg-5 "
-        style="background-color:#ededed;max-height: 60px;z-index: 0;"
->
-    <div class="row d-flex col-12">
-        <div class="col-4"></div>
-        <div class="navbar-brand col-4 text-dark" style="text-align:center;">
-            Sign-In
-        </div>
-        <div class="col-4"></div>
-    </div>
-</nav>
-<div id="menuToggle">
-    <input type="checkbox"/>
+<body class="d-block bg-dark">
+<div class="header mb-3">
+    <a class="logo" href="/bezoeker.html">THE BLOGGERS</a>
+    <input class="menu-btn" id="menu-btn" type="checkbox"/>
+    <label class="menu-icon" for="menu-btn"
+    ><span class="navicon"></span
+    ></label>
+    <ul class="menu">
+        <li><a href="/login.html">Log-In</a></li>
+        <li><a href="/sign.html">Sign-In</a></li>
+        <li class="column ml-2 mr-3 mt-3">
+            <i aria-hidden="true" class="fas fa-search"></i>
+            <input aria-label="Search" class="form-control form-control-sm m-auto" placeholder="Search"
+                   style="background-color:#1a5caf2e;" type="text">
 
-    <span></span>
-    <span></span>
-    <span></span>
+        </li>
 
-    <ul class="bg-primary-dark font-weight-normal" id="menu">
-        <a href="/index.html">
-            <li>Home</li>
-        </a>
-        <a href="/login.html">
-            <li>Login</li>
-        </a>
-        <a href="/sign.html">
-            <li>Sign-in</li>
-        </a>
-        <a href="#">
-            <li>Update Userprofile</li>
-        </a>
-        <a href="#">
-            <li>Search User</li>
-        </a>
     </ul>
 </div>
 
-<nav role="navigation"></nav>
+<div style="height: 20vh;"></div>
 
-<div class="container-fluid" style="margin-top:10vh!important">
-    <div
-            class="d-lg-flex flex-lg-row flex-lg-wrap col-lg-12 container-fluid bg-primary-dark justify-content-lg-center justify-content-center m-lg-auto text-align-lg-center mt-lg-5"
-    >
-        <form class="col-3 ">
-            <div class="form-group">
-                <label for="exampleInputUser">User Name</label>
-                <input
-                        aria-describedby="emailHelp"
-                        class="form-control"
-                        id="exempleUserName"
-                        placeholder="Enter userName"
-                        type="userName"
-                />
-            </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1">Firstname</label>
-                <input
-                        class="form-control"
-                        id="exampleInputPassword1"
-                        placeholder="firstname"
-                        type="password"
-                />
-            </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1">Lastname</label>
-                <input
-                        class="form-control"
-                        id="exampleInputPassword1"
-                        placeholder="lastname"
-                        type="password"
-                />
-            </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input
-                        class="form-control"
-                        id="exampleInputPassword1"
-                        placeholder="Password"
-                        type="password"
-                />
-            </div>
+<div class="card bg-dark" style="border:none">
+    <article class="card-body mx-auto" style="max-width: 500px;">
+        <h4 class="card-title mt-3 text-light text-center">Create Account</h4>
+        <p class="text-center text-light">Get started with your free account</p>
 
-            <div class="form-group">
-                <label for="exampleInputPassword1">Re-type password</label>
-                <input
-                        class="form-control"
-                        id="exampleInputPassword1"
-                        placeholder="Re-type password"
-                        type="password"
-                />
-            </div>
-            <div class="form-group form-check">
-                <input
-                        class="form-check-input"
-                        id="exampleCheck1"
-                        type="checkbox"
-                />
-                <label class="form-check-label" for="exampleCheck1"
-                >Check me out</label
-                >
-            </div>
-            <button class="btn btn-primary" type="submit">Submit</button>
+
+        <form>
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                </div>
+                <input class="form-control" name="" placeholder="Full name" type="text">
+            </div> <!-- form-group// -->
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                </div>
+                <input class="form-control" name="" placeholder="Email address" type="email">
+            </div> <!-- form-group// -->
+
+
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                </div>
+                <input class="form-control" placeholder="Create password" type="password">
+            </div> <!-- form-group// -->
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                </div>
+                <input class="form-control" placeholder="Repeat password" type="password">
+            </div> <!-- form-group// -->
+            <div class="form-group ">
+                <button class="btn btn-primary text-light btn-block" type="submit"> Create Account</button>
+            </div> <!-- form-group// -->
+            <p class="text-center text-light">Have an account? <a href="/login.html">Log In</a></p>
         </form>
-    </div>
+    </article>
+</div> <!-- card.// -->
+
 </div>
+
+
+<!-- blog post and menus -->
+
 </body>
 </html>
