@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign-in</title>
+</head>
+<body>
+
+<form>
+    <input type="button" value="log-in" formaction="/logIn">
+    First name:
+    <input type="text" name="firstName" required/></br>
+    Last name:
+    <input type="text" name="lastName" required/></br>
+    Username:
+    <input type="text" name="uName" required/></br>
+    Email:
+    <input type="email" name="email" required>
+    Street:
+    <input type="text" name="street"/></br>
+    HouseNr.:
+    <input type="text" name="HouseNr"/></br>
+    ZIP:
+    <input type="text" name="zip"/></br>
+    Password:
+    <input type="password" name="password" required/></br>
+    Re-type password:
+    <input type="password" name="password" required/></br>
+    <input type="button" value="Sign in" onclick="history.back()">
+    <label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+    </label>
+</form>
+
+</body>
+</html>
