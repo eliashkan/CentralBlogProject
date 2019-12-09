@@ -24,16 +24,16 @@ public class Main {
         //Testing 2 users
         User user1 = new User();
         User user2 = new User();
-        user1.setUserName("vincenth1985");
-        user1.setFullName("Vincent Honca");
-        user1.setEmail("vincenth1985@gmail.com");
-        user1.setPassword("Blabla");
-        user1.setAdress("rue de la semence nr 39");
-        user2.setUserName("Marcus");
-        user2.setFullName("Marc Cilek");
-        user2.setEmail("marcc@hotmail.com");
-        user2.setPassword("ssdddsdSs");
-        user2.setAdress("rue ernest laude nr 65");
+        user1.setUserName("Morihalla");
+        user1.setFullName("Ketels dieter");
+        user1.setEmail("ketelsdieter@hotmail.be");
+        user1.setPassword("BLack2TheBone");
+        user1.setAdress("Rue de midi 666");
+        user2.setUserName("Melalinde");
+        user2.setFullName("Folkie Midgard");
+        user2.setEmail("gameplayer@live.be");
+        user2.setPassword("Metal4Ever");
+        user2.setAdress("Beernegemstraat 13");
 
 
         //One Post.

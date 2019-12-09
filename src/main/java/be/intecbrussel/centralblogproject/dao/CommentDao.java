@@ -1,6 +1,5 @@
 package be.intecbrussel.centralblogproject.dao;
 
-
 import be.intecbrussel.centralblogproject.connection.EntityManagerFactoryProvider;
 import be.intecbrussel.centralblogproject.model.Comment;
 import be.intecbrussel.centralblogproject.model.Post;
