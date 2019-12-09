@@ -6,6 +6,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Post {
@@ -14,9 +15,13 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idPost;
     private String title;
+    @Lob
     private String text;
     private LocalDate localDate;
-
+    @Column(name = "popularity")
+    private int likeCounter;
+    @ManyToMany(mappedBy = "posts")
+    private Set<Tag> tags;
     @ManyToOne
     private User user;
 
@@ -71,6 +76,22 @@ public class Post {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public int getLikeCounter() {
+        return likeCounter;
+    }
+
+    public void setLikeCounter(int likeCounter) {
+        this.likeCounter = likeCounter;
+    }
+
+    public Set<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(Set<Tag> tags) {
+        this.tags = tags;
     }
 
     public List<Comment> getComments() {
