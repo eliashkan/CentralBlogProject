@@ -20,19 +20,19 @@
 <body class="d-block bg-dark">
 <!--  <canvas style="position: absolute;" id='canv'></canvas> -->
 <div class="header mb-3">
-  <a href="${pageContext.request.contextPath}/homepage" class="logo">THE BLOGGERS</a>
-  <input class="menu-btn" type="checkbox" id="menu-btn"/>
-  <label class="menu-icon" for="menu-btn"
-  ><span class="navicon"></span
-  ></label>
-  <ul class="menu">
+    <a href="${pageContext.request.contextPath}/homepage" class="logo">THE BLOGGERS</a>
+    <input class="menu-btn" type="checkbox" id="menu-btn"/>
+    <label class="menu-icon" for="menu-btn"
+    ><span class="navicon"></span
+    ></label>
+    <ul class="menu">
 
-    <li><a href="${pageContext.request.contextPath}/login">Log-In</a></li>
-    <li><a href="">Create new post</a></li>
-    <li><a href="">Show my post</a></li>
-    <li><a href="">Account Settings</a></li>
+        <li><a href="${pageContext.request.contextPath}/login">Log-Out</a></li>
+        <li><a href="">Create new post</a></li>
+        <li><a href="">Show my post</a></li>
+        <li><a href="">Account Settings</a></li>
 
-  </ul>
+    </ul>
 </div>
 
 <div style="height: 20vh;"></div>

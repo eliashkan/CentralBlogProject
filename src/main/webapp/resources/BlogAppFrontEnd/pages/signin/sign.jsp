@@ -50,32 +50,38 @@
         <p class="text-center text-light">Get started with your free account</p>
 
 
-        <form>
+        <!------------------------------------------------------------------------------->
+        <!----------------------------Sign In FORM--------------------->
+
+        <form action="sign" method="POST">
             <div class="form-group input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                 </div>
-                <input name="" class="form-control" placeholder="Full name" type="text">
+
+                <input name="userName" class="form-control" placeholder="Username" type="text">
             </div> <!-- form-group// -->
             <div class="form-group input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
                 </div>
-                <input name="" class="form-control" placeholder="Email address" type="email">
-            </div> <!-- form-group// -->
 
+                <input name="emailAdress" class="form-control" placeholder="Email address" type="email">
+            </div> <!-- form-group// -->
 
             <div class="form-group input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                 </div>
-                <input class="form-control" placeholder="Create password" type="password">
+
+                <input name="passwordCreate" class="form-control" placeholder="Create password" type="password">
             </div> <!-- form-group// -->
             <div class="form-group input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                 </div>
-                <input class="form-control" placeholder="Repeat password" type="password">
+
+                <input name="passwordRepeat" class="form-control" placeholder="Repeat password" type="password">
             </div> <!-- form-group// -->
             <div class="form-group ">
                 <button type="submit" class="btn btn-primary text-light btn-block"> Create Account</button>
@@ -83,6 +89,8 @@
             <p class="text-center text-light">Have an account? <a href="${pageContext.request.contextPath}/login">Log
                 In</a></p>
         </form>
+
+
     </article>
 </div> <!-- card.// -->
 
