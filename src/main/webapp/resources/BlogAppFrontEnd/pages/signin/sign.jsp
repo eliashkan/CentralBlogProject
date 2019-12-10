@@ -1,14 +1,20 @@
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
-    <link href="css/style.css" rel="stylesheet"/>
+
+
+    <link href="${pageContext.request.contextPath}/resources/BlogAppFrontEnd/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="${pageContext.request.contextPath}/resources/BlogAppFrontEnd/css/style.css" rel="stylesheet"/>
+
 
     <link href="" rel="stylesheet"/>
     <title>Blog App</title>
@@ -16,18 +22,20 @@
 
 <body class="d-block bg-dark">
 <div class="header mb-3">
-    <a class="logo" href="/bezoeker.html">THE BLOGGERS</a>
-    <input class="menu-btn" id="menu-btn" type="checkbox"/>
+    <a href="${pageContext.request.contextPath}/homepage" class="logo">THE BLOGGERS</a>
+    <input class="menu-btn" type="checkbox" id="menu-btn"/>
     <label class="menu-icon" for="menu-btn"
     ><span class="navicon"></span
     ></label>
     <ul class="menu">
-        <li><a href="/login.html">Log-In</a></li>
-        <li><a href="/sign.html">Sign-In</a></li>
+
+        <li><a href="${pageContext.request.contextPath}/login">Log-In</a></li>
+        <li><a href="${pageContext.request.contextPath}/sign">Sign-In</a></li>
+
         <li class="column ml-2 mr-3 mt-3">
-            <i aria-hidden="true" class="fas fa-search"></i>
-            <input aria-label="Search" class="form-control form-control-sm m-auto" placeholder="Search"
-                   style="background-color:#1a5caf2e;" type="text">
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <input style="background-color:#1a5caf2e;" type="text" placeholder="Search" aria-label="Search"
+                   class="form-control form-control-sm m-auto">
 
         </li>
 
@@ -47,13 +55,13 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                 </div>
-                <input class="form-control" name="" placeholder="Full name" type="text">
+                <input name="" class="form-control" placeholder="Full name" type="text">
             </div> <!-- form-group// -->
             <div class="form-group input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
                 </div>
-                <input class="form-control" name="" placeholder="Email address" type="email">
+                <input name="" class="form-control" placeholder="Email address" type="email">
             </div> <!-- form-group// -->
 
 
@@ -70,9 +78,10 @@
                 <input class="form-control" placeholder="Repeat password" type="password">
             </div> <!-- form-group// -->
             <div class="form-group ">
-                <button class="btn btn-primary text-light btn-block" type="submit"> Create Account</button>
+                <button type="submit" class="btn btn-primary text-light btn-block"> Create Account</button>
             </div> <!-- form-group// -->
-            <p class="text-center text-light">Have an account? <a href="/login.html">Log In</a></p>
+            <p class="text-center text-light">Have an account? <a href="${pageContext.request.contextPath}/login">Log
+                In</a></p>
         </form>
     </article>
 </div> <!-- card.// -->

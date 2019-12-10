@@ -1,14 +1,17 @@
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
-    <link href="css/style.css" rel="stylesheet"/>
+
+
+    <link href="${pageContext.request.contextPath}/resources/BlogAppFrontEnd/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="${pageContext.request.contextPath}/resources/BlogAppFrontEnd/css/style.css" rel="stylesheet"/>
 
 
     <link href="" rel="stylesheet"/>
@@ -17,21 +20,22 @@
 
 <body class="d-block bg-dark">
 <div class="header mb-3">
-    <a class="logo" href="/bezoeker.html">THE BLOGGERS</a>
-    <input class="menu-btn" id="menu-btn" type="checkbox"/>
+    <a href="${pageContext.request.contextPath}/homepage" class="logo">THE BLOGGERS</a>
+    <input class="menu-btn" type="checkbox" id="menu-btn"/>
     <label class="menu-icon" for="menu-btn"
     ><span class="navicon"></span
     ></label>
     <ul class="menu">
-        <li><a href="/login.html">Log-In</a></li>
-        <li><a href="/sign.html">Sign-In</a></li>
+
+        <li><a href="${pageContext.request.contextPath}/login">Log-In</a></li>
+        <li><a href="${pageContext.request.contextPath}/sign">Sign-In</a></li>
 
     </ul>
 </div>
 
 <div style="height: 20vh;"></div>
 
-<div ;class="card bg-dark" style="border:none">
+<div class="card bg-dark" ; style="border:none">
     <article class="card-body mx-auto" style="max-width: 500px;">
 
         <h4 class="card-title mt-3 text-light text-center">THE BLOGGERS</h4>
@@ -42,7 +46,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                 </div>
-                <input class="form-control" name="" placeholder="Username" type="text">
+                <input name="" class="form-control" placeholder="Username" type="text">
             </div>
             <div class="form-group input-group">
                 <div class="input-group-prepend">
@@ -52,7 +56,7 @@
             </div> <!-- form-group// -->
 
             <div class="form-group">
-                <button class="btn btn-primary btn-block" type="submit"> Log-in</button>
+                <button type="submit" class="btn btn-primary btn-block"> Log-in</button>
             </div> <!-- form-group// -->
 
         </form>

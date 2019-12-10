@@ -26,11 +26,13 @@
                     <container>
                         <containerId>tomee8x</containerId>
                         <type>installed</type>
-                        <home>${env.TOMCAT_HOME}</home>
+
+                        <home>/Users/vincenthonca/Java Cursus/apache-tomee-plus-8.0.0/</home>
                     </container>
                     <configuration>
                         <type>existing</type>
-                        <home>${env.TOMCAT_HOME}</home>
+
+                        <home>/Users/vincenthonca/Java Cursus/apache-tomee-plus-8.0.0/</home>
                     </configuration>
                 </configuration>
             </plugin>
@@ -55,6 +57,8 @@
             <version>8.0.1</version>
             <scope>provided</scope>
         </dependency>
+
+
     </dependencies>
 
 

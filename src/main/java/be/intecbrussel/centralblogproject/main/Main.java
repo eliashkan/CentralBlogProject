@@ -30,7 +30,7 @@ public class Main {
         user1.setPassword("Blabla");
         user1.setAdress("rue de la semence nr 39");
         user2.setUserName("Marcus");
-        user2.setFullName("Marc Cilek");
+        user2.setFullName("Marc Cileksss");
         user2.setEmail("marcc@hotmail.com");
         user2.setPassword("ssdddsdSs");
         user2.setAdress("rue ernest laude nr 65");
