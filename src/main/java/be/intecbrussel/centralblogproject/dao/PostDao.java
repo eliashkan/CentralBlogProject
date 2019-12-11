@@ -7,6 +7,7 @@ import be.intecbrussel.centralblogproject.model.Tag;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
+import java.util.List;
 import java.util.stream.Stream;
 
 public class PostDao {
@@ -52,14 +53,57 @@ public class PostDao {
 
     public Stream<Post> searchPost(Tag tag) {
         EntityManager em = EntityManagerFactoryProvider.getEM();
-        EntityTransaction txn = em.getTransaction();
 
         TypedQuery<Post> query = em.createQuery("select p from Post p join p.tags tag where tag.id = ?1", Post.class);
 
         query.setParameter(1, tag.getId());
-        txn.begin();
-        txn.commit();
 
         return query.getResultStream();
+    }
+
+    public List<Post> sortPostsByDateDesc() {
+        EntityManager em = EntityManagerFactoryProvider.getEM();
+
+        TypedQuery<Post> query = em.createQuery("select p from Post p order by p.localDate desc", Post.class);
+
+        return query.getResultList();
+    }
+
+    public List<Post> sortPostsByDateAsc() {
+        EntityManager em = EntityManagerFactoryProvider.getEM();
+
+        TypedQuery<Post> query = em.createQuery("select p from Post p order by p.localDate asc", Post.class);
+
+        return query.getResultList();
+    }
+
+    public List<Post> sortPostsByPopularityDesc() {
+        EntityManager em = EntityManagerFactoryProvider.getEM();
+
+        TypedQuery<Post> query = em.createQuery( "select p from Post p order by p.likeCounter desc", Post.class);
+
+        return query.getResultList();
+    }
+
+    public List<Post> sortPostsByPopularityAsc() {
+        EntityManager em = EntityManagerFactoryProvider.getEM();
+
+        TypedQuery<Post> query = em.createQuery( "select p from Post p order by p.likeCounter asc", Post.class);
+
+        return query.getResultList();
+    }
+
+    //reduced content can be shown by e.getText().substring(30) on the servlet page
+    //likewise indexOfFirstElement argument must be provided by the the ServletPage
+    public List<Post> showSixPostsWithPaging(int indexOfFirstElement) {
+        EntityManager em = EntityManagerFactoryProvider.getEM();
+
+        int numberOfPosts = 6;
+
+        TypedQuery<Post> query = em.createQuery("select p from Post p", Post.class);
+        query.setFirstResult(indexOfFirstElement);
+        query.setMaxResults(numberOfPosts);
+
+        return query.getResultList();
     }
 }
