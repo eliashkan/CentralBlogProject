@@ -4,6 +4,7 @@ import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -17,7 +18,7 @@ public class Post {
     private String title;
     @Lob
     private String text;
-    private LocalDate localDate;
+    private LocalDateTime dateTime;
     @Column(name = "popularity")
     private int likeCounter;
     @ManyToMany(mappedBy = "posts")
@@ -34,7 +35,7 @@ public class Post {
         this.title = post.title;
         this.text = post.text;
         this.user = post.user;
-        this.localDate = post.localDate;
+        this.dateTime = post.dateTime;
         this.comments = post.comments;
     }
 
@@ -62,12 +63,12 @@ public class Post {
         this.text = text;
     }
 
-    public LocalDate getLocalDate() {
-        return localDate;
+    public LocalDateTime getDateTime() {
+        return dateTime;
     }
 
-    public void setLocalDate(LocalDate localDate) {
-        this.localDate = localDate;
+    public void setDateTime(LocalDateTime localDate) {
+        this.dateTime = localDate;
     }
 
     public User getUser() {
@@ -108,7 +109,7 @@ public class Post {
                 "idPost=" + idPost +
                 ", title='" + title + '\'' +
                 ", text='" + text + '\'' +
-                ", localDate=" + localDate +
+                ", localDate=" + dateTime +
                 ", user=" + user +
                 ", comments=" + comments +
                 '}';

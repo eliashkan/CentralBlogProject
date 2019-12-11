@@ -51,14 +51,14 @@ public class PostDao {
         return dbPost;
     }
 
-    public Stream<Post> searchPost(Tag tag) {
+    public List<Post> searchPost(Tag tag) {
         EntityManager em = EntityManagerFactoryProvider.getEM();
 
         TypedQuery<Post> query = em.createQuery("select p from Post p join p.tags tag where tag.id = ?1", Post.class);
 
         query.setParameter(1, tag.getId());
 
-        return query.getResultStream();
+        return query.getResultList();
     }
 
     public List<Post> sortPostsByDateDesc() {
@@ -72,7 +72,7 @@ public class PostDao {
     public List<Post> sortPostsByDateAsc() {
         EntityManager em = EntityManagerFactoryProvider.getEM();
 
-        TypedQuery<Post> query = em.createQuery("select p from Post p order by p.localDate asc", Post.class);
+        TypedQuery<Post> query = em.createQuery("select p from Post p order by p.dateTime asc", Post.class);
 
         return query.getResultList();
     }
@@ -98,6 +98,7 @@ public class PostDao {
     public List<Post> showSixPostsWithPaging(int indexOfFirstElement) {
         EntityManager em = EntityManagerFactoryProvider.getEM();
 
+        //if you have a small number of rows in the post table you can lower the value below in order to test
         int numberOfPosts = 6;
 
         TypedQuery<Post> query = em.createQuery("select p from Post p", Post.class);

@@ -10,7 +10,10 @@ import be.intecbrussel.centralblogproject.model.Post;
 import be.intecbrussel.centralblogproject.model.Tag;
 import be.intecbrussel.centralblogproject.model.User;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Stream;
 
@@ -26,6 +29,7 @@ public class Main {
         PostDao postDao = new PostDao();
         CommentDao commentDao = new CommentDao();
         TagRepositoryImpl tri = new TagRepositoryImpl();
+
 
 
         //Testing 2 users
@@ -46,7 +50,9 @@ public class Main {
         //One Post.
         Post post = new Post();
         post.setUser(user1);
+        post.setTitle("An annoying question");
         post.setText("Are you talking to me ???");
+        post.setLikeCounter(7);
 
 
         //Making Comments.
@@ -97,6 +103,8 @@ public class Main {
                 "\n" +
                 "He goes hunting, and she turns him into a canary. When he flies to her room and she turns him back, he reproaches her for his injury. She produces her reward to prove that she saved him, and tells him that it was her stepmother's doing. They marry, and the daughter reveals to her father how wicked her imprisonment had been. ");
         postOne.setUser(user1);
+        postOne.setLikeCounter(3);
+        postOne.setDateTime(LocalDateTime.of(2017, 9, 11, 7, 32, 54));
         //creating a second post
         Post postTwo = new Post();
         postTwo.setTitle("Salted caramel cheesecake recipe");
@@ -106,6 +114,24 @@ public class Main {
                 "\n" +
                 "    On the day, loosen the sides of the cheesecake from the tin with a knife and remove the base (although I usually serve it straight from the tin base). Add a large pinch of flaky sea salt to the rest of the caramel sauce, then spoon it over the cake and swirl with the back of the spoon. The cheesecake will sit happily on a stand at room temperature for a couple of hours. Just before serving, sprinkle with extra sea salt, if you like.");
         postTwo.setUser(user2);
+        postTwo.setLikeCounter(2);
+        postTwo.setDateTime(LocalDateTime.of(2019, 1, 31, 4, 52));
+
+        Post postThree = new Post();
+        postThree.setTitle("post three");
+        postDao.createPost(postThree);
+        Post postFour = new Post();
+        postFour.setTitle("post four");
+        postDao.createPost(postFour);
+        Post postFive = new Post();
+        postFive.setTitle("post five");
+        postDao.createPost(postFive);
+        Post postSix = new Post();
+        postSix.setTitle("post six");
+        postDao.createPost(postSix);
+        Post postSeven = new Post();
+        postSeven.setTitle("post seven");
+        postDao.createPost(postSeven);
 
         //connecting tags with posts
         Set<Post> setOfPostsOne = new HashSet<>();
@@ -130,15 +156,24 @@ public class Main {
         tri.saveTag(tagOne);
         tri.saveTag(tagTwo);
 
+
+
         //testing searchPost
-        Stream<Post> result = postDao.searchPost(tagOne);
-        result.forEach(p -> System.out.println(p.getTitle()));
-        //WORKS
+        //List<Post> result = postDao.searchPost(tagOne);
+        //result.forEach(p -> System.out.println(p.getTitle()));
 
+        //testing sortPostsByDateDesc
+        //List<Post> result = postDao.sortPostsByDateAsc();
+        //result.forEach(p -> System.out.println(p.getTitle() + "\t" + p.getDateTime()));
 
+        //testing sortPostsByPopularity
+        //List<Post> result = postDao.sortPostsByPopularityDesc();
+        //result.forEach(p -> System.out.println(p.getTitle() + "\t" + p.getLikeCounter()));
 
-
+        //testing paging
+        /*
+        List<Post> result = postDao.showSixPostsWithPaging(3);
+        result.forEach(p -> System.out.println(p.getIdPost() + "\t" + p.getTitle()));
+        */
     }
-
-
 }
