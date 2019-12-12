@@ -16,7 +16,7 @@ public class User {
     @GeneratedValue
     private Integer userId;
     private String fullName;
-    private String adress;
+    private String address;
     @Length(min = 4)
     @NotNull
     private String userName;
@@ -37,7 +37,7 @@ public class User {
         this.userName = user.userName;
         this.fullName = user.fullName;
         this.password = user.password;
-        this.adress = user.adress;
+        this.address = user.address;
         this.email = user.email;
     }
 
@@ -73,12 +73,12 @@ public class User {
         this.password = password;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getEmail() {

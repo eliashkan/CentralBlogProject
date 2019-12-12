@@ -31,7 +31,7 @@ public class Main {
         userOne.setUserName("hacker");
         userOne.setFullName("David McKintosh");
         userOne.setPassword("y0lom@tE");
-        userOne.setAdress("Herald Drive 48, Birmingham");
+        userOne.setAddress("Herald Drive 48, Birmingham");
         userOne.setEmail("hellostruck@gmail.com");
         userOne.setAvatar("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/dafaf4ba-a214-4d0c-bfe6-84149e815b4a/d3gkvyj-6071be62-d027-4a18-9e6a-a25a8e63228e.jpg/v1/fill/w_900,h_720,q_75,strp/hacker__s_pirate_flag_by_300nukez-d3gkvyj.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwic3ViIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl0sIm9iaiI6W1t7InBhdGgiOiIvZi9kYWZhZjRiYS1hMjE0LTRkMGMtYmZlNi04NDE0OWU4MTViNGEvZDNna3Z5ai02MDcxYmU2Mi1kMDI3LTRhMTgtOWU2YS1hMjVhOGU2MzIyOGUuanBnIiwid2lkdGgiOiI8PTkwMCIsImhlaWdodCI6Ijw9NzIwIn1dXX0.9Vy71WWK43kCwu5fXI7-YOZes0XsfKUNI3HMo6mAxyA");
 
@@ -39,7 +39,7 @@ public class Main {
         userTwo.setUserName("PinkPony");
         userTwo.setFullName("Charles Stevens");
         userTwo.setPassword("n0V@rneveR");
-        userTwo.setAdress("Rose Crescent 1, South Creek");
+        userTwo.setAddress("Rose Crescent 1, South Creek");
         userTwo.setEmail("conquerAndDevide@gmail.com");
         userTwo.setAvatar("https://tse3.mm.bing.net/th?id=OIP.99PxUepvbKCQ82vaUL0a8gHaEK&pid=Api");
 
@@ -136,7 +136,10 @@ public class Main {
         result.forEach(p -> System.out.println(p.getIdPost() + "\t" + p.getTitle()));
         */
 
-        aSI.updatePassword(userOne, "Oldpassw0rd!");
+        /*
+        userOne.setAddress("14 Hollyroad St, Dunbar");
+        aSI.updateUserInformation(userOne, userOne);
+        */
 
     }
 }

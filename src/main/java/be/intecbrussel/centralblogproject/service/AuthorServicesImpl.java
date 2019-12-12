@@ -59,7 +59,7 @@ public class AuthorServicesImpl implements AuthorServices {
     public void updateUserInformation(User userWithOldState, User userWithNewState) {
         User userToBeUpdated = userDAO.getUser(userWithOldState.getUserId());
         userToBeUpdated.setFullName(userWithNewState.getFullName());
-        userToBeUpdated.setAdress(userWithNewState.getAdress());
+        userToBeUpdated.setAddress(userWithNewState.getAddress());
         userToBeUpdated.setUserName(userWithNewState.getUserName());
         userToBeUpdated.setPassword(userWithNewState.getPassword());
         userToBeUpdated.setEmail(userWithNewState.getEmail());
