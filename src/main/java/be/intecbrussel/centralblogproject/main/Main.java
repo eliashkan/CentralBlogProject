@@ -1,6 +1,5 @@
 package be.intecbrussel.centralblogproject.main;
 
-import be.intecbrussel.centralblogproject.connection.EntityManagerFactoryProvider;
 import be.intecbrussel.centralblogproject.dao.CommentDao;
 import be.intecbrussel.centralblogproject.dao.PostDao;
 import be.intecbrussel.centralblogproject.dao.TagRepositoryImpl;
@@ -10,12 +9,10 @@ import be.intecbrussel.centralblogproject.model.Post;
 import be.intecbrussel.centralblogproject.model.Tag;
 import be.intecbrussel.centralblogproject.model.User;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Stream;
 
 public class Main {
 
