@@ -1,4 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="be.intecbrussel.centralblogproject.dao.PostDao" %>
+<%@ page import="be.intecbrussel.centralblogproject.model.Post" %>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
@@ -67,6 +70,11 @@
     </div>
 </div>
 
+<div>
+
+
+</div>
+
 <!-- blog post and menus -->
 <div id="block " ;
      class="d-flex row container-fluid col-12 col-md-12 col-lg-12 justify-content-around m-auto"
@@ -76,9 +84,7 @@
             style="height:fit-content;"
     >
         <p class="rounded blogColors ">
-            Morbi elementum lacus lobortis, faucibus enim vel, ultricies velit.
-            Nam blandit, dui ut sagittis pharetra, odio nisl facilisis velit,
-            sit
+            ${post}
         </p>
         <p class="rounded blogColors ">
             Morbi elementum lacus lobortis, faucibus enim vel, ultricies velit.

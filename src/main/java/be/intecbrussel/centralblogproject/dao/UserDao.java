@@ -21,6 +21,7 @@ public class UserDao {
 
     public User getUser(Integer id) {
         EntityManager em = EntityManagerFactoryProvider.getEM();
+        em.getTransaction().begin();
         User toReturn = em.find(User.class, id);
         em.close();
         return toReturn;

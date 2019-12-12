@@ -18,9 +18,10 @@ public class PostDao {
         return post;
     }
 
-    public Post getPost(Integer id) {
+    public Post getPost(Integer idPost) {
         EntityManager em = EntityManagerFactoryProvider.getEM();
-        Post toReturn = em.find(Post.class, id);
+        em.getTransaction().begin();
+        Post toReturn = em.find(Post.class, idPost);
         em.close();
         return toReturn;
     }
