@@ -8,7 +8,7 @@
 
     <listener>
         <listener-class>
-            be.intecbrussel.centralblogproject.servlet.SessionCounter
+            be.intecbrussel.centralblogproject.listener.SessionCounter
         </listener-class>
     </listener>
 
