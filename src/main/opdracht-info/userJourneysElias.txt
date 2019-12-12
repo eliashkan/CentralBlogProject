@@ -1,0 +1,63 @@
+0) Sidebar
+- aantal totale mensen online
+- aantal ingelogde users
+- aantal visitors sinds AD
+
+1) Visitor
+- 6 meest recente posts opvragen
+	aantal comments indicatie
+- posts sorteren
+	oldest first
+	newest first
+	by popularity
+- toon full text door te klikken op titel, tekst of datum/tijd
+- auteurspagina bekijken door op auteur te klikken
+- search
+	...
+- sign-in
+	- REGISTRATIE (sign-ing/log-in label veranderen)
+		- checken of user al bestaat in DB
+		- email adres format verificatie
+		- paswoord dubbelcheck
+		- empty field verificatie
+	- inloggen
+		- empty field verificatie
+		- check username exists?
+		- check username/paswoord combinatie
+		- "stay logged in" via user-object in session cookie
+
+2) Auteur/Logged in user
+- 6 meest recente posts opvragen
+	aantal comments indicatie
+- posts sorteren
+	oldest first
+	newest first
+	by popularity
+- toon full text door te klikken op titel, tekst of datum/tijd
+- auteurspagina bekijken door op auteur te klikken
+- search
+	...
+-----------------------------------------------------
+- becommentariëren (alleen vanaf specifieke full text pagina)
+	- .localNow() DateTime object toevoegen
+	- ingelogde user object linken aan comment
+	- link post-comment
+
+- Show my posts
+	- auteursrechten (zie opdrachtblad)
+	- update/delete voor post en comments
+		- update: terug naar compose pagina + toon originele post
+
+- Create new post
+	- Velden (text fields are fixed-width font)
+		titel
+		body
+		tags
+		post button
+		discard button
+	- wegschrijven met specifieke URL adhv titel 
+
+- Update profile
+	- change avatar
+	- profiel gegevens updaten
+	- profiel verwijderen knop
