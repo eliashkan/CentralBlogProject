@@ -28,7 +28,9 @@ public interface AuthorServices {
     void logOut();
 
     // add & update user information
-    void updateUserinformation();
+    void updateUserInformation(User userOne, User userTwo);
+
+    void updateAvatar(User user, String newUrl) throws Exception;
 
     // update password
     void updatePassword(User user, String string);
