@@ -63,19 +63,6 @@ public class AuthorServicesImpl implements AuthorServices {
     public void updatePassword(User user, String newPassword) {
         User userToBeUpdated = userDAO.getUser(user.getUserId());
         userToBeUpdated.setPassword(newPassword);
-        userDAO.createUser(userToBeUpdated);
-        /*
-        EntityManager em = EntityManagerFactoryProvider.getEM();
-
-        User userToBeUpdated = em.find(User.class, user.getUserId());
-        userToBeUpdated.setPassword(newPassword);
-        em.persist(userToBeUpdated);
-
-        EntityTransaction txn = em.getTransaction();
-        txn.begin();
-        txn.commit();
-        em.close();
-        */
-
+        userDAO.updateUser(userToBeUpdated);
     }
 }
