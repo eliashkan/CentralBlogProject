@@ -75,6 +75,10 @@ public class User {
     }
 
     public void setEmail(String email) {
+        while (!email.matches("^[A-Z0-9+_.-]+@[A-Z0-9.-]+$\n")) {
+            System.out.println("Wrong email-format");
+            setEmail(email);
+        }
         this.email = email;
     }
 
