@@ -10,8 +10,9 @@
     <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
 
 
-    <link href="${pageContext.request.contextPath}/resources/BlogAppFrontEnd/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="${pageContext.request.contextPath}/resources/BlogAppFrontEnd/css/style.css" rel="stylesheet"/>
+    <link href="${pageContext.request.contextPath}/WEB-INF/resources/BlogAppFrontEnd/css/bootstrap.min.css"
+          rel="stylesheet"/>
+    <link href="${pageContext.request.contextPath}/WEB-INF/resources/BlogAppFrontEnd/css/style.css" rel="stylesheet"/>
 
 
     <link href="" rel="stylesheet"/>

@@ -1,4 +1,4 @@
-<%@ page import="be.intecbrussel.centralblogproject.service.SessionCounter" %><%--
+<%@ page import="be.intecbrussel.centralblogproject.listener.SessionCounter" %><%--
   Created by IntelliJ IDEA.
   User: Elias
   Date: 09/12/2019

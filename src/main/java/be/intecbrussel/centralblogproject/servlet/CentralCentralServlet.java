@@ -25,8 +25,10 @@ public class CentralCentralServlet extends HttpServlet {
         currentAmountOfUsers--;
     }
 
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
 
         // Get the cookie from the client
         HttpSession session = req.getSession();

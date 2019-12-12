@@ -1,6 +1,4 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="be.intecbrussel.centralblogproject.dao.PostDao" %>
-<%@ page import="be.intecbrussel.centralblogproject.model.Post" %>
 
 <html lang="en">
 <head>
@@ -13,9 +11,10 @@
     <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
 
 
-    <link href="${pageContext.request.contextPath}/resources/BlogAppFrontEnd/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="${pageContext.request.contextPath}/resources/BlogAppFrontEnd/css/style.css" rel="stylesheet"/>
-    <link href="${pageContext.request.contextPath}/resources/BlogAppFrontEnd/css/snow.css" rel="stylesheet"/>
+    <link href="${pageContext.request.contextPath}/WEB-INF/resources/BlogAppFrontEnd/css/bootstrap.min.css"
+          rel="stylesheet"/>
+    <link href="${pageContext.request.contextPath}/WEB-INF/resources/BlogAppFrontEnd/css/style.css" rel="stylesheet"/>
+    <link href="${pageContext.request.contextPath}/WEB-INF/resources/BlogAppFrontEnd/css/snow.css" rel="stylesheet"/>
 
     <link href="" rel="stylesheet"/>
     <title>Blog App</title>
