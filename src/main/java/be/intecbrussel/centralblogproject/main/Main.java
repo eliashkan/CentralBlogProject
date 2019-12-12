@@ -21,9 +21,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        //Initialise
-        EntityManagerFactoryProvider
-                .getEM();
+
 
         UserDao userDao = new UserDao();
         PostDao postDao = new PostDao();
@@ -85,7 +83,7 @@ public class Main {
 
 
         //testing delete coms
-       commentDao.deleteComment(post.getComments().get(0));
+        // commentDao.deleteComment(post.getComments().get(0));
 
         //create tags
         Tag tagOne = new Tag();
