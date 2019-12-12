@@ -1,4 +1,4 @@
-package be.intecbrussel.centralblogproject.servlet;
+package be.intecbrussel.centralblogproject.service;
 
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionEvent;
