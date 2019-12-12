@@ -33,6 +33,7 @@ public class AuthorServicesImpl implements AuthorServices {
 
     @Override
     public void deleteProfile() {
+        System.out.println("test");
 
     }
 
