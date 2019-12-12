@@ -2,8 +2,12 @@ package be.intecbrussel.centralblogproject.model;
 
 
 import be.intecbrussel.centralblogproject.model.Utilities.ImageRecovery;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 @Entity
 public class User {
@@ -11,10 +15,17 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userId;
-    private String userName;
     private String fullName;
-    private String password;
     private String adress;
+    @Length(min = 4)
+    @NotNull
+    private String userName;
+    @Length(min = 8, max = 20, message = "A password must contain between 8 and 20 characters and a special character, digit and low and upper case letters.")
+    @NotNull
+    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,20}$")
+    private String password;
+    @NotNull
+    @Email
     private String email;
     @Lob
     @Column(columnDefinition = "BLOB")
@@ -75,10 +86,6 @@ public class User {
     }
 
     public void setEmail(String email) {
-        while (!email.matches("^[A-Z0-9+_.-]+@[A-Z0-9.-]+$\n")) {
-            System.out.println("Wrong email-format");
-            setEmail(email);
-        }
         this.email = email;
     }
 

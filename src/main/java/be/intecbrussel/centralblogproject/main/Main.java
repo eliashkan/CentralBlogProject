@@ -16,71 +16,33 @@ import java.util.Set;
 
 public class Main {
 
-    public static void main(String[] args) {
-
-
+    public static void main(String[] args) throws Exception {
 
         UserDao userDao = new UserDao();
         PostDao postDao = new PostDao();
         CommentDao commentDao = new CommentDao();
         TagRepositoryImpl tri = new TagRepositoryImpl();
 
+        //creating users
+        User userOne = new User();
+        userOne.setUserName("hacker");
+        userOne.setFullName("David McKintosh");
+        userOne.setPassword("y0lom@tE");
+        userOne.setAdress("Herald Drive 48, Birmingham");
+        userOne.setEmail("hellostruck@gmail.com");
+        userOne.setAvatar("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/dafaf4ba-a214-4d0c-bfe6-84149e815b4a/d3gkvyj-6071be62-d027-4a18-9e6a-a25a8e63228e.jpg/v1/fill/w_900,h_720,q_75,strp/hacker__s_pirate_flag_by_300nukez-d3gkvyj.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwic3ViIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl0sIm9iaiI6W1t7InBhdGgiOiIvZi9kYWZhZjRiYS1hMjE0LTRkMGMtYmZlNi04NDE0OWU4MTViNGEvZDNna3Z5ai02MDcxYmU2Mi1kMDI3LTRhMTgtOWU2YS1hMjVhOGU2MzIyOGUuanBnIiwid2lkdGgiOiI8PTkwMCIsImhlaWdodCI6Ijw9NzIwIn1dXX0.9Vy71WWK43kCwu5fXI7-YOZes0XsfKUNI3HMo6mAxyA");
 
+        User userTwo = new User();
+        userTwo.setUserName("PinkPony");
+        userTwo.setFullName("Charles Stevens");
+        userTwo.setPassword("n0V@rneveR");
+        userTwo.setAdress("Rose Crescent 1, South Creek");
+        userTwo.setEmail("conquerAndDevide@gmail.com");
+        userTwo.setAvatar("https://tse3.mm.bing.net/th?id=OIP.99PxUepvbKCQ82vaUL0a8gHaEK&pid=Api");
 
-        //Testing 2 users
-        User user1 = new User();
-        User user2 = new User();
-        user1.setUserName("Morihalla");
-        user1.setFullName("Ketels dieter");
-        //user1.setEmail("ketelsdieter@hotmail.be");
-        user1.setPassword("BLack2TheBone");
-        user1.setAdress("Rue de midi 666");
-        user2.setUserName("Melalinde");
-        user2.setFullName("Folkie Midgard");
-        //user2.setEmail("gameplayer@live.be");
-        user2.setPassword("Metal4Ever");
-        user2.setAdress("Beernegemstraat 13");
-
-
-        //One Post.
-        Post post = new Post();
-        post.setUser(user1);
-        post.setTitle("An annoying question");
-        post.setText("Are you talking to me ???");
-        post.setLikeCounter(7);
-
-
-        //Making Comments.
-        Comment comment = new Comment();
-        comment.setUser(user2);
-        comment.setText("Taxi Driver.Love it");
-        Comment comment2 = new Comment();
-        comment2.setUser(user2);
-        comment2.setText("Very good movie");
-
-
-        //Sending data.
-        user1 = userDao.createUser(user1);
-        user2 = userDao.createUser(user2);
-
-
-        //Put the comments to the post.
-
-        //de comments worden via de DAO.createComment in de lijst bijgevoegd,zodanig dat we de effectieve rowq terug krijgen.
-        post.getComments().add(commentDao.createComment(comment));
-        post.getComments().add(commentDao.createComment(comment2));
-
-
-        post = postDao.createPost(post);
-
-
-        //testing delete post
-        //postDao.deletePost(post);
-
-
-
-        //testing delete coms
-        // commentDao.deleteComment(post.getComments().get(0));
+        //persisting users
+        userDao.createUser(userOne);
+        userDao.createUser(userTwo);
 
         //create tags
         Tag tagOne = new Tag();
@@ -97,7 +59,7 @@ public class Main {
                 "After some time, the queen arrives and sees a young man by the window, and puts pins on the window sill so that if the daughter leaned on it to flirt, she would be stabbed. These pins stab the prince in his canary form, and even when the princess restores him, the prince lies on the ground, bleeding, and his companions must bear him back to his father. The princess escapes by cutting up her sheets for a rope, and overhears witches talking of things; one describes how to heal the prince. She does so, and asks for his coat-of-arms, his standard, and his vest as her reward.\n" +
                 "\n" +
                 "He goes hunting, and she turns him into a canary. When he flies to her room and she turns him back, he reproaches her for his injury. She produces her reward to prove that she saved him, and tells him that it was her stepmother's doing. They marry, and the daughter reveals to her father how wicked her imprisonment had been. ");
-        postOne.setUser(user1);
+        postOne.setUser(userOne);
         postOne.setLikeCounter(3);
         postOne.setDateTime(LocalDateTime.of(2017, 9, 11, 7, 32, 54));
         //creating a second post
@@ -108,7 +70,7 @@ public class Main {
                 "    Meanwhile, scrape the cream cheese into a bowl with 3 tbsp of the caramel sauce, the vanilla, sugar and flour, and beat until smooth. Beat in the eggs, one at a time, until you have a thick, smooth custard consistency. Tip over the base, scraping the bowl clean, and bake in the oven for 10 mins. Reduce the temperature to 140C/120C fan/gas 1 and continue to bake for 25-30 mins until there is a slight wobble in the centre. Turn off the heat and leave the door just slightly ajar – a tea towel holding the door open is ideal. This should leave you with a completely smooth top, but if there are a couple of small cracks, don’t worry. Leave the cheesecake in the oven until completely cool (overnight is fine), then chill until needed. Will keep in the fridge for two days.\n" +
                 "\n" +
                 "    On the day, loosen the sides of the cheesecake from the tin with a knife and remove the base (although I usually serve it straight from the tin base). Add a large pinch of flaky sea salt to the rest of the caramel sauce, then spoon it over the cake and swirl with the back of the spoon. The cheesecake will sit happily on a stand at room temperature for a couple of hours. Just before serving, sprinkle with extra sea salt, if you like.");
-        postTwo.setUser(user2);
+        postTwo.setUser(userTwo);
         postTwo.setLikeCounter(2);
         postTwo.setDateTime(LocalDateTime.of(2019, 1, 31, 4, 52));
 
