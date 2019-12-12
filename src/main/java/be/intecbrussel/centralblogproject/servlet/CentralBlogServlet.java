@@ -1,10 +1,8 @@
 package be.intecbrussel.centralblogproject.servlet;
 
 import be.intecbrussel.centralblogproject.dao.PostDao;
-import be.intecbrussel.centralblogproject.dao.UserDao;
 import be.intecbrussel.centralblogproject.model.Post;
 
-import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
