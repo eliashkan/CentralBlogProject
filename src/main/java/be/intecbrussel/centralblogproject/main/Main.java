@@ -8,6 +8,7 @@ import be.intecbrussel.centralblogproject.model.Comment;
 import be.intecbrussel.centralblogproject.model.Post;
 import be.intecbrussel.centralblogproject.model.Tag;
 import be.intecbrussel.centralblogproject.model.User;
+import be.intecbrussel.centralblogproject.service.AuthorServicesImpl;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
@@ -22,6 +23,8 @@ public class Main {
         PostDao postDao = new PostDao();
         CommentDao commentDao = new CommentDao();
         TagRepositoryImpl tri = new TagRepositoryImpl();
+
+        AuthorServicesImpl aSI = new AuthorServicesImpl();
 
         //creating users
         User userOne = new User();
@@ -132,5 +135,8 @@ public class Main {
         List<Post> result = postDao.showSixPostsWithPaging(3);
         result.forEach(p -> System.out.println(p.getIdPost() + "\t" + p.getTitle()));
         */
+
+        aSI.updatePassword(userOne, "Oldpassw0rd!");
+
     }
 }

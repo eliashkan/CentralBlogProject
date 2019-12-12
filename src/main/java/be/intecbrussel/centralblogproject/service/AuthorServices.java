@@ -1,5 +1,7 @@
 package be.intecbrussel.centralblogproject.service;
 
+import be.intecbrussel.centralblogproject.model.User;
+
 public interface AuthorServices {
     // Create comment, link to author, post, .now()
     void submitComment();
@@ -29,5 +31,5 @@ public interface AuthorServices {
     void updateUserinformation();
 
     // update password
-    void updatePassword();
+    void updatePassword(User user, String string);
 }

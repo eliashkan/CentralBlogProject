@@ -1,6 +1,19 @@
 package be.intecbrussel.centralblogproject.service;
 
+import be.intecbrussel.centralblogproject.connection.EntityManagerFactoryProvider;
+import be.intecbrussel.centralblogproject.dao.UserDao;
+import be.intecbrussel.centralblogproject.model.User;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+
 public class AuthorServicesImpl implements AuthorServices {
+
+    private UserDao userDAO;
+
+    public AuthorServicesImpl() {
+        this.userDAO = new UserDao();
+    }
+
     @Override
     public void submitComment() {
 
@@ -47,7 +60,22 @@ public class AuthorServicesImpl implements AuthorServices {
     }
 
     @Override
-    public void updatePassword() {
+    public void updatePassword(User user, String newPassword) {
+        User userToBeUpdated = userDAO.getUser(user.getUserId());
+        userToBeUpdated.setPassword(newPassword);
+        userDAO.createUser(userToBeUpdated);
+        /*
+        EntityManager em = EntityManagerFactoryProvider.getEM();
+
+        User userToBeUpdated = em.find(User.class, user.getUserId());
+        userToBeUpdated.setPassword(newPassword);
+        em.persist(userToBeUpdated);
+
+        EntityTransaction txn = em.getTransaction();
+        txn.begin();
+        txn.commit();
+        em.close();
+        */
 
     }
 }

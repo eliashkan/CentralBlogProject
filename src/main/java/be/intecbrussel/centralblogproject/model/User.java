@@ -13,7 +13,7 @@ import javax.validation.constraints.Pattern;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Integer userId;
     private String fullName;
     private String adress;
