@@ -7,6 +7,7 @@ import be.intecbrussel.centralblogproject.model.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import java.util.List;
 import java.util.stream.Stream;
@@ -109,4 +110,5 @@ public class PostDao {
 
         return query.getResultList();
     }
+
 }

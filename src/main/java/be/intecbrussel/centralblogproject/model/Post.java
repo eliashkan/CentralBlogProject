@@ -23,6 +23,8 @@ public class Post {
     private Set<Tag> tags;
     @ManyToOne
     private User user;
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
+    private List<Comment> comments;
 
     public void cloneFrom(Post post) {
         this.idPost = post.idPost;
@@ -86,6 +88,14 @@ public class Post {
 
     public void setTags(Set<Tag> tags) {
         this.tags = tags;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 
     @Override

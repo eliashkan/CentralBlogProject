@@ -2,6 +2,8 @@ package be.intecbrussel.centralblogproject.dao;
 
 import be.intecbrussel.centralblogproject.connection.EntityManagerFactoryProvider;
 import be.intecbrussel.centralblogproject.model.Comment;
+import be.intecbrussel.centralblogproject.model.Post;
+import be.intecbrussel.centralblogproject.model.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -47,6 +49,32 @@ public class CommentDao {
         transaction.commit();
         em.close();
         return dbComment;
+
+    }
+
+    public void deleteCommentByUser(User user) {
+        EntityManager em = EntityManagerFactoryProvider.getEM();
+        for (Post c: user.getPosts()) {
+            c = em.merge(c);
+            em.remove(c);
+        }
+
+        EntityTransaction txn = em.getTransaction();
+        txn.begin();
+        txn.commit();
+
+        /*
+        EntityManager em = EntityManagerFactoryProvider.getEM();
+        EntityTransaction txn = em.getTransaction();
+        txn.begin();
+        //need to join with comment because cascade does not work on JPQL
+        Query query = em.createQuery("delete Post p where p.user = ?1");
+
+        query.setParameter(1, user);
+        query.executeUpdate();
+        txn.commit();
+        */
+
 
     }
 

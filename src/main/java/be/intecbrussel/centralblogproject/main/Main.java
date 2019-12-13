@@ -134,9 +134,15 @@ public class Main {
         commentOne.setText("I will definitely make this cake this Christmas. Delicious!");
         commentOne.setUser(userOne);
         commentOne.setPost(postTwo);
+        //adding comment to user
+        userOne.setComments(new ArrayList<>());
+        userOne.getComments().add(commentOne);
         //persisting this comment
         commentDao.createComment(commentOne);
 
+        //assigning the comment to the post's list
+        postTwo.setComments(new ArrayList<>());
+        postTwo.getComments().add(commentOne);
 
 
 

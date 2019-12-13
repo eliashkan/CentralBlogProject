@@ -14,6 +14,7 @@ public class AuthorServicesImpl implements AuthorServices {
 
     public AuthorServicesImpl() {
         this.userDAO = new UserDao();
+        this.postDao = new PostDao();
     }
 
     @Override
@@ -50,9 +51,9 @@ public class AuthorServicesImpl implements AuthorServices {
     //1. it must delete the corresponding posts
     //2. all the comments to the above post must be deleted whether it belongs to this author or not
     //3. all comments of the user must be deleted on all other posts
+    //REMARK
     public void deleteProfile(User user) {
         userDAO.deleteUser(user);
-
     }
 
     @Override
