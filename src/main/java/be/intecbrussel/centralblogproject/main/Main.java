@@ -11,6 +11,7 @@ import be.intecbrussel.centralblogproject.model.User;
 import be.intecbrussel.centralblogproject.service.AuthorServicesImpl;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -40,7 +41,7 @@ public class Main {
         userTwo.setFullName("Charles Stevens");
         userTwo.setPassword("n0V@rneveR");
         userTwo.setAddress("Rose Crescent 1, South Creek");
-        userTwo.setEmail("conquerAndDevide@gmail.com");
+        userTwo.setEmail("conquerAndDivide@gmail.com");
         userTwo.setAvatar("https://tse3.mm.bing.net/th?id=OIP.99PxUepvbKCQ82vaUL0a8gHaEK&pid=Api");
 
         //persisting users
@@ -76,6 +77,15 @@ public class Main {
         postTwo.setUser(userTwo);
         postTwo.setLikeCounter(2);
         postTwo.setDateTime(LocalDateTime.of(2019, 1, 31, 4, 52));
+
+        //adding the posts to the users
+        userOne.setPosts(new ArrayList<>());
+        userOne.getPosts().add(postOne);
+        userTwo.setPosts(new ArrayList<>());
+        userTwo.getPosts().add(postTwo);
+
+
+
 
         /*
         //creating five posts

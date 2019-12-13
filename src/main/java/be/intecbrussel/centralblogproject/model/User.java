@@ -8,6 +8,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import java.util.List;
 
 @Entity
 public class User {
@@ -32,7 +33,8 @@ public class User {
     //BLOB has a size of 65535 bytes
     //MEDIUMBLOB has a size of 16777215 bytes
     private byte[] avatar;
-
+    @OneToMany(mappedBy = "user")
+    private List<Post> posts;
 
     public void cloneFrom(User user) {
         this.userId = user.userId;
@@ -97,6 +99,14 @@ public class User {
 
     public void setAvatar(String url) throws Exception{
         this.avatar = ImageRecovery.recoverImageFromUrl(url);
+    }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
     }
 }
 

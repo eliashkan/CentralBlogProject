@@ -52,7 +52,7 @@ public class AuthorServicesImpl implements AuthorServices {
     //3. all comments of the user must be deleted on all other posts
     public void deleteProfile(User user) {
         userDAO.deleteUser(user);
-        postDao.deletePost()
+
     }
 
     @Override

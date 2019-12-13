@@ -42,16 +42,6 @@ public class PostDao {
         return dbPost;
     }
 
-    public Post deletePost(User user) {
-        EntityManager em = EntityManagerFactoryProvider.getEM();
-
-
-        EntityTransaction txn = em.getTransaction();
-        txn.begin();
-        txn.commit();
-        em.close();
-    }
-
     public Post updatPost(Post post) {
         EntityManager em = EntityManagerFactoryProvider.getEM();
         EntityTransaction transaction = em.getTransaction();
