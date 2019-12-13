@@ -119,6 +119,15 @@ public class Main {
         tri.saveTag(tagOne);
         tri.saveTag(tagTwo);
 
+        //create a comment on post two
+        Comment commentOne = new Comment();
+        commentOne.setText("I will definitely make this cake this Christmas. Delicious!");
+        commentOne.setUser(userOne);
+        commentOne.setPost(postTwo);
+        //persisting this comment
+        commentDao.createComment(commentOne);
+
+
 
 
         //testing searchPost
@@ -145,10 +154,15 @@ public class Main {
         aSI.updateUserInformation(userOne, userOne);
         */
 
+        /*
         //testing updateAvatar
         //you might need to change the size of your MySQL server package size here C:\xampp\mysql\bin\my.conf
         //see: https://dev.mysql.com/doc/refman/5.5/en/packet-too-large.html
         aSI.updateAvatar(userOne, "https://tau0.files.wordpress.com/2013/04/long_desert_road_2.jpg");
+        */
+
+        //deleting userOne
+        //aSI.deleteProfile(userOne);
 
     }
 }

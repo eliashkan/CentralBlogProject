@@ -24,17 +24,12 @@ public class Post {
     @ManyToOne
     private User user;
 
-    @OneToMany
-    @JoinColumn(name = "post")
-    private List<Comment> comments = new ArrayList<>();
-
     public void cloneFrom(Post post) {
         this.idPost = post.idPost;
         this.title = post.title;
         this.text = post.text;
         this.user = post.user;
         this.dateTime = post.dateTime;
-        this.comments = post.comments;
     }
 
     public Integer getIdPost() {
@@ -93,14 +88,6 @@ public class Post {
         this.tags = tags;
     }
 
-    public List<Comment> getComments() {
-        return comments;
-    }
-
-    public void setComments(List<Comment> comments) {
-        this.comments = comments;
-    }
-
     @Override
     public String toString() {
         return "Post{" +
@@ -109,7 +96,6 @@ public class Post {
                 ", text='" + text + '\'' +
                 ", localDate=" + dateTime +
                 ", user=" + user +
-                ", comments=" + comments +
                 '}';
     }
 }

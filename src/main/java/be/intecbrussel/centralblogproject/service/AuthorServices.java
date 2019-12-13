@@ -22,7 +22,7 @@ public interface AuthorServices {
     void updateAvatar();
 
     // Delete profile
-    void deleteProfile();
+    void deleteProfile(User user);
 
     // Log out
     void logOut();

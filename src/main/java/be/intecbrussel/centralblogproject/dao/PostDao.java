@@ -3,6 +3,7 @@ package be.intecbrussel.centralblogproject.dao;
 import be.intecbrussel.centralblogproject.connection.EntityManagerFactoryProvider;
 import be.intecbrussel.centralblogproject.model.Post;
 import be.intecbrussel.centralblogproject.model.Tag;
+import be.intecbrussel.centralblogproject.model.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -39,6 +40,16 @@ public class PostDao {
         transaction.commit();
         em.close();
         return dbPost;
+    }
+
+    public Post deletePost(User user) {
+        EntityManager em = EntityManagerFactoryProvider.getEM();
+
+
+        EntityTransaction txn = em.getTransaction();
+        txn.begin();
+        txn.commit();
+        em.close();
     }
 
     public Post updatPost(Post post) {

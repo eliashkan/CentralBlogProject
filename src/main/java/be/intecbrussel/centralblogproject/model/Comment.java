@@ -10,13 +10,13 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idComment;
     private String text;
-
     @ManyToOne
+    @JoinColumn(name = "user")
     private User user;
-
-
     @ManyToOne
+    @JoinColumn(name = "post")
     private Post post;
+
 
     public void cloneFrom(Comment comment) {
         this.idComment = comment.getIdComment();
