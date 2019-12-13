@@ -66,7 +66,7 @@ public class AuthorServicesImpl implements AuthorServices {
         userDAO.updateUser(userToBeUpdated);
     }
 
-    //seperate update method for avatar so the argument list of updateUserInformation is not loaded unnecessarily
+    //seperate update method for avatar so the argument list of updateUserInformation is not loaded with a string unnecessarily when updating avatar is not required
     public void updateAvatar(User user, String newUrl) throws Exception {
         User userToBeUpdated = userDAO.getUser(user.getUserId());
         userToBeUpdated.setAvatar(newUrl);

@@ -77,6 +77,8 @@ public class Main {
         postTwo.setLikeCounter(2);
         postTwo.setDateTime(LocalDateTime.of(2019, 1, 31, 4, 52));
 
+        /*
+        //creating five posts
         Post postThree = new Post();
         postThree.setTitle("post three");
         postDao.createPost(postThree);
@@ -92,6 +94,7 @@ public class Main {
         Post postSeven = new Post();
         postSeven.setTitle("post seven");
         postDao.createPost(postSeven);
+        */
 
         //connecting tags with posts
         Set<Post> setOfPostsOne = new HashSet<>();
@@ -137,9 +140,15 @@ public class Main {
         */
 
         /*
+        testing updateAddress()
         userOne.setAddress("14 Hollyroad St, Dunbar");
         aSI.updateUserInformation(userOne, userOne);
         */
+
+        //testing updateAvatar
+        //you might need to change the size of your MySQL server package size here C:\xampp\mysql\bin\my.conf
+        //see: https://dev.mysql.com/doc/refman/5.5/en/packet-too-large.html
+        aSI.updateAvatar(userOne, "https://tau0.files.wordpress.com/2013/04/long_desert_road_2.jpg");
 
     }
 }

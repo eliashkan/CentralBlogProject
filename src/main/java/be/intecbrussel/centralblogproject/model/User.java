@@ -28,7 +28,9 @@ public class User {
     @Email
     private String email;
     @Lob
-    @Column(columnDefinition = "BLOB")
+    @Column(columnDefinition = "MEDIUMBLOB")
+    //BLOB has a size of 65535 bytes
+    //MEDIUMBLOB has a size of 16777215 bytes
     private byte[] avatar;
 
 
