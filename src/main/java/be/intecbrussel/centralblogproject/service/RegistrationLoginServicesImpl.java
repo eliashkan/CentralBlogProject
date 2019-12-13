@@ -7,9 +7,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 
-<<<<<<<Updated upstream
-        =======
-        >>>>>>>Stashed changes
 
 public class RegistrationLoginServicesImpl implements RegistrationLoginServices {
 
@@ -59,23 +56,8 @@ public class RegistrationLoginServicesImpl implements RegistrationLoginServices 
 
     }
 
-<<<<<<<Updated upstream
     @Override
-    public User stayLogged(String username, String password) {
-        TypedQuery<User> query = EntityManagerFactoryProvider.getEM().createQuery(
-                "Select userId From User where userName=?1 and password=?2 ", User.class);
-
-        query.setParameter(1, username).getSingleResult();
-        query.setParameter(2, password).getSingleResult();
-        User userDb = query.getSingleResult();
-
-        return userDb;
-
-=======
->>>>>>>Stashed changes
-
-        @Override
-        public User stayLogged () {
-            return null;
-        }
+    public User stayLogged() {
+        return null;
+    }
 }

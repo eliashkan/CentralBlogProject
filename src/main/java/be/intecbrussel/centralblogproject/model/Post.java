@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Post {
@@ -13,16 +14,14 @@ public class Post {
     private Integer idPost;
     private String title;
     private String text;
-<<<<<<<Updated upstream
+
     private LocalDate localDate;
 
-=======
-    Stashed changes
+
     @ManyToOne
     private User user;
-    Stashed changes
-    private LocalDateTime dateTime;
->>>>>>>
+
+
     @Column(name = "popularity")
     private Integer likeCounter;
 
@@ -81,18 +80,7 @@ public class Post {
         this.user = user;
     }
 
-<<<<<<<Updated upstream
-=======
 
-    public void setLikeCounter(Integer likeCounter) {
-        this.likeCounter = likeCounter;
-    }
-
-    public Set<Tag> getTags() {
-        return tags;
-    }
-
->>>>>>>
 
     public void setTags(Set<Tag> tags) {
         this.tags = tags;

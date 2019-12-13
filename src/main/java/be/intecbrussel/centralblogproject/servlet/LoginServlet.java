@@ -1,6 +1,5 @@
 package be.intecbrussel.centralblogproject.servlet;
 
-import be.intecbrussel.centralblogproject.model.User;
 import be.intecbrussel.centralblogproject.service.RegistrationLoginServicesImpl;
 
 import javax.servlet.ServletException;
@@ -10,10 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-
-<<<<<<<Updated upstream
-        =======
-        >>>>>>>Stashed changes
 
 
 @WebServlet(value = "/login")
@@ -37,28 +32,21 @@ public class LoginServlet extends HttpServlet {
 
 
         RegistrationLoginServicesImpl registrationLoginServices = new RegistrationLoginServicesImpl();
+        if (registrationLoginServices.isPasswordMatchingUsername(username, password)) {
 
-<<<<<<<Updated upstream
-        if (registrationLoginServices.stayLogged(username, password) != null) {
-=======
-            User user = registrationLoginServices.stayLogged(username, password);
+            out.println("<html> ");
+            out.println("<head>");
+            out.println("</head>");
+            out.println("<body> User Is LOGED </body>");
+            out.println("</html>");
 
-            if (user != null) {
->>>>>>>Stashed changes
-
-                out.println("<html> ");
-                out.println("<head>");
-                out.println("</head>");
-                out.println("<body> User Is LOGED </body>");
-                out.println("</html>");
-
-            } else {
-                out.println("<html> ");
-                out.println("<head>");
-                out.println("</head>");
-                out.println("<body> Not User Found </body>");
-                out.println("</html>");
-            }
+        } else {
+            out.println("<html> ");
+            out.println("<head>");
+            out.println("</head>");
+            out.println("<body> Not User Found </body>");
+            out.println("</html>");
+        }
 
 
     }

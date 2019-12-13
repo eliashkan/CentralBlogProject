@@ -2,9 +2,12 @@ package be.intecbrussel.centralblogproject.dao;
 
 import be.intecbrussel.centralblogproject.connection.EntityManagerFactoryProvider;
 import be.intecbrussel.centralblogproject.model.Post;
+import be.intecbrussel.centralblogproject.model.Tag;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.TypedQuery;
+import java.util.List;
 
 
 public class PostDao {
@@ -50,7 +53,7 @@ public class PostDao {
         return dbPost;
     }
 
- /*   public List<Post> searchPost(Tag tag) {
+    public List<Post> searchPost(Tag tag) {
         EntityManager em = EntityManagerFactoryProvider.getEM();
 
         TypedQuery<Post> query = em.createQuery("select p from Post p join p.tags tag where tag.id = ?1", Post.class);
@@ -110,7 +113,7 @@ public class PostDao {
         em.close();
 
         return query.getResultList();
-    }*/
+    }
 }
 
 

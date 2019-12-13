@@ -32,25 +32,16 @@ public class SignInServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-
         HttpSession httpSession = req.getSession();
-        PrintWriter out =resp.getWriter();
-
+        PrintWriter out = resp.getWriter();
         //Getting parameter from SIGN.JSP (Form)
         String userName = req.getParameter("userName");
         String emailAdress = req.getParameter("emailAdress");
-
         String passwordCreate = req.getParameter("passwordCreate");
-
         //todo match 2 samepasswords
         String passwordRepeat = req.getParameter("passwordRepeat");
-
-
         RegistrationLoginServicesImpl registrationLoginServices = new RegistrationLoginServicesImpl();
-
-
-        if(registrationLoginServices.isUsernameInDB(userName)){
+        if (registrationLoginServices.isUsernameInDB(userName)) {
 
             out.println("<html> ");
             out.println("<head>");
@@ -58,9 +49,7 @@ public class SignInServlet extends HttpServlet {
             out.println("<body> User already Exist </body>");
             out.println("</html>");
 
-       }
-
-        else{
+        } else {
             //Making Object User
             User user = new User();
             user.setUserName(userName);
@@ -70,7 +59,6 @@ public class SignInServlet extends HttpServlet {
             //Push User in Database
             UserDao userDao = new UserDao();
             userDao.createUser(user);
-
             resp.sendRedirect("myblog");
 
 

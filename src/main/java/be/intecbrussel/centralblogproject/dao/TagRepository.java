@@ -5,7 +5,7 @@ import be.intecbrussel.centralblogproject.model.Tag;
 
 public interface TagRepository {
 
-        Tag saveTag(Tag tag);
+    Tag saveTag(Tag tag);
 
-    }
+}
 

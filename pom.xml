@@ -28,11 +28,13 @@
                         <type>installed</type>
 
                         <home>/Users/vincenthonca/Documents/Intelij/apache-tomee-plus-8.0.0/</home>
+
                     </container>
                     <configuration>
                         <type>existing</type>
 
                         <home>/Users/vincenthonca/Documents/Intelij/apache-tomee-plus-8.0.0/</home>
+
                     </configuration>
                 </configuration>
             </plugin>

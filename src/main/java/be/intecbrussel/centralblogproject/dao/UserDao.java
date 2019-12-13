@@ -6,7 +6,6 @@ import be.intecbrussel.centralblogproject.model.User;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
-<<<<<<<Updated upstream
 public class UserDao {
 
     public User createUser(User user) {
@@ -49,50 +48,5 @@ public class UserDao {
         em.close();
         return dbUser;
     }
-=======
-
-    public class UserDao {
-
-        Stashed changes
-
-        public User createUser(User user) {
-            EntityManager em = EntityManagerFactoryProvider.getEM();
-            EntityTransaction transaction = em.getTransaction();
-            transaction.begin();
-            em.persist(user);
-            transaction.commit();
-            em.close();
-            return user;
-        }
-
-        public User getUser(Integer id) {
-            EntityManager em = EntityManagerFactoryProvider.getEM();
-            em.getTransaction().begin();
-            User toReturn = em.find(User.class, id);
-            em.close();
-            return toReturn;
-        }
-
-        public User deleteUser(User user) {
-            EntityManager em = EntityManagerFactoryProvider.getEM();
-            EntityTransaction transaction = em.getTransaction();
-            transaction.begin();
-            user = em.find(User.class, user.getUserId());
-            em.remove(user);
-            transaction.commit();
-            em.close();
-            return user;
-        }
->>>>>>>
-
-        public User updateUser(User user) {
-            EntityManager em = EntityManagerFactoryProvider.getEM();
-            EntityTransaction transaction = em.getTransaction();
-            transaction.begin();
-            User dbUser = em.find(User.class, user.getUserId());
-            dbUser.cloneFrom(user);
-            transaction.commit();
-            em.close();
-            return dbUser;
-        }
 }
+
