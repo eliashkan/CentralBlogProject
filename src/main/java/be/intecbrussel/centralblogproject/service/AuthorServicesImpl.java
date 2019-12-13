@@ -1,10 +1,19 @@
 package be.intecbrussel.centralblogproject.service;
 
+import be.intecbrussel.centralblogproject.dao.CommentDao;
+import be.intecbrussel.centralblogproject.dao.UserDao;
+import be.intecbrussel.centralblogproject.model.Comment;
 import be.intecbrussel.centralblogproject.model.User;
 
 public class AuthorServicesImpl implements AuthorServices {
+
+    private UserDao userDAO;
+    private CommentDao commentDao;
+
+
     @Override
-    public void submitComment() {
+    public void submitComment(Comment comment) {
+        commentDao.createComment(comment);
 
     }
 
@@ -50,7 +59,11 @@ public class AuthorServicesImpl implements AuthorServices {
     }
 
     @Override
-    public void updatePassword() {
-
+    public void updatePassword(User user, String newPassword) {
+        User userToBeUpdated = userDAO.getUser(user.getUserId());
+        userToBeUpdated.setPassword(newPassword);
+        userDAO.createUser(userToBeUpdated);
+        userDAO.updateUser(userToBeUpdated);
     }
+
 }

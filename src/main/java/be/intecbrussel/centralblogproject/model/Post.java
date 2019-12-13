@@ -25,11 +25,13 @@ public class Post {
     @Column(name = "popularity")
     private Integer likeCounter;
 
-    @OneToMany
+    @OneToMany(orphanRemoval = true)
     @JoinColumn(name = "post")
     private List<Comment> comments = new ArrayList<>();
+
     @ManyToMany(mappedBy = "posts")
     private Set<Tag> tags;
+
 
     public void cloneFrom(Post post) {
         this.idPost = post.idPost;
