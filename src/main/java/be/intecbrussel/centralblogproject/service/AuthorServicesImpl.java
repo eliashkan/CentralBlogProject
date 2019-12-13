@@ -39,8 +39,8 @@ public class AuthorServicesImpl implements AuthorServices {
     }
 
     @Override
-    public void submitBlogPost() {
-
+    public void submitBlogPost(Post post) {
+       postDao.createPost(post);
     }
 
     @Override

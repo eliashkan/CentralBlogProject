@@ -124,8 +124,10 @@ public class Main {
         postTwo.setTags(setOfTagsTwo);
 
         //persisting both posts and tags
-        postDao.createPost(postOne);
-        postDao.createPost(postTwo);
+        //postDao.createPost(postOne);
+        //postDao.createPost(postTwo);
+        aSI.submitBlogPost(postOne);
+        aSI.submitBlogPost(postTwo);
         tri.saveTag(tagOne);
         tri.saveTag(tagTwo);
 
@@ -176,6 +178,8 @@ public class Main {
         //see: https://dev.mysql.com/doc/refman/5.5/en/packet-too-large.html
         aSI.updateAvatar(userOne, "https://tau0.files.wordpress.com/2013/04/long_desert_road_2.jpg");
         */
+
+
 
 
     }

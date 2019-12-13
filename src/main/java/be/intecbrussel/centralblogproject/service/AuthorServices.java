@@ -17,7 +17,7 @@ public interface AuthorServices {
     void deleteAComment();
 
     // Create a post from submit form
-    void submitBlogPost();
+    void submitBlogPost(Post post);
 
     // Update avatar
     void updateAvatar();
