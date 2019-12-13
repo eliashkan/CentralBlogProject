@@ -10,7 +10,7 @@ public class Tag {
     private Integer id;
     private String name;
     @ManyToMany
-    @JoinTable ( name = "POST_TAG",
+    @JoinTable(name = "POST_TAG",
             joinColumns = @JoinColumn(name = "tag"),
             inverseJoinColumns = @JoinColumn(name = "post")
     )
@@ -40,3 +40,4 @@ public class Tag {
         this.posts = posts;
     }
 }
+

@@ -1,18 +1,63 @@
 package be.intecbrussel.centralblogproject.service;
 
+import be.intecbrussel.centralblogproject.connection.EntityManagerFactoryProvider;
+import be.intecbrussel.centralblogproject.model.User;
+
+import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
+import javax.persistence.TypedQuery;
+
+
 public class RegistrationLoginServicesImpl implements RegistrationLoginServices {
+
+
     @Override
-    public boolean checkIfUsernameExistsInDB() {
-        return false;
+    public boolean isUsernameInDB(String username) {
+        EntityManager entityManager = EntityManagerFactoryProvider.getEM();
+        TypedQuery<User> query = entityManager.createQuery(
+                "SELECT u FROM User u WHERE u.userName=?1",
+                User.class
+        );
+        query.setParameter(1, username);
+        User user;
+        try {
+            user = query.getSingleResult();
+        } catch (NoResultException e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            entityManager.close();
+        }
+
+        return true;
     }
 
     @Override
-    public boolean checkUsernamePasswordCombination(Object username, Object password) {
-        return false;
+    public boolean isPasswordMatchingUsername(String username, String password) {
+        EntityManager entityManager = EntityManagerFactoryProvider.getEM();
+        TypedQuery<User> query = entityManager.createQuery(
+                "Select u From User u where u.userName=?1 and u.password=?2 ", User.class);
+        query.setParameter(1, username);
+        query.setParameter(2, password);
+        User user;
+
+        try {
+            user = query.getSingleResult();
+            entityManager.close();
+            return true;
+
+        } catch (NoResultException e) {
+            e.printStackTrace();
+            return false;
+
+        } finally {
+            entityManager.close();
+        }
+
     }
 
     @Override
-    public void stayLoggedIn() {
-
+    public User stayLogged() {
+        return null;
     }
 }

@@ -10,9 +10,8 @@
     <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
 
 
-    <link href="${pageContext.request.contextPath}/WEB-INF/resources/BlogAppFrontEnd/css/bootstrap.min.css"
-          rel="stylesheet"/>
-    <link href="${pageContext.request.contextPath}/WEB-INF/resources/BlogAppFrontEnd/css/style.css" rel="stylesheet"/>
+    <link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet"/>
 
 
     <link href="" rel="stylesheet"/>
@@ -28,8 +27,6 @@
     ></label>
     <ul class="menu">
 
-        <li><a href="${pageContext.request.contextPath}/login">Log-In</a></li>
-        <li><a href="${pageContext.request.contextPath}/sign">Sign-In</a></li>
 
     </ul>
 </div>
@@ -42,23 +39,9 @@
         <h4 class="card-title mt-3 text-light text-center">THE BLOGGERS</h4>
 
 
-        <form>
-            <div class="form-group input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-                </div>
-                <input name="" class="form-control" placeholder="Username" type="text">
-            </div>
-            <div class="form-group input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-                </div>
-                <input class="form-control" placeholder="Password" type="password">
-            </div> <!-- form-group// -->
+        <form method="post">
 
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary btn-block"> Log-in</button>
-            </div> <!-- form-group// -->
+            <h1><input type="submit" value="deleteProfile"></h1>
 
         </form>
     </article>

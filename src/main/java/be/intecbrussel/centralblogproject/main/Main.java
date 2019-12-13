@@ -2,29 +2,20 @@ package be.intecbrussel.centralblogproject.main;
 
 import be.intecbrussel.centralblogproject.dao.CommentDao;
 import be.intecbrussel.centralblogproject.dao.PostDao;
-import be.intecbrussel.centralblogproject.dao.TagRepositoryImpl;
 import be.intecbrussel.centralblogproject.dao.UserDao;
 import be.intecbrussel.centralblogproject.model.Comment;
 import be.intecbrussel.centralblogproject.model.Post;
-import be.intecbrussel.centralblogproject.model.Tag;
 import be.intecbrussel.centralblogproject.model.User;
-
-import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 public class Main {
 
     public static void main(String[] args) {
 
 
-
         UserDao userDao = new UserDao();
         PostDao postDao = new PostDao();
         CommentDao commentDao = new CommentDao();
-        TagRepositoryImpl tri = new TagRepositoryImpl();
-
+        //    TagRepositoryImpl tri = new TagRepositoryImpl();
 
 
         //Testing 2 users
@@ -47,7 +38,7 @@ public class Main {
         post.setUser(user1);
         post.setTitle("An annoying question");
         post.setText("Are you talking to me ???");
-        post.setLikeCounter(7);
+        //   post.setLikeCounter(7);
 
 
         //Making Comments.
@@ -78,19 +69,18 @@ public class Main {
         //postDao.deletePost(post);
 
 
-
         //testing delete coms
         // commentDao.deleteComment(post.getComments().get(0));
 
         //create tags
-        Tag tagOne = new Tag();
-        tagOne.setName("secretive");
-        Tag tagTwo = new Tag();
-        tagTwo.setName("fairy");
+//        Tag tagOne = new Tag();
+//        tagOne.setName("secretive");
+//        Tag tagTwo = new Tag();
+//        tagTwo.setName("fairy");
 
 
         //creating a post
-        Post postOne = new Post();
+      /*  Post postOne = new Post();
         postOne.setTitle("Let me tell you a secret");
         postOne.setText("A jealous stepmother persuades her husband, the king, to lock his daughter in a castle in the forest. One day, a king's son goes by, hunting, and is astounded to see the abandoned castle in use. He sees the daughter, but they are unable to communicate except by gesture. A witch, to help them, tricks the ladies-in-waiting into giving the princess a book. When she ruffles the pages forward, her lover turns into a canary; when she ruffles them back, he is restored to his human form.\n" +
                 "\n" +
@@ -150,7 +140,7 @@ public class Main {
         postDao.createPost(postTwo);
         tri.saveTag(tagOne);
         tri.saveTag(tagTwo);
-
+*/
 
 
         //testing searchPost

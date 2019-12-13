@@ -1,5 +1,7 @@
 package be.intecbrussel.centralblogproject.service;
 
+import be.intecbrussel.centralblogproject.model.User;
+
 public class AuthorServicesImpl implements AuthorServices {
     @Override
     public void submitComment() {
@@ -33,6 +35,7 @@ public class AuthorServicesImpl implements AuthorServices {
 
     @Override
     public void deleteProfile() {
+
 
     }
 

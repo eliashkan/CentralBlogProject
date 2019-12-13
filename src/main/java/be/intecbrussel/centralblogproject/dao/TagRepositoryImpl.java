@@ -2,10 +2,11 @@ package be.intecbrussel.centralblogproject.dao;
 
 import be.intecbrussel.centralblogproject.connection.EntityManagerFactoryProvider;
 import be.intecbrussel.centralblogproject.model.Tag;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
-public class TagRepositoryImpl implements TagRepository{
+public class TagRepositoryImpl {
 
     public Tag saveTag(Tag tag) {
         EntityManager em = EntityManagerFactoryProvider.getEM();
