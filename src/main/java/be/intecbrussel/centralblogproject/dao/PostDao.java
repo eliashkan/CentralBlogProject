@@ -41,15 +41,14 @@ public class PostDao {
         return dbPost;
     }
 
-    public Post updatPost(Post post) {
+    public Post updatePost(Post post) {
         EntityManager em = EntityManagerFactoryProvider.getEM();
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
-        Post dbPost = em.find(Post.class, post.getIdPost());
-        dbPost.cloneFrom(post);
+        em.merge(post);
         transaction.commit();
         em.close();
-        return dbPost;
+        return post;
     }
 
     public List<Post> searchPost(Tag tag) {
@@ -65,7 +64,7 @@ public class PostDao {
     public List<Post> sortPostsByDateDesc() {
         EntityManager em = EntityManagerFactoryProvider.getEM();
 
-        TypedQuery<Post> query = em.createQuery("select p from Post p order by p.localDate desc", Post.class);
+        TypedQuery<Post> query = em.createQuery("select p from Post p order by p.dateTime desc", Post.class);
 
         return query.getResultList();
     }

@@ -1,5 +1,7 @@
 package be.intecbrussel.centralblogproject.service;
 
+import be.intecbrussel.centralblogproject.model.Post;
+
 public interface AuthorServices {
     // Create comment, link to author, post, .now()
     void submitComment();
@@ -8,7 +10,7 @@ public interface AuthorServices {
     void deleteMyPost();
 
     // Update/edit my own post
-    void updateMyPost();
+    void updateMyPost(Post post, Post newPost);
 
     // Delete a comment from your page
     void deleteAComment();
