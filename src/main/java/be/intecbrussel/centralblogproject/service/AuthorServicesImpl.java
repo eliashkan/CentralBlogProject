@@ -1,6 +1,16 @@
 package be.intecbrussel.centralblogproject.service;
 
+import be.intecbrussel.centralblogproject.dao.PostDao;
+import be.intecbrussel.centralblogproject.model.Post;
+
 public class AuthorServicesImpl implements AuthorServices {
+
+    private PostDao postDao;
+
+    public AuthorServicesImpl () {
+        this.postDao=new PostDao();
+    }
+
     @Override
     public void submitComment() {
 
@@ -8,12 +18,14 @@ public class AuthorServicesImpl implements AuthorServices {
 
     @Override
     public void deleteMyPost() {
-
     }
 
     @Override
-    public void updateMyPost() {
-
+    public void updateMyPost(Post post, Post newPost) {
+        Post postToUpdate = postDao.getPost(post.getIdPost());
+        postToUpdate.setTitle(newPost.getTitle());
+        postToUpdate.setText(newPost.getText());
+        postDao.updatePost(postToUpdate);
     }
 
     @Override
