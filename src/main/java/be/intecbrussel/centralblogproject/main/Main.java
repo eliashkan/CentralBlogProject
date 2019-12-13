@@ -177,8 +177,6 @@ public class Main {
         aSI.updateAvatar(userOne, "https://tau0.files.wordpress.com/2013/04/long_desert_road_2.jpg");
         */
 
-        //deleting userOne
-        //aSI.deleteProfile(userOne);
 
     }
 }

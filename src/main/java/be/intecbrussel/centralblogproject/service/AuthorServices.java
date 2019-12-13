@@ -1,5 +1,6 @@
 package be.intecbrussel.centralblogproject.service;
 
+import be.intecbrussel.centralblogproject.model.Post;
 import be.intecbrussel.centralblogproject.model.User;
 
 public interface AuthorServices {
@@ -7,7 +8,7 @@ public interface AuthorServices {
     void submitComment();
 
     // Delete your own post
-    void deleteMyPost();
+    void deleteMyPost(Post post);
 
     // Update/edit my own post
     void updateMyPost();

@@ -3,6 +3,7 @@ package be.intecbrussel.centralblogproject.service;
 import be.intecbrussel.centralblogproject.connection.EntityManagerFactoryProvider;
 import be.intecbrussel.centralblogproject.dao.PostDao;
 import be.intecbrussel.centralblogproject.dao.UserDao;
+import be.intecbrussel.centralblogproject.model.Post;
 import be.intecbrussel.centralblogproject.model.User;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -23,8 +24,8 @@ public class AuthorServicesImpl implements AuthorServices {
     }
 
     @Override
-    public void deleteMyPost() {
-
+    public void deleteMyPost(Post post) {
+        postDao.deletePost(post);
     }
 
     @Override
@@ -51,7 +52,7 @@ public class AuthorServicesImpl implements AuthorServices {
     //1. it must delete the corresponding posts
     //2. all the comments to the above post must be deleted whether it belongs to this author or not
     //3. all comments of the user must be deleted on all other posts
-    //REMARK
+    //cascading from user to post and comment
     public void deleteProfile(User user) {
         userDAO.deleteUser(user);
     }
