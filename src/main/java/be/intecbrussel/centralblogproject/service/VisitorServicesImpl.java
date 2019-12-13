@@ -1,10 +1,25 @@
 package be.intecbrussel.centralblogproject.service;
 
+import be.intecbrussel.centralblogproject.connection.EntityManagerFactoryProvider;
 import be.intecbrussel.centralblogproject.model.Post;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.TypedQuery;
 import java.util.Collection;
+import java.util.stream.Stream;
 
 public class VisitorServicesImpl implements VisitorServices {
+
+    //we'll load in a stream of posts from the database every time Visitor Services is instantiated. This is just a suggestion.
+    private Stream<Post> posts;
+
+    public VisitorServicesImpl() {
+        EntityManager em = EntityManagerFactoryProvider.getEM();
+        TypedQuery<Post> query = em.createQuery("select p from Post p", Post.class);
+        this.posts = query.getResultStream();
+    }
+
     @Override
     public Post getSpecificPost() {
         return null;
