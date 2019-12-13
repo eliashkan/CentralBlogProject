@@ -3,12 +3,9 @@ package be.intecbrussel.centralblogproject.dao;
 import be.intecbrussel.centralblogproject.connection.EntityManagerFactoryProvider;
 import be.intecbrussel.centralblogproject.model.Post;
 
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
-import javax.persistence.TypedQuery;
-import java.util.List;
-import java.util.stream.Stream;
+
 
 public class PostDao {
 
@@ -57,6 +54,7 @@ public class PostDao {
         EntityManager em = EntityManagerFactoryProvider.getEM();
 
         TypedQuery<Post> query = em.createQuery("select p from Post p join p.tags tag where tag.id = ?1", Post.class);
+        em.close();
 
         query.setParameter(1, tag.getId());
 
@@ -67,7 +65,7 @@ public class PostDao {
         EntityManager em = EntityManagerFactoryProvider.getEM();
 
         TypedQuery<Post> query = em.createQuery("select p from Post p order by p.localDate desc", Post.class);
-
+        em.close();
         return query.getResultList();
     }
 
@@ -75,6 +73,7 @@ public class PostDao {
         EntityManager em = EntityManagerFactoryProvider.getEM();
 
         TypedQuery<Post> query = em.createQuery("select p from Post p order by p.dateTime asc", Post.class);
+        em.close();
 
         return query.getResultList();
     }
@@ -82,7 +81,8 @@ public class PostDao {
     public List<Post> sortPostsByPopularityDesc() {
         EntityManager em = EntityManagerFactoryProvider.getEM();
 
-        TypedQuery<Post> query = em.createQuery( "select p from Post p order by p.likeCounter desc", Post.class);
+        TypedQuery<Post> query = em.createQuery("select p from Post p order by p.likeCounter desc", Post.class);
+        em.close();
 
         return query.getResultList();
     }
@@ -90,8 +90,9 @@ public class PostDao {
     public List<Post> sortPostsByPopularityAsc() {
         EntityManager em = EntityManagerFactoryProvider.getEM();
 
-        TypedQuery<Post> query = em.createQuery( "select p from Post p order by p.likeCounter asc", Post.class);
+        TypedQuery<Post> query = em.createQuery("select p from Post p order by p.likeCounter asc", Post.class);
 
+        em.close();
         return query.getResultList();
     }
 
@@ -106,7 +107,11 @@ public class PostDao {
         TypedQuery<Post> query = em.createQuery("select p from Post p", Post.class);
         query.setFirstResult(indexOfFirstElement);
         query.setMaxResults(numberOfPosts);
+        em.close();
 
         return query.getResultList();
     }*/
 }
+
+
+

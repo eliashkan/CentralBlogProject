@@ -2,18 +2,10 @@ package be.intecbrussel.centralblogproject.main;
 
 import be.intecbrussel.centralblogproject.dao.CommentDao;
 import be.intecbrussel.centralblogproject.dao.PostDao;
-
 import be.intecbrussel.centralblogproject.dao.UserDao;
 import be.intecbrussel.centralblogproject.model.Comment;
 import be.intecbrussel.centralblogproject.model.Post;
-
-
 import be.intecbrussel.centralblogproject.model.User;
-
-import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 public class Main {
 

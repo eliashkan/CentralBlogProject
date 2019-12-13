@@ -49,5 +49,4 @@ public class CommentDao {
         return dbComment;
 
     }
-
 }

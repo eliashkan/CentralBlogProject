@@ -1,7 +1,5 @@
 package be.intecbrussel.centralblogproject.model;
 
-import org.hibernate.annotations.Cascade;
-
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -15,14 +13,24 @@ public class Post {
     private Integer idPost;
     private String title;
     private String text;
+<<<<<<<Updated upstream
     private LocalDate localDate;
 
+=======
+    Stashed changes
     @ManyToOne
     private User user;
+    Stashed changes
+    private LocalDateTime dateTime;
+>>>>>>>
+    @Column(name = "popularity")
+    private Integer likeCounter;
 
     @OneToMany
     @JoinColumn(name = "post")
     private List<Comment> comments = new ArrayList<>();
+    @ManyToMany(mappedBy = "posts")
+    private Set<Tag> tags;
 
     public void cloneFrom(Post post) {
         this.idPost = post.idPost;
@@ -73,6 +81,22 @@ public class Post {
         this.user = user;
     }
 
+<<<<<<<Updated upstream
+=======
+
+    public void setLikeCounter(Integer likeCounter) {
+        this.likeCounter = likeCounter;
+    }
+
+    public Set<Tag> getTags() {
+        return tags;
+    }
+
+>>>>>>>
+
+    public void setTags(Set<Tag> tags) {
+        this.tags = tags;
+    }
     public List<Comment> getComments() {
         return comments;
     }
