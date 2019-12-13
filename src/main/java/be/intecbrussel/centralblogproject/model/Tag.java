@@ -40,4 +40,3 @@ public class Tag {
         this.posts = posts;
     }
 }
-

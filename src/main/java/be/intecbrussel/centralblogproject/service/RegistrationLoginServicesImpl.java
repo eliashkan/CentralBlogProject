@@ -43,7 +43,7 @@ public class RegistrationLoginServicesImpl implements RegistrationLoginServices 
 
         try {
             user = query.getSingleResult();
-            entityManager.close();
+
             return true;
 
         } catch (NoResultException e) {

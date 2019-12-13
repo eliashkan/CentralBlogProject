@@ -15,6 +15,9 @@ public class Comment {
     private User user;
 
 
+    @ManyToOne
+    private Post post;
+
     public void cloneFrom(Comment comment) {
         this.idComment = comment.getIdComment();
         this.text = comment.getText();
@@ -44,7 +47,13 @@ public class Comment {
         this.user = user;
     }
 
+    public Post getPost() {
+        return post;
+    }
 
+    public void setPost(Post post) {
+        this.post = post;
+    }
 
     @Override
     public String toString() {
