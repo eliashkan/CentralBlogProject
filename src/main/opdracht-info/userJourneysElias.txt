@@ -1,0 +1,76 @@
+0) Sidebar
+- aantal totale mensen online
+- aantal ingelogde users
+- aantal visitors sinds AD
+
+- navbar afhankelijk van ingelogd/niet ingelogd
+
+1) Visitor
+- 6 meest recente posts opvragen
+	aantal comments indicatie
+- posts sorteren
+	oldest first + newest first (Collection methodes gebruiken)
+	by popularity (service methode gebruiken)
+- toon full text door te klikken op titel, tekst of datum/tijd
+    (JSP include, 1 post ophalen)
+- auteurspagina bekijken door op auteur te klikken
+- search
+	- elements for search
+	    - titel
+	    - auteur
+	    - tags
+	    (JPQL method implementation)
+
+- sign-in
+	- REGISTRATIE (sign-in/log-in label veranderen)
+		- checken of user al bestaat in DB (service class)
+		- email adres format verificatie (regex/hibernate)
+		- paswoord dubbelcheck (bootstrap/JS)
+		- empty field verificatie
+	- inloggen
+		- empty field verificatie
+		- check username/paswoord combinatie (service method)
+		- "stay logged in" via user-object in session cookie (service method. Check if exists, replace if not same)
+
+2) Auteur/Logged in user
+- 6 meest recente posts opvragen
+	aantal comments indicatie
+- posts sorteren
+	oldest first
+	newest first
+	by popularity
+- toon full text door te klikken op titel, tekst of datum/tijd
+- auteurspagina bekijken door op auteur te klikken
+- search
+    - elements for search
+            - titel
+            - auteur
+            - tags
+            (JPQL method implementation)
+-----------------------------------------------------
+- becommentariëren (alleen vanaf specifieke full text pagina)
+	- LocalDateTime.now() DateTime object toevoegen
+	- ingelogde user object linken aan comment
+	- link post-comment
+
+- Show my posts
+	- auteursrechten (zie opdrachtblad)
+	- update/delete voor post en comments
+		- update: terug naar compose pagina + toon originele post
+
+- Create new post
+	- Velden (text fields are fixed-width font)
+		titel (obligatoire check)
+		body (obligatoire check)
+		tags (niet obligatoire)
+		submit button (redirect naar deze post pagina)
+		discard button
+	- wegschrijven met specifieke URL adhv titel
+	    (URL wordt https://www.webapp.com/auteursnaam/de-volledige-titel-met-streepjes-tussen/
+	    kunnen we @Servlet("/ditDynamischInvullen?")
+
+- Update profile
+	- change avatar
+	- profiel gegevens updaten (meer dan alleen emailadres & paswoord veranderen?)
+	- profiel verwijderen knop
+	- log-out button
