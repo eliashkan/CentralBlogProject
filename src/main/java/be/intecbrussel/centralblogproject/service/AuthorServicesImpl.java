@@ -1,8 +1,10 @@
 package be.intecbrussel.centralblogproject.service;
 
 import be.intecbrussel.centralblogproject.connection.EntityManagerFactoryProvider;
+import be.intecbrussel.centralblogproject.dao.CommentDao;
 import be.intecbrussel.centralblogproject.dao.PostDao;
 import be.intecbrussel.centralblogproject.dao.UserDao;
+import be.intecbrussel.centralblogproject.model.Comment;
 import be.intecbrussel.centralblogproject.model.Post;
 import be.intecbrussel.centralblogproject.model.User;
 import javax.persistence.EntityManager;
@@ -12,14 +14,17 @@ public class AuthorServicesImpl implements AuthorServices {
 
     private UserDao userDAO;
     private PostDao postDao;
+    private CommentDao commentDao;
 
     public AuthorServicesImpl() {
         this.userDAO = new UserDao();
         this.postDao = new PostDao();
+        this.commentDao = new CommentDao();
     }
 
     @Override
-    public void submitComment() {
+    public void submitComment(Comment comment) {
+        commentDao.createComment(comment);
 
     }
 

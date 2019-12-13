@@ -140,7 +140,7 @@ public class Main {
         userOne.setComments(new ArrayList<>());
         userOne.getComments().add(commentOne);
         //persisting this comment
-        commentDao.createComment(commentOne);
+        aSI.submitComment(commentOne);
 
         //assigning the comment to the post's list
         postTwo.setComments(new ArrayList<>());
