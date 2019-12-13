@@ -9,6 +9,8 @@ import be.intecbrussel.centralblogproject.model.Post;
 import be.intecbrussel.centralblogproject.model.Tag;
 import be.intecbrussel.centralblogproject.model.User;
 import be.intecbrussel.centralblogproject.service.AuthorServicesImpl;
+import be.intecbrussel.centralblogproject.service.VisitorServices;
+import be.intecbrussel.centralblogproject.service.VisitorServicesImpl;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -26,6 +28,7 @@ public class Main {
         TagRepositoryImpl tri = new TagRepositoryImpl();
 
         AuthorServicesImpl aSI = new AuthorServicesImpl();
+        VisitorServices vSI = new VisitorServicesImpl();
 
         //creating users
         User userOne = new User();
@@ -178,6 +181,10 @@ public class Main {
         //see: https://dev.mysql.com/doc/refman/5.5/en/packet-too-large.html
         aSI.updateAvatar(userOne, "https://tau0.files.wordpress.com/2013/04/long_desert_road_2.jpg");
         */
+
+        vSI.sortPostsByPopularity().
+                map(p -> p.getTitle() + p.getLikeCounter()).
+                forEach(System.out::println);
 
 
 

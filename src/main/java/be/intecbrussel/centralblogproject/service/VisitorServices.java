@@ -3,6 +3,7 @@ package be.intecbrussel.centralblogproject.service;
 import be.intecbrussel.centralblogproject.model.Post;
 
 import java.util.Collection;
+import java.util.stream.Stream;
 
 public interface VisitorServices {
     // Get 1 specific post
@@ -15,7 +16,7 @@ public interface VisitorServices {
     Collection getPostsByAuthor();
 
     // Sort posts on this page by popularity
-    Collection sortPostsByPopularity();
+    Stream<Post> sortPostsByPopularity();
 
     // Search element
     Collection searchAll(Object o);

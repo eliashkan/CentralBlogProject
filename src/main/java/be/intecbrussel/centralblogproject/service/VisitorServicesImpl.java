@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.TypedQuery;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.stream.Stream;
 
 public class VisitorServicesImpl implements VisitorServices {
@@ -36,8 +37,8 @@ public class VisitorServicesImpl implements VisitorServices {
     }
 
     @Override
-    public Collection sortPostsByPopularity() {
-        return null;
+    public Stream<Post> sortPostsByPopularity() {
+        return posts.sorted(Comparator.comparingInt(Post::getLikeCounter));
     }
 
     @Override
