@@ -12,7 +12,6 @@ public class TagRepositoryImpl {
         EntityManager em = EntityManagerFactoryProvider.getEM();
         EntityTransaction txn = em.getTransaction();
         em.persist(tag);
-
         txn.begin();
         txn.commit();
         em.close();
