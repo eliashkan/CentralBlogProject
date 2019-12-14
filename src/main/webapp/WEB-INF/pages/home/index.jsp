@@ -82,7 +82,7 @@
      class="d-flex row container-fluid col-12 col-md-12 col-lg-12 justify-content-around m-auto">
 
     <div class="rounded  blogdivColor col-12 col-md-12 col-lg-6 mt-5"
-         style="height: 486px;overflow-y: auto;">
+         style="height: 600px;overflow-y: auto;">
 
 
         <c:forEach var="element" items="${showMoreBlogs}">

@@ -31,6 +31,7 @@ public class CentralBlogServlet extends HttpServlet {
         req.setAttribute("showMoreBlogs", new VisitorServicesImpl().getMorePosts(0, 6));
         //Reseting on first 6 post if page is reloaded
         indexOfNextSixPosts = 0;
+        showedPosts = 6;
         req.getRequestDispatcher("WEB-INF/pages/home/index.jsp").forward(req, resp);
 
     }
