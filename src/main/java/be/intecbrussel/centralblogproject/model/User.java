@@ -4,6 +4,7 @@ package be.intecbrussel.centralblogproject.model;
 import be.intecbrussel.centralblogproject.model.Utilities.ImageRecovery;
 
 import javax.persistence.*;
+import java.util.Arrays;
 
 @Entity
 public class User {
@@ -88,6 +89,19 @@ public class User {
 
     public void setAvatar(String url) throws Exception {
         this.avatar = ImageRecovery.recoverImageFromUrl(url);
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", userName='" + userName + '\'' +
+                ", fullName='" + fullName + '\'' +
+                ", password='" + password + '\'' +
+                ", adress='" + adress + '\'' +
+                ", email='" + email + '\'' +
+                ", avatar=" + Arrays.toString(avatar) +
+                '}';
     }
 }
 
