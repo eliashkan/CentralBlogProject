@@ -12,9 +12,12 @@ public class Main {
         VisitorServicesImpl visitorServices = new VisitorServicesImpl();
 
 
-        visitorServices.getPostsByAuthor(6).forEach(e -> System.out.println(e.getTitle()));
+        visitorServices.getPostsByAuthor(6);
 
+        for (Post arg : visitorServices.getPostsByAuthor(6)) {
+            arg.getTitle();
 
+        }
     }
 
 

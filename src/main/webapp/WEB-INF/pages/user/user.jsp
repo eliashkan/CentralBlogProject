@@ -1,3 +1,5 @@
+<%@ page import="be.intecbrussel.centralblogproject.model.Post" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -68,51 +70,14 @@
         class="d-flex row container-fluid col-12 col-md-12 col-lg-12 justify-content-around m-auto"
         style="height:fit-content;"
 >
-    <div
-            class="rounded blogdivColor col-12 col-md-12 col-lg-6 mt-5"
-            style="height:fit-content;"
-    >
-        <p class="rounded blogColors ">
-            Morbi elementum lacus lobortis, faucibus enim vel, ultricies velit.
-            Nam blandit, dui ut sagittis pharetra, odio nisl facilisis velit,
-            sit
-        </p>
-        <p class="rounded blogColors ">
-            Morbi elementum lacus lobortis, faucibus enim vel, ultricies velit.
-            Nam blandit, dui ut sagittis pharetra, odio nisl facilisis velit,
-            sit
-        </p>
-        <p class="rounded blogColors ">
-            Morbi elementum lacus lobortis, faucibus enim vel, ultricies velit.
-            Nam blandit, dui ut sagittis pharetra, odio nisl facilisis velit,
-            sit Morbi elementum lacus lobortis, faucibus enim vel, ultricies
-            velit. Nam blandit, dui ut sagittis pharetra, odio nisl facilisis
-            velit, sit Morbi elementum lacus lobortis, faucibus enim vel,
-            ultricies velit. Nam blandit, dui ut sagittis pharetra, odio nisl
-            facilisis velit, sit
-        </p>
-        <p class="rounded blogColors ">
-            Morbi elementum lacus lobortis, faucibus enim vel, ultricies velit.
-            Nam blandit, dui ut sagittis pharetra, odio nisl facilisis velit,
-            sit
-        </p>
-        <p class="rounded blogColors ">
-            Morbi elementum lacus lobortis, faucibus enim vel, ultricies velit.
-            Nam blandit, dui ut sagittis pharetra, odio nisl facilisis velit,
-            sit
-        </p>
-        <p class="rounded blogColors ">
-            Morbi elementum lacus lobortis, faucibus enim vel, ultricies velit.
-            Nam blandit, dui ut sagittis pharetra, odio nisl facilisis velit,
-            sit Morbi elementum lacus lobortis, faucibus enim vel, ultricies
-            velit. Nam blandit, dui ut sagittis pharetra, odio nisl facilisis
-            velit, sit
-        </p>
-        <p class="rounded blogColors ">
-            Morbi elementum lacus lobortis, faucibus enim vel, ultricies velit.
-            Nam blandit, dui ut sagittis pharetra, odio nisl facilisis velit,
-            sit
-        </p>
+    <div class="rounded blogdivColor col-12 col-md-12 col-lg-6 mt-5" style="height:fit-content;">
+
+        <c:forEach var="element" items="${postsFromUser}">
+            <p class="rounded blogColors ">
+                <c:out value="${element.getTitle()}"/>
+            </p>
+        </c:forEach>
+
     </div>
 
     <aside class="d-flex-block flex-nowrap rounded bg-light col-10 col-sm-6 col-md-6 col-lg-3 h-lg-25 mt-5"

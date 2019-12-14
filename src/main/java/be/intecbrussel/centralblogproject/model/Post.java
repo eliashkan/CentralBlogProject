@@ -24,7 +24,7 @@ public class Post {
     @ManyToOne
     private User user;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "post")
     private List<Comment> comments = new ArrayList<>();
 

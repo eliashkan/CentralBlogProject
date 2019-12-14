@@ -23,6 +23,16 @@ public class UserBlogServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        doPost(req, resp);
+
+
+    }
+
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+
         //For Testing
         PrintWriter out = resp.getWriter();
 
@@ -31,27 +41,24 @@ public class UserBlogServlet extends HttpServlet {
 
         //Getting the posts and put them in the session attribute
         req.getSession().setAttribute("postsFromUser", new VisitorServicesImpl().getPostsByAuthor(user.getUserId()));
-        ArrayList<Post> posts = (ArrayList<Post>) req.getSession().getAttribute("postsFromUser");
+
+        req.getRequestDispatcher("WEB-INF/pages/user/user.jsp").forward(req, resp);
 
 
-        out.println("<html> ");
-        out.println("<head>");
-        out.println("</head>");
-        out.println("<body> Posts \n");
-        out.println("User id\n " + user.getUserId());
+//        out.println("<html> ");
+//        out.println("<head>");
+//        out.println("</head>");
+//        out.println("<body> Posts \n");
+//        out.println("User id\n " + user.getUserId());
+//
+//        for (Post post : posts) {
+//            out.println(post.getTitle());
+//        }
+//
+//        out.println("</body>");
+//        out.println("</html>");
 
-        for (Post post : posts) {
-            out.println(post.getTitle());
-        }
-
-        out.println("</body>");
-        out.println("</html>");
-
-    }
-
-
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //Dispatch  to his blog and loading user détails
 
 
     }
