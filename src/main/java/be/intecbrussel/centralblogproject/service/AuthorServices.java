@@ -37,5 +37,5 @@ public interface AuthorServices {
     void updatePassword(User user, String newPassword);
 
     //getting user from database with a username
-    User getUserByName(String user);
+    User getUserByUsername(String user);
 }

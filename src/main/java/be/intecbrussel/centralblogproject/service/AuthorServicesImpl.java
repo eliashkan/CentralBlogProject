@@ -71,14 +71,19 @@ public class AuthorServicesImpl implements AuthorServices {
     }
 
     @Override
-    public User getUserByName(String user) {
+    public User getUserByUsername(String userName) {
         //Making The query for getting the username id
         EntityManager entityManager = EntityManagerFactoryProvider.getEM();
-        TypedQuery<Integer> userID = entityManager.createQuery("Select userId from User where userName=?1", Integer.class);
-        Integer userId = userID.getSingleResult();
+        TypedQuery<Integer> query = entityManager.createQuery("Select userId from User where userName=?1", Integer.class);
+        query.setParameter(1, userName);
+        Integer userId = query.getSingleResult();
+
+        //Getting the user after getting the userId with the typedQuery
+        User userFromDB = new UserDao().getUser(userId);
+        entityManager.close();
 
         //Getting user from database
-        return new UserDao().getUser(userId);
+        return userFromDB;
     }
 
 }
