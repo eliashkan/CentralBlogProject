@@ -49,7 +49,7 @@
 >
     <div class="col-12 col-md-12 col-lg-8">
         <button
-                class=" btn btn-info dropdown-toggle"
+                class=" btn rounded btn-info dropdown-toggle"
                 type="button"
                 data-toggle="dropdown"
                 aria-expanded="false"
@@ -57,7 +57,7 @@
             MENU
         </button>
         <div
-                class="dropdown-menu bg-dark"
+                class="dropdown-menu  bg-dark"
                 x-placement="bottom-start"
                 style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(15px, 48px, 0px);"
         >
@@ -82,32 +82,10 @@
             style="height:fit-content;"
     >
         <p class="rounded blogColors ">
-            ${post}
+            Test
         </p>
-        <p class="rounded blogColors ">
-            Morbi elementum lacus lobortis, faucibus enim vel, ultricies velit.
-            Nam blandit, dui ut sagittis pharetra, odio nisl facilisis velit,
-            sit
-        </p>
-        <p class="rounded blogColors ">
-            Morbi elementum lacus lobortis, faucibus enim vel, ultricies velit.
-            Nam blandit, dui ut sagittis pharetra, odio nisl facilisis velit,
-            sit Morbi elementum lacus lobortis, faucibus enim vel, ultricies
-            velit. Nam blandit, dui ut sagittis pharetra, odio nisl facilisis
-            velit, sit Morbi elementum lacus lobortis, faucibus enim vel,
-            ultricies velit. Nam blandit, dui ut sagittis pharetra, odio nisl
-            facilisis velit, sit
-        </p>
-        <p class="rounded blogColors ">
-            Morbi elementum lacus lobortis, faucibus enim vel, ultricies velit.
-            Nam blandit, dui ut sagittis pharetra, odio nisl facilisis velit,
-            sit
-        </p>
-        <p class="rounded blogColors ">
-            Morbi elementum lacus lobortis, faucibus enim vel, ultricies velit.
-            Nam blandit, dui ut sagittis pharetra, odio nisl facilisis velit,
-            sit
-        </p>
+
+
         <p class="rounded blogColors ">
             Morbi elementum lacus lobortis, faucibus enim vel, ultricies velit.
             Nam blandit, dui ut sagittis pharetra, odio nisl facilisis velit,
