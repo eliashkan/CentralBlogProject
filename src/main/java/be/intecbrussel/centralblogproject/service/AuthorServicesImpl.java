@@ -62,6 +62,7 @@ public class AuthorServicesImpl implements AuthorServices {
 
     }
 
+
     @Override
     public void updatePassword(User user, String newPassword) {
         User userToBeUpdated = userDAO.getUser(user.getUserId());

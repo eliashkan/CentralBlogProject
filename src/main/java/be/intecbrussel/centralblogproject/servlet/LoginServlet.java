@@ -1,5 +1,6 @@
 package be.intecbrussel.centralblogproject.servlet;
 
+import be.intecbrussel.centralblogproject.model.User;
 import be.intecbrussel.centralblogproject.service.AuthorServicesImpl;
 import be.intecbrussel.centralblogproject.service.RegistrationLoginServicesImpl;
 
@@ -28,6 +29,7 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
         //Taking parameters from Login.jsp FORM
         String username = req.getParameter("username");
         String password = req.getParameter("password");
@@ -35,22 +37,20 @@ public class LoginServlet extends HttpServlet {
 
         RegistrationLoginServicesImpl registrationLoginServices = new RegistrationLoginServicesImpl();
 
+
         //Checking if user pass the login check
         if (registrationLoginServices.isPasswordMatchingUsername(username, password)) {
 
             //Put Logged user in the session and getting data
-            HttpSession session = req.getSession();
+            HttpSession session = req.getSession(true);
             session.setAttribute("loggedUser", new AuthorServicesImpl().getUserByUsername(username));
-            //Print for Tessting
-            out.println("<html> ");
-            out.println("<head>");
-            out.println("</head>");
-            out.println("</html>");
-            out.println("<body>USER LOGGED");
-            out.println(session.getAttribute("loggedUser").toString());
-            out.println("</body>");
+
+            //Dispatch req to his blog and loading user détails
+            resp.sendRedirect(req.getContextPath() + "/myblog");
 
         } else {
+
+            //Print for Testing
             out.println("<html> ");
             out.println("<head>");
             out.println("</head>");

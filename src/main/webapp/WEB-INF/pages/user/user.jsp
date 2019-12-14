@@ -43,10 +43,11 @@
 >
     <div class="col-12 col-md-12 col-lg-8">
         <button
-                class=" btn btn-info dropdown-toggle"
+                class=" btn btn-info rounded dropdown-toggle"
                 type="button"
                 data-toggle="dropdown"
                 aria-expanded="false"
+
         >
             MENU
         </button>

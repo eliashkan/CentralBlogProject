@@ -1,5 +1,7 @@
 package be.intecbrussel.centralblogproject.servlet;
 
+import be.intecbrussel.centralblogproject.model.User;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,7 +16,14 @@ public class UserBlogServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("WEB-INF/pages/user/user.jsp").forward(req, resp);
+
+
+        User user = (User) req.getSession().getAttribute("loggedUser");
+
+        resp.getWriter().println(user.getUserId().toString());
+
+
+        //req.getRequestDispatcher("WEB-INF/pages/user/user.jsp").forward(req, resp);
 
 
     }
@@ -22,6 +31,7 @@ public class UserBlogServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
 
     }
 
