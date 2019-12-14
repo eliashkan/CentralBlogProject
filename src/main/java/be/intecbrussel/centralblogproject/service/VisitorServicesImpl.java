@@ -31,14 +31,14 @@ public class VisitorServicesImpl implements VisitorServices {
 
 
     @Override
-    public List<Post> getSixPosts(int indexOfFirstElement) {
+    public List<Post> getMorePosts(int indexOfFirstElement, int numberOfShowedPosts) {
 
         EntityManager em = EntityManagerFactoryProvider.getEM();
         //if you have a small number of rows in the post table you can lower the value below in order to test
-        int numberOfPosts = 6;
+
         TypedQuery<Post> query = em.createQuery("select p from Post p", Post.class);
         query.setFirstResult(indexOfFirstElement);
-        query.setMaxResults(numberOfPosts);
+        query.setMaxResults(numberOfShowedPosts);
         List<Post> nextSixPost = query.getResultList();
         em.close();
 
