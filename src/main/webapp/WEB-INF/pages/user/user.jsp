@@ -70,10 +70,13 @@
         class="d-flex row container-fluid col-12 col-md-12 col-lg-12 justify-content-around m-auto"
         style="height:fit-content;"
 >
-    <div class="rounded blogdivColor col-12 col-md-12 col-lg-6 mt-5" style="height:fit-content;">
+    <div class="rounded  blogdivColor col-12 col-md-12 col-lg-6 mt-5" style="height:fit-content;">
+
+
+        <%--        //printing the posts from user (only the titles)--%>
 
         <c:forEach var="element" items="${postsFromUser}">
-            <p class="rounded blogColors ">
+            <p class="d-flex rounded blogColors" style="font-weight: bold!important">
                 <c:out value="${element.getTitle()}"/>
             </p>
         </c:forEach>
