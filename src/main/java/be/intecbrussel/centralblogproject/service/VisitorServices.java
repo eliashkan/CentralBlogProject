@@ -1,15 +1,17 @@
 package be.intecbrussel.centralblogproject.service;
 
 import be.intecbrussel.centralblogproject.model.Post;
+import be.intecbrussel.centralblogproject.model.Tag;
 
 import java.util.Collection;
+import java.util.List;
 
 public interface VisitorServices {
     // Get 1 specific post
     Post getSpecificPost();
 
     // Get next 6 posts ordered by date/time
-    Collection getSixPosts();
+    List<Post> getSixPosts(int indexOfFirstElement);
 
     // Get posts by author
     Collection getPostsByAuthor();
@@ -18,5 +20,13 @@ public interface VisitorServices {
     Collection sortPostsByPopularity();
 
     // Search element
-    Collection searchAll(Object o);
+    Collection searchAll(Tag tag);
+
+    List<Post> sortPostsByDateDesc();
+
+    List<Post> sortPostsByDateAsc();
+
+    List<Post> sortPostsByPopularityAsc();
+
+
 }
