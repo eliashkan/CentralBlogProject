@@ -12,38 +12,43 @@ import java.util.Collection;
 import java.util.List;
 
 public class VisitorServicesImpl implements VisitorServices {
+
+
     @Override
-    public Post getSpecificPost() {
-        return null;
+    public List<Post> getPostsByAuthor(Integer userId) {
+
+        EntityManager em = EntityManagerFactoryProvider.getEM();
+        TypedQuery<Post> query = em.createQuery(
+                "SELECT p FROM Post p WHERE p.user.userId=?1",
+                Post.class
+        );
+        query.setParameter(1, userId);
+        List<Post> allPostFromUser = query.getResultList();
+        em.close();
+
+        return allPostFromUser;
     }
+
 
     @Override
     public List<Post> getSixPosts(int indexOfFirstElement) {
+
         EntityManager em = EntityManagerFactoryProvider.getEM();
         //if you have a small number of rows in the post table you can lower the value below in order to test
         int numberOfPosts = 6;
         TypedQuery<Post> query = em.createQuery("select p from Post p", Post.class);
         query.setFirstResult(indexOfFirstElement);
         query.setMaxResults(numberOfPosts);
+        List<Post> nextSixPost = query.getResultList();
         em.close();
-        return query.getResultList();
+
+        return nextSixPost;
     }
 
     @Override
-    public List<Post> getPostsByAuthor(Integer userId) {
-
-        EntityManager entityManager = EntityManagerFactoryProvider.getEM();
-        TypedQuery<Post> query = entityManager.createQuery(
-                "SELECT p FROM Post p WHERE p.user.userId=?1",
-                Post.class
-        );
-        query.setParameter(1, userId);
-        List<Post> allPostFromUser = query.getResultList();
-        entityManager.close();
-
-        return allPostFromUser;
+    public Post getSpecificPost() {
+        return null;
     }
-
 
     @Override
     public List<Post> sortPostsByPopularity() {
@@ -57,10 +62,11 @@ public class VisitorServicesImpl implements VisitorServices {
 
     @Override
     public List<Post> sortPostsByDateDesc() {
-        EntityManager em = EntityManagerFactoryProvider.getEM();
-        TypedQuery<Post> query = em.createQuery("select p from Post p order by p.localDate desc", Post.class);
-        em.close();
-        return query.getResultList();
+//        EntityManager em = EntityManagerFactoryProvider.getEM();
+//        TypedQuery<Post> query = em.createQuery("select p from Post p order by p.localDate desc", Post.class);
+//        em.close();
+//        return query.getResultList();
+        return null;
     }
 
 

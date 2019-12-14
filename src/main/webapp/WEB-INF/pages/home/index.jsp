@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 
 <html lang="en">
 <head>
@@ -13,13 +15,13 @@
 
     <link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet"/>
-    <link href="${pageContext.request.contextPath}/resources/css/snow.css" rel="stylesheet"/>
+    <%--    <link href="${pageContext.request.contextPath}/resources/css/snow.css" rel="stylesheet"/>--%>
     <link href="" rel="stylesheet"/>
     <title>Blog App</title>
 </head>
 
 <body class="d-block bg-dark">
-<canvas style="position: absolute;  " id='canv'></canvas>
+<%--<canvas style="position: absolute;  " id='canv'></canvas>--%>
 <div class="header mb-3">
     <a href="${pageContext.request.contextPath}/homepage" class="logo">THE BLOGGERS</a>
     <input class="menu-btn" type="checkbox" id="menu-btn"/>
@@ -56,15 +58,17 @@
         >
             MENU
         </button>
-        <div
+        <form
                 class="dropdown-menu  bg-dark"
                 x-placement="bottom-start"
                 style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(15px, 48px, 0px);"
+                action="homepage"
+                method="post"
         >
-            <a class="dropdown-item text-light" href="#">By old user</a>
-            <a class="dropdown-item text-light" href="#">By new user</a>
-            <a class="dropdown-item text-light" href="#">Show more blogs</a>
-        </div>
+            <input class="dropdown-item text-light" type="submit" value="By Oldest">
+            <input class="dropdown-item text-light" type="submit" value="By New">
+            <input class="dropdown-item text-light" type="submit" value="Show More">
+        </form>
     </div>
 </div>
 
@@ -81,23 +85,15 @@
             class="rounded blogdivColor col-12 col-md-12 col-lg-6 mt-5"
             style="height:fit-content;"
     >
-        <p class="rounded blogColors ">
-            Test
-        </p>
 
 
-        <p class="rounded blogColors ">
-            Morbi elementum lacus lobortis, faucibus enim vel, ultricies velit.
-            Nam blandit, dui ut sagittis pharetra, odio nisl facilisis velit,
-            sit Morbi elementum lacus lobortis, faucibus enim vel, ultricies
-            velit. Nam blandit, dui ut sagittis pharetra, odio nisl facilisis
-            velit, sit
-        </p>
-        <p class="rounded blogColors ">
-            Morbi elementum lacus lobortis, faucibus enim vel, ultricies velit.
-            Nam blandit, dui ut sagittis pharetra, odio nisl facilisis velit,
-            sit
-        </p>
+        <c:forEach var="element" items="${showMoreBlogs}">
+            <p class="d-flex rounded blogColors" style="font-weight: bold!important">
+                <c:out value="${element.getTitle()}"/>
+            </p>
+        </c:forEach>
+
+
     </div>
 
     <aside
@@ -108,6 +104,6 @@
 </div>
 
 
-<script src="resources/js/snow.js"></script>
+<%--<script src="resources/js/snow.js"></script>--%>
 </body>
 </html>
