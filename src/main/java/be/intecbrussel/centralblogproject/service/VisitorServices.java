@@ -10,8 +10,8 @@ public interface VisitorServices {
     // Get 1 specific post
     Post getSpecificPost();
 
-    // Get next 6 posts ordered by date/time
-    List<Post> getSixPosts(int indexOfFirstElement);
+    // Get more posts ordered by date/time
+    List<Post> getMorePosts(int indexOfFirstElement, int numberOfShowedPosts);
 
     // Get posts by author
     Collection getPostsByAuthor(Integer userId);

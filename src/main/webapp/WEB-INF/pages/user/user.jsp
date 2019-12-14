@@ -76,7 +76,7 @@
         <%--        //printing the posts from user (only the titles)--%>
 
         <c:forEach var="element" items="${postsFromUser}">
-            <p class="d-flex rounded blogColors" style="font-weight: bold!important">
+            <p class="d-flex rounded blogColors" style="font-weight: bold!important ;height: 600px;overflow-y: auto;">
                 <c:out value="${element.getTitle()}"/>
             </p>
         </c:forEach>

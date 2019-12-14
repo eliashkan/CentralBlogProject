@@ -9,15 +9,7 @@ import java.util.stream.Stream;
 public class Main {
     public static void main(String[] args) {
 
-        VisitorServicesImpl visitorServices = new VisitorServicesImpl();
 
-
-        visitorServices.getPostsByAuthor(6);
-
-        for (Post arg : visitorServices.getPostsByAuthor(6)) {
-            arg.getTitle();
-
-        }
     }
 
 
