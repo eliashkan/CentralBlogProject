@@ -35,6 +35,7 @@ public class LoginServlet extends HttpServlet {
         String password = req.getParameter("password");
         PrintWriter out = resp.getWriter();
 
+
         RegistrationLoginServicesImpl registrationLoginServices = new RegistrationLoginServicesImpl();
 
 
@@ -42,7 +43,7 @@ public class LoginServlet extends HttpServlet {
         if (registrationLoginServices.isPasswordMatchingUsername(username, password)) {
 
             //Put Logged user in the session and getting data
-            HttpSession session = req.getSession(true);
+            HttpSession session = req.getSession();
             session.setAttribute("loggedUser", new AuthorServicesImpl().getUserByUsername(username));
 
             //Dispatch req to his blog and loading user détails

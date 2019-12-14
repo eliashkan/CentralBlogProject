@@ -39,6 +39,7 @@ public class VisitorServicesImpl implements VisitorServices {
         );
         query.setParameter(1, userId);
         List<Post> allPostFromUser = query.getResultList();
+        entityManager.close();
 
         return allPostFromUser;
     }
@@ -77,9 +78,10 @@ public class VisitorServicesImpl implements VisitorServices {
         EntityManager em = EntityManagerFactoryProvider.getEM();
 
         TypedQuery<Post> query = em.createQuery("select p from Post p join p.tags tag where tag.id = ?1", Post.class);
+        query.setParameter(1, tag.getId());
+
         em.close();
 
-        query.setParameter(1, tag.getId());
 
         return query.getResultList();
     }
