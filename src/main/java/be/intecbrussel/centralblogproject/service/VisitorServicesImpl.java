@@ -3,8 +3,10 @@ package be.intecbrussel.centralblogproject.service;
 import be.intecbrussel.centralblogproject.connection.EntityManagerFactoryProvider;
 import be.intecbrussel.centralblogproject.model.Post;
 import be.intecbrussel.centralblogproject.model.Tag;
+import be.intecbrussel.centralblogproject.model.User;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 import java.util.Collection;
 import java.util.List;
@@ -28,9 +30,19 @@ public class VisitorServicesImpl implements VisitorServices {
     }
 
     @Override
-    public Collection getPostsByAuthor() {
-        return null;
+    public List<Post> getPostsByAuthor(Integer userId) {
+
+        EntityManager entityManager = EntityManagerFactoryProvider.getEM();
+        TypedQuery<Post> query = entityManager.createQuery(
+                "SELECT p FROM Post p WHERE p.user.userId=?1",
+                Post.class
+        );
+        query.setParameter(1, userId);
+        List<Post> allPostFromUser = query.getResultList();
+
+        return allPostFromUser;
     }
+
 
     @Override
     public List<Post> sortPostsByPopularity() {
