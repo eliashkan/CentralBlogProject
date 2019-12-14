@@ -2,6 +2,7 @@ package be.intecbrussel.centralblogproject.model;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -13,32 +14,26 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idPost;
     private String title;
+    @Lob
     private String text;
-
-    private LocalDate localDate;
-
-
+    private LocalDateTime dateTime;
+    @Column(name = "popularity")
+    private int likeCounter;
+    @ManyToMany(mappedBy = "posts")
+    private Set<Tag> tags;
     @ManyToOne
     private User user;
 
-
-    @Column(name = "popularity")
-    private Integer likeCounter;
-
-    @OneToMany(orphanRemoval = true)
+    @OneToMany
     @JoinColumn(name = "post")
     private List<Comment> comments = new ArrayList<>();
-
-    @ManyToMany(mappedBy = "posts")
-    private Set<Tag> tags;
-
 
     public void cloneFrom(Post post) {
         this.idPost = post.idPost;
         this.title = post.title;
         this.text = post.text;
         this.user = post.user;
-        this.localDate = post.localDate;
+        this.dateTime = post.dateTime;
         this.comments = post.comments;
     }
 
@@ -66,12 +61,12 @@ public class Post {
         this.text = text;
     }
 
-    public LocalDate getLocalDate() {
-        return localDate;
+    public LocalDateTime getDateTime() {
+        return dateTime;
     }
 
-    public void setLocalDate(LocalDate localDate) {
-        this.localDate = localDate;
+    public void setDateTime(LocalDateTime localDate) {
+        this.dateTime = localDate;
     }
 
     public User getUser() {
@@ -82,11 +77,22 @@ public class Post {
         this.user = user;
     }
 
+    public int getLikeCounter() {
+        return likeCounter;
+    }
 
+    public void setLikeCounter(int likeCounter) {
+        this.likeCounter = likeCounter;
+    }
+
+    public Set<Tag> getTags() {
+        return tags;
+    }
 
     public void setTags(Set<Tag> tags) {
         this.tags = tags;
     }
+
     public List<Comment> getComments() {
         return comments;
     }
@@ -101,7 +107,7 @@ public class Post {
                 "idPost=" + idPost +
                 ", title='" + title + '\'' +
                 ", text='" + text + '\'' +
-                ", localDate=" + localDate +
+                ", localDate=" + dateTime +
                 ", user=" + user +
                 ", comments=" + comments +
                 '}';

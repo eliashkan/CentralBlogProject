@@ -44,8 +44,6 @@ public class Comment {
         this.user = user;
     }
 
-
-
     @Override
     public String toString() {
         return "Comment{" +
