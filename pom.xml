@@ -27,13 +27,13 @@
                         <containerId>tomee8x</containerId>
                         <type>installed</type>
 
-                        <home>/Users/vincenthonca/Documents/Intelij/apache-tomee-plus-8.0.0/</home>
+                        <home>/Applications/apache-tomee-plus-8.0.0/</home>
 
                     </container>
                     <configuration>
                         <type>existing</type>
 
-                        <home>/Users/vincenthonca/Documents/Intelij/apache-tomee-plus-8.0.0/</home>
+                        <home>/Applications/apache-tomee-plus-8.0.0/</home>
 
                     </configuration>
                 </configuration>
@@ -61,9 +61,23 @@
         </dependency>
 
         <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+            <scope>provided</scope>
+        </dependency>
+
+
+        <dependency>
             <groupId>c3p0</groupId>
             <artifactId>c3p0</artifactId>
             <version>0.9.1.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.ibatis</groupId>
+            <artifactId>ibatis-core</artifactId>
+            <version>3.0</version>
         </dependency>
 
 
