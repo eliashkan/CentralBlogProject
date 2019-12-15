@@ -15,13 +15,13 @@
 
     <link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet"/>
-    <%--    <link href="${pageContext.request.contextPath}/resources/css/snow.css" rel="stylesheet"/>--%>
+<%--        <link href="${pageContext.request.contextPath}/resources/css/snow.css" rel="stylesheet"/>--%>
     <link href="" rel="stylesheet"/>
     <title>Blog App</title>
 </head>
 
 <body class="d-block bg-dark">
-<%--<canvas style="position: absolute;  " id='canv'></canvas>--%>
+
 <div class="header mb-3">
     <a href="${pageContext.request.contextPath}/homepage" class="logo">THE BLOGGERS</a>
     <input class="menu-btn" type="checkbox" id="menu-btn"/>
@@ -29,7 +29,7 @@
     ><span class="navicon"></span
     ></label>
     <ul class="menu">
-        <li><a href="${pageContext.request.contextPath}/login">Log-In</a></li>
+        <li><a href="${pageContext.request.contextPath}/login">${login_logout}</a></li>
         <li><a href="${pageContext.request.contextPath}/sign">Sign-In</a></li>
 
         <li class="column ml-2 mr-3 mt-3">
