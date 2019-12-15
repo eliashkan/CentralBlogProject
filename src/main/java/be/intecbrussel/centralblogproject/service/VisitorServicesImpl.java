@@ -1,6 +1,7 @@
 package be.intecbrussel.centralblogproject.service;
 
 import be.intecbrussel.centralblogproject.connection.EntityManagerFactoryProvider;
+import be.intecbrussel.centralblogproject.dao.PostDao;
 import be.intecbrussel.centralblogproject.model.Post;
 import be.intecbrussel.centralblogproject.model.User;
 
@@ -15,10 +16,14 @@ import java.util.stream.Stream;
 
 public class VisitorServicesImpl implements VisitorServices {
 
+    private PostDao postDAO;
     //we'll load in a stream of posts from the database every time Visitor Services is instantiated. This is just a suggestion.
     private Stream<Post> posts;
 
     public VisitorServicesImpl() {
+        this.postDAO = new PostDao();
+
+        //loading the stream of posts
         EntityManager em = EntityManagerFactoryProvider.getEM();
         TypedQuery<Post> query = em.createQuery("select p from Post p", Post.class);
         //a stream of posts from new to old
@@ -30,13 +35,14 @@ public class VisitorServicesImpl implements VisitorServices {
         return posts;
     }
 
+    //we can simply set the posts field every time an update has been made to posts instead of having to construct a VisitorServicesImpl object
     public void setPosts(Stream<Post> posts) {
         this.posts = posts;
     }
 
     @Override
-    public Post getSpecificPost() {
-        return null;
+    public Post getSpecificPost(Integer postID) {
+        return postDAO.getPost(postID);
     }
 
     @Override

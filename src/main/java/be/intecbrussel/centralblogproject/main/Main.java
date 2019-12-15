@@ -201,6 +201,7 @@ public class Main {
         vSI.getSixPosts(vSI.getPosts())
                 .forEach(p -> System.out.println(p.getTitle() + "\t" + p.getDateTime()));
                 */
+        //System.out.println(vSI.getSpecificPost(1).getText());
 
 
 

@@ -10,7 +10,7 @@ public interface VisitorServices {
     Stream<Post> getPosts();
     void setPosts(Stream<Post> posts);
     // Get 1 specific post
-    Post getSpecificPost();
+    Post getSpecificPost(Integer postID);
 
     // Get next 6 posts ordered by date/time
     Stream<Post> getSixPosts(Stream<Post> postsToBeFiltered);
