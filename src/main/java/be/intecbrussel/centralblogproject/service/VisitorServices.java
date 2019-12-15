@@ -13,7 +13,7 @@ public interface VisitorServices {
     Collection getSixPosts();
 
     // Get posts by author
-    Collection getPostsByAuthor();
+    Stream<Post> getPostsByAuthor(String authorsName);
 
     // Sort posts on this page by popularity
     Stream<Post> sortPostsByPopularity();

@@ -184,9 +184,19 @@ public class Main {
 
         VisitorServices vSI = new VisitorServicesImpl();
 
+        /*
+        sorting posts by popularity
         vSI.sortPostsByPopularity().
                 map(p -> p.getTitle() + "\t" + p.getLikeCounter()).
                 forEach(System.out::println);
+        */
+
+        //get posts by author
+        /*
+        vSI.getPostsByAuthor("steve")
+                .forEach(p-> System.out.println(p.getTitle()));
+
+         */
 
 
 

@@ -2,6 +2,7 @@ package be.intecbrussel.centralblogproject.service;
 
 import be.intecbrussel.centralblogproject.connection.EntityManagerFactoryProvider;
 import be.intecbrussel.centralblogproject.model.Post;
+import be.intecbrussel.centralblogproject.model.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -29,13 +30,14 @@ public class VisitorServicesImpl implements VisitorServices {
     }
 
     @Override
+    //receives a stream of posts
     public Collection getSixPosts() {
         return null;
     }
 
     @Override
-    public Collection getPostsByAuthor() {
-        return null;
+    public Stream<Post> getPostsByAuthor(String authorsName) {
+        return posts.filter(p -> p.getUser().getFullName().toLowerCase().contains(authorsName.toLowerCase()));
     }
 
     @Override
