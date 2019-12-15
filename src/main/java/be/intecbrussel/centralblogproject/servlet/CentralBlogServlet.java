@@ -61,5 +61,6 @@ public class CentralBlogServlet extends HttpServlet {
     public void destroy() {
         currentAmountOfUsers--;
 
+
     }
 }
