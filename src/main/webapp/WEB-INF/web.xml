@@ -12,7 +12,10 @@
         </listener-class>
     </listener>
 
-    <session-config>
-        <session-timeout>1</session-timeout>
-    </session-config>
+    <listener>
+        <listener-class>
+            be.intecbrussel.centralblogproject.listener.ContextListener
+        </listener-class>
+    </listener>
+
 </web-app>
