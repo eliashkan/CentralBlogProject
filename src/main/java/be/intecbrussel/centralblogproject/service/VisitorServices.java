@@ -3,6 +3,7 @@ package be.intecbrussel.centralblogproject.service;
 import be.intecbrussel.centralblogproject.model.Post;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.stream.Stream;
 
 public interface VisitorServices {
@@ -22,5 +23,5 @@ public interface VisitorServices {
     Stream<Post> sortPostsByPopularity();
 
     // Search element
-    Collection searchAll(Object o);
+    List<Post> searchAll(String text);
 }

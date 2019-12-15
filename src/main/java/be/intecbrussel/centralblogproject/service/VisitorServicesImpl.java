@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 public class VisitorServicesImpl implements VisitorServices {
@@ -26,21 +27,24 @@ public class VisitorServicesImpl implements VisitorServices {
         //loading the stream of posts
         EntityManager em = EntityManagerFactoryProvider.getEM();
         TypedQuery<Post> query = em.createQuery("select p from Post p", Post.class);
-        //a stream of posts from new to old
+        //a stream of posts from new to old by default
         Comparator<Post> comparatorByDate = (p1, p2) -> p2.getDateTime().compareTo(p1.getDateTime());
         this.posts = query.getResultStream().sorted(comparatorByDate);
     }
 
+    //getter
     public Stream<Post> getPosts() {
         return posts;
     }
 
+    //setter
     //we can simply set the posts field every time an update has been made to posts instead of having to construct a VisitorServicesImpl object
     public void setPosts(Stream<Post> posts) {
         this.posts = posts;
     }
 
     @Override
+    //good old getter from the DAO
     public Post getSpecificPost(Integer postID) {
         return postDAO.getPost(postID);
     }
@@ -48,7 +52,8 @@ public class VisitorServicesImpl implements VisitorServices {
     @Override
     //receives a stream of posts
     public Stream<Post> getSixPosts(Stream<Post> postsToBeFiltered) {
-        return postsToBeFiltered.limit(6);
+        int desiredLength = 6;
+        return postsToBeFiltered.limit(desiredLength);
     }
 
     @Override
@@ -57,13 +62,34 @@ public class VisitorServicesImpl implements VisitorServices {
     }
 
     @Override
+    //from most poular to least popular
     public Stream<Post> sortPostsByPopularity() {
         Comparator<Post> comparator = (p1, p2) -> p2.getLikeCounter() - p1.getLikeCounter();
         return posts.sorted(comparator);
     }
 
+    //from most recent to oldest
+    public Stream<Post> sortPostsByDate() {
+        Comparator<Post> comparatorByDate = (p1, p2) -> p2.getDateTime().compareTo(p1.getDateTime());
+        return posts.sorted(comparatorByDate);
+    }
+
+
+    //returns the UNION of the result of three searches
+    //these three results will have to be collection instances
     @Override
-    public Collection searchAll(Object o) {
+    public List<Post> searchAll(String text) {
+        //testing according to title
+        Predicate<Post> conditionPostTitle = p -> p.getTitle().toLowerCase().contains(text.toLowerCase());
+        //testing according to author's name
+        Predicate<Post> conditionAuthorsName = p -> p.getUser().getFullName().toLowerCase().contains(text.toLowerCase());
+        //testing according to the associated tag
         return null;
+    }
+
+    private List<Post> sortPostsByTagName(String text) {
+        return posts.
+                map(Post::getTags).
+                map(t -> t.ge)
     }
 }
