@@ -70,13 +70,13 @@ public class VisitorServicesImpl implements VisitorServices {
     }
 
 
-    public List<Post> sortPostsByPopularityAsc() {
+    public List<Post> sortPostsByPopularityAsc(int numberOfShowedPosts) {
         EntityManager em = EntityManagerFactoryProvider.getEM();
-
         TypedQuery<Post> query = em.createQuery("select p from Post p order by p.likeCounter asc", Post.class);
-
+        query.setMaxResults(numberOfShowedPosts);
+        List<Post> posts = query.getResultList();
         em.close();
-        return query.getResultList();
+        return posts;
     }
 
     @Override

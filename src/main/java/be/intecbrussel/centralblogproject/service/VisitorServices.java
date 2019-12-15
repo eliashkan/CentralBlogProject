@@ -26,7 +26,7 @@ public interface VisitorServices {
 
     List<Post> sortPostsByDateAsc();
 
-    List<Post> sortPostsByPopularityAsc();
+    List<Post> sortPostsByPopularityAsc(int numberOfShowedPosts);
 
 
 }

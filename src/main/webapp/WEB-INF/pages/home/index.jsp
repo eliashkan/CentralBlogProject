@@ -15,7 +15,7 @@
 
     <link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet"/>
-<%--        <link href="${pageContext.request.contextPath}/resources/css/snow.css" rel="stylesheet"/>--%>
+    <%--        <link href="${pageContext.request.contextPath}/resources/css/snow.css" rel="stylesheet"/>--%>
     <link href="" rel="stylesheet"/>
     <title>Blog App</title>
 </head>
@@ -62,12 +62,13 @@
                 class="dropdown-menu  bg-dark"
                 x-placement="bottom-start"
                 style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(15px, 48px, 0px);"
-                action="homepage"
+                action="testing"
                 method="post"
+
         >
-            <input class="dropdown-item text-light" type="submit" value="By Oldest">
-            <input class="dropdown-item text-light" type="submit" value="By New">
-            <input class="dropdown-item text-light" type="submit" value="Show More">
+            <input class="dropdown-item text-light" name="oldest" type="submit" value="By Oldest">
+            <input class="dropdown-item text-light" name="mostpopular" type="submit" value="Most Popular">
+            <input class="dropdown-item text-light" name="showmore" type="submit" value="Show More">
         </form>
     </div>
 </div>
@@ -85,7 +86,7 @@
          style="height: 600px;overflow-y: auto;">
 
 
-        <c:forEach var="element" items="${showMoreBlogs}">
+        <c:forEach var="element" items="${postsToShow}">
             <p class="d-flex rounded blogColors" style="font-weight: bold!important">
                 <c:out value="${element.getTitle()}"/>
             </p>
