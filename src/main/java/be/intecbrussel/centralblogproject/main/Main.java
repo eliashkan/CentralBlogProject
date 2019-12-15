@@ -28,8 +28,8 @@ public class Main {
         TagRepositoryImpl tri = new TagRepositoryImpl();
 
         AuthorServicesImpl aSI = new AuthorServicesImpl();
-        VisitorServices vSI = new VisitorServicesImpl();
 
+        /*
         //creating users
         User userOne = new User();
         userOne.setUserName("hacker");
@@ -108,7 +108,7 @@ public class Main {
         postSeven.setTitle("post seven");
         postDao.createPost(postSeven);
         */
-
+        /*
         //connecting tags with posts
         Set<Post> setOfPostsOne = new HashSet<>();
         setOfPostsOne.add(postOne);
@@ -182,9 +182,12 @@ public class Main {
         aSI.updateAvatar(userOne, "https://tau0.files.wordpress.com/2013/04/long_desert_road_2.jpg");
         */
 
+        VisitorServices vSI = new VisitorServicesImpl();
+
         vSI.sortPostsByPopularity().
-                map(p -> p.getTitle() + p.getLikeCounter()).
+                map(p -> p.getTitle() + "\t" + p.getLikeCounter()).
                 forEach(System.out::println);
+
 
 
 

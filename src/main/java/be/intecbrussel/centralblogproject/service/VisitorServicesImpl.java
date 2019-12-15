@@ -6,8 +6,10 @@ import be.intecbrussel.centralblogproject.model.Post;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.TypedQuery;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
+import java.util.List;
 import java.util.stream.Stream;
 
 public class VisitorServicesImpl implements VisitorServices {
@@ -38,7 +40,8 @@ public class VisitorServicesImpl implements VisitorServices {
 
     @Override
     public Stream<Post> sortPostsByPopularity() {
-        return posts.sorted(Comparator.comparingInt(Post::getLikeCounter));
+        Comparator<Post> comparator = (p1, p2) -> p2.getLikeCounter() - p1.getLikeCounter();
+        return posts.sorted(comparator);
     }
 
     @Override
