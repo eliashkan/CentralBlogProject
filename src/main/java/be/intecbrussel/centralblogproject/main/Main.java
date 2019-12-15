@@ -197,6 +197,10 @@ public class Main {
                 .forEach(p-> System.out.println(p.getTitle()));
 
          */
+        /*
+        vSI.getSixPosts(vSI.getPosts())
+                .forEach(p -> System.out.println(p.getTitle() + "\t" + p.getDateTime()));
+                */
 
 
 

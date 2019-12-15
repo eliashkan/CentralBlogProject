@@ -6,11 +6,14 @@ import java.util.Collection;
 import java.util.stream.Stream;
 
 public interface VisitorServices {
+
+    Stream<Post> getPosts();
+    void setPosts(Stream<Post> posts);
     // Get 1 specific post
     Post getSpecificPost();
 
     // Get next 6 posts ordered by date/time
-    Collection getSixPosts();
+    Stream<Post> getSixPosts(Stream<Post> postsToBeFiltered);
 
     // Get posts by author
     Stream<Post> getPostsByAuthor(String authorsName);

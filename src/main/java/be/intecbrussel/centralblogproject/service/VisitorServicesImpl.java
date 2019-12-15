@@ -21,7 +21,17 @@ public class VisitorServicesImpl implements VisitorServices {
     public VisitorServicesImpl() {
         EntityManager em = EntityManagerFactoryProvider.getEM();
         TypedQuery<Post> query = em.createQuery("select p from Post p", Post.class);
-        this.posts = query.getResultStream();
+        //a stream of posts from new to old
+        Comparator<Post> comparatorByDate = (p1, p2) -> p2.getDateTime().compareTo(p1.getDateTime());
+        this.posts = query.getResultStream().sorted(comparatorByDate);
+    }
+
+    public Stream<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(Stream<Post> posts) {
+        this.posts = posts;
     }
 
     @Override
@@ -31,8 +41,8 @@ public class VisitorServicesImpl implements VisitorServices {
 
     @Override
     //receives a stream of posts
-    public Collection getSixPosts() {
-        return null;
+    public Stream<Post> getSixPosts(Stream<Post> postsToBeFiltered) {
+        return postsToBeFiltered.limit(6);
     }
 
     @Override
