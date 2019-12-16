@@ -9,7 +9,7 @@ import javax.persistence.TypedQuery;
 public class RegistrationLoginServicesImpl implements RegistrationLoginServices {
 
     @Override
-    public boolean checkIfUsernameExistsInDB(String username) {
+    public boolean isUsernameInDb(String username) {
         TypedQuery<User> query = EntityManagerFactoryProvider.getEM().createQuery(
                 "SELECT u FROM User u WHERE u.userName=?1",
                 User.class
