@@ -13,11 +13,11 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class VisitorServicesImpl implements VisitorServices {
+public class VisitorServicesImpl implements VisitorServices{
 
     private PostDao postDAO;
-    //we'll load in a stream of posts from the database every time Visitor Services is instantiated. This is just a suggestion.
-    private Stream<Post> posts;
+    //we'll load in a list of posts from the database every time Visitor Services is instantiated
+    private List<Post> posts;
 
     public VisitorServicesImpl() {
         this.postDAO = new PostDao();
@@ -27,17 +27,18 @@ public class VisitorServicesImpl implements VisitorServices {
         TypedQuery<Post> query = em.createQuery("select p from Post p", Post.class);
         //a stream of posts from new to old by default
         Comparator<Post> comparatorByDate = (p1, p2) -> p2.getDateTime().compareTo(p1.getDateTime());
-        this.posts = query.getResultStream().sorted(comparatorByDate);
+        this.posts = query.getResultStream().
+                sorted(comparatorByDate).
+                collect(Collectors.toList());
     }
 
     //getter
-    public Stream<Post> getPosts() {
+    public List<Post> getPosts() {
         return posts;
     }
 
     //setter
-    //we can simply set the posts field every time an update has been made to posts instead of having to construct a VisitorServicesImpl object
-    public void setPosts(Stream<Post> posts) {
+    public void setPosts(List<Post> posts) {
         this.posts = posts;
     }
 
@@ -49,37 +50,47 @@ public class VisitorServicesImpl implements VisitorServices {
 
     @Override
     //receives a stream of posts
-    public Stream<Post> getSixPosts(Stream<Post> postsToBeFiltered) {
+    public List<Post> getSixMorePosts(int multiplier) {
         int desiredLength = 6;
-        return postsToBeFiltered.limit(desiredLength);
+        return posts.stream().
+                limit(desiredLength*multiplier).
+                collect(Collectors.toList());
     }
 
     @Override
-    public Stream<Post> getPostsByAuthor(String authorsName) {
-        return posts.filter(p -> p.getUser().getFullName().toLowerCase().contains(authorsName.toLowerCase()));
+    public List<Post> getPostsByAuthor(String authorsName) {
+        return posts.stream().
+                filter(p -> p.getUser().getFullName().toLowerCase().contains(authorsName.toLowerCase())).
+                collect(Collectors.toList());
     }
 
     @Override
     //from most poular to least popular
-    public Stream<Post> sortPostsByPopularity() {
+    public List<Post> sortPostsByPopularity() {
         Comparator<Post> comparator = (p1, p2) -> p2.getLikeCounter() - p1.getLikeCounter();
-        return posts.sorted(comparator);
+        return posts.stream().
+                sorted(comparator).
+                collect(Collectors.toList());
     }
 
     //from most recent to oldest
-    public Stream<Post> sortPostsByDate() {
+    public List<Post> sortPostsByDate() {
         Comparator<Post> comparatorByDate = (p1, p2) -> p2.getDateTime().compareTo(p1.getDateTime());
-        return posts.sorted(comparatorByDate);
+        return posts.
+                stream().
+                sorted(comparatorByDate).
+                collect(Collectors.toList());
     }
 
 
     //carries out a search by title, author's name and tag name
-    public Stream<Post> searchAll(String text) {
+    public List<Post> searchAll(String text) {
         List<Post> resultListOne = searchByAuthorsNameUnionByPostTitle(text);
         List<Post> resultListTwo = searchPostsByTagName(text);
-        //intersection of the above two lists
-        return resultListOne.stream().filter(resultListTwo::contains);
-
+        //list1 + (list2-list1)
+        resultListTwo.removeAll(resultListOne);
+        resultListOne.addAll(resultListTwo);
+        return resultListOne;
 
     }
     private List<Post> searchByAuthorsNameUnionByPostTitle(String text) {
@@ -87,7 +98,7 @@ public class VisitorServicesImpl implements VisitorServices {
         Predicate<Post> conditionPostTitle = p -> p.getTitle().toLowerCase().contains(text.toLowerCase());
         //testing according to author's name
         Predicate<Post> conditionAuthorsName = p -> p.getUser().getFullName().toLowerCase().contains(text.toLowerCase());
-        return posts.
+        return posts.stream().
                 filter(conditionAuthorsName.or(conditionPostTitle))
                 .collect(Collectors.toList());
     }

@@ -64,7 +64,7 @@ public class Main {
         Tag tagOne = new Tag();
         tagOne.setName("secretive");
         Tag tagTwo = new Tag();
-        tagTwo.setName("fairy");
+        tagTwo.setName("useful");
         Tag tagThree = new Tag();
         tagThree.setName("David");
 
@@ -128,24 +128,18 @@ public class Main {
                 "\n" +
                 "Want even more solar energy science? Check out these solar energy science projects. And for another edible science project that teaches about insulation, make Baked Alaska.\n" +
                 "Use a box knife or sharp scissors to cut a flap in the lid of the pizza box. Cut along three sides, leaving about an inch between the sides of the flap and the edges of the lid. Fold this flap out so that it stands up when the box lid is closed.  Cover the inner side of the flap with aluminum foil so that it will reflect rays from the sun. To do this, tightly wrap foil around the flap, then tape it to the back, or outer side of the flap.Use clear plastic wrap to create an airtight window for sunlight to enter into the box. Do this by opening the box and taping a double layer of plastic wrap over the opening you made when you cut the flap in the lid. Leave about an inch of plastic overlap around the sides and tape each side down securely, sealing out air. If you use a plastic bag, cut out a square big enough to cover the opening, and tape one layer over the opening.");
-
+        postFour.setUser(userThree);
+        postFour.setLikeCounter(71);
+        postFour.setDateTime(LocalDateTime.of(2016, 5, 24, 9, 11, 01));
         //adding the posts to the users
         userOne.setPosts(new ArrayList<>());
         userOne.getPosts().add(postOne);
         userTwo.setPosts(new ArrayList<>());
         userTwo.getPosts().add(postTwo);
+        userThree.getPosts().add(postThree);
+        userThree.getPosts().add(postFour);
 
 
-
-
-
-        //creating more posts
-        Post postThree = new Post();
-        postThree.setTitle("post three");
-        postDao.createPost(postThree);
-        Post postFour = new Post();
-        postFour.setTitle("post four");
-        postDao.createPost(postFour);
         /*
         Post postFive = new Post();
         postFive.setTitle("post five");
@@ -166,6 +160,7 @@ public class Main {
         setOfPostsTwo.add(postOne);
         tagOne.setPosts(setOfPostsOne);
         tagTwo.setPosts(setOfPostsTwo);
+        Set<Post> setOfPostsThree = new HashSet<>();
         //connecting posts with tags
         Set<Tag> setOfTagsOne = new HashSet<>();
         setOfTagsOne.add(tagOne);
@@ -180,6 +175,8 @@ public class Main {
         //postDao.createPost(postTwo);
         aSI.submitBlogPost(postOne);
         aSI.submitBlogPost(postTwo);
+        aSI.submitBlogPost(postThree);
+        aSI.submitBlogPost(postFour);
         tri.saveTag(tagOne);
         tri.saveTag(tagTwo);
 
