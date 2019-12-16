@@ -42,10 +42,9 @@ public class UserDao {
         EntityManager em = EntityManagerFactoryProvider.getEM();
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
-        User dbUser = em.find(User.class, user.getUserId());
-        dbUser.cloneFrom(user);
+        em.merge(user);
         transaction.commit();
         em.close();
-        return dbUser;
+        return user;
     }
 }
