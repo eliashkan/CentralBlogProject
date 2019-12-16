@@ -136,6 +136,7 @@ public class Main {
         userOne.getPosts().add(postOne);
         userTwo.setPosts(new ArrayList<>());
         userTwo.getPosts().add(postTwo);
+        userThree.setPosts(new ArrayList<>());
         userThree.getPosts().add(postThree);
         userThree.getPosts().add(postFour);
 
@@ -153,21 +154,29 @@ public class Main {
         */
 
         //connecting tags with posts
+        //posts of tag one
         Set<Post> setOfPostsOne = new HashSet<>();
         setOfPostsOne.add(postOne);
         setOfPostsOne.add(postTwo);
+        tagOne.setPosts(setOfPostsOne);
+        //posts of tag two
         Set<Post> setOfPostsTwo = new HashSet<>();
         setOfPostsTwo.add(postOne);
-        tagOne.setPosts(setOfPostsOne);
+        setOfPostsTwo.add(postThree);
         tagTwo.setPosts(setOfPostsTwo);
+        //posts of tag three
         Set<Post> setOfPostsThree = new HashSet<>();
+        setOfPostsThree.add(postFour);
+        tagThree.setPosts(setOfPostsThree);
         //connecting posts with tags
+        //post one's tags
         Set<Tag> setOfTagsOne = new HashSet<>();
         setOfTagsOne.add(tagOne);
         setOfTagsOne.add(tagTwo);
+        postOne.setTags(setOfTagsOne);
+        //post two's tags
         Set<Tag> setOfTagsTwo = new HashSet<>();
         setOfTagsTwo.add(tagOne);
-        postOne.setTags(setOfTagsOne);
         postTwo.setTags(setOfTagsTwo);
 
         //persisting both posts and tags
@@ -179,6 +188,7 @@ public class Main {
         aSI.submitBlogPost(postFour);
         tri.saveTag(tagOne);
         tri.saveTag(tagTwo);
+        tri.saveTag(tagThree);
 
         //create a comment on post two
         Comment commentOne = new Comment();
@@ -248,6 +258,8 @@ public class Main {
                 .forEach(p -> System.out.println(p.getTitle() + "\t" + p.getDateTime()));
                 */
         //System.out.println(vSI.getSpecificPost(1).getText());
+
+        vSI.searchAll("David").forEach(post -> System.out.println(post.getTitle()));
 
 
 
