@@ -62,7 +62,7 @@
                 class="dropdown-menu  bg-dark"
                 x-placement="bottom-start"
                 style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(15px, 48px, 0px);"
-                action="testing"
+                action="postssort"
                 method="post"
 
         >
@@ -89,6 +89,7 @@
         <c:forEach var="element" items="${postsToShow}">
             <p class="d-flex rounded blogColors" style="font-weight: bold!important">
                 <c:out value="${element.getTitle()}"/>
+                <c:out value="${element.getLikeCounter()}"/>
             </p>
         </c:forEach>
 

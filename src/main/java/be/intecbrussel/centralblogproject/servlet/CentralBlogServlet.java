@@ -32,8 +32,8 @@ public class CentralBlogServlet extends HttpServlet {
         else {
             req.setAttribute("login_logout", logout);
         }
-        //Dispatch first to Utils
-        req.getRequestDispatcher("testing").forward(req, resp);
+        //Dispatch first to Utils for post loading
+        req.getRequestDispatcher("postssort").forward(req, resp);
 
     }
 
