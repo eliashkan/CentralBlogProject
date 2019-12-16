@@ -2,7 +2,7 @@ package be.intecbrussel.centralblogproject.service;
 
 public interface RegistrationLoginServices {
     // Check if username exists in the database
-    boolean checkIfUsernameExistsInDB(String username);
+    boolean isUsernameInDb(String username);
 
     /*----------LOGIN-----------*/
 
