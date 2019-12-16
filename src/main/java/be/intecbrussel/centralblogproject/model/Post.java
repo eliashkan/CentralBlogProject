@@ -3,6 +3,8 @@ package be.intecbrussel.centralblogproject.model;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -62,7 +64,15 @@ public class Post {
     }
 
     public LocalDateTime getDateTime() {
+
         return dateTime;
+    }
+
+    public String formatDateTime() {
+
+        String formatedDateTime = dateTime.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM));
+
+        return formatedDateTime;
     }
 
     public void setDateTime(LocalDateTime localDate) {

@@ -18,7 +18,7 @@
 
         <li><a href="${pageContext.request.contextPath}/sign">Sign-In</a></li>
 
-        <li class="column ml-2 mr-3 mt-3">
+        <li class="column ml-2 mr-3 mt-3 mb-1">
             <i class="fas fa-search" aria-hidden="true"></i>
             <input style="background-color:#1a5caf2e;" type="text" placeholder="Search" aria-label="Search"
                    class="form-control form-control-sm m-auto">
