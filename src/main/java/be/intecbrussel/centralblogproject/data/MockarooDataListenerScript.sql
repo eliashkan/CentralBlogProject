@@ -1,3 +1,19 @@
+-- USERS
+insert into User (userId, adress, avatar, email, fullname, password, userName) values (1, '6391 Vermont Crossing', 'https://robohash.org/nonerroret.png?size=50x50&set=set1', 'wvan0@wired.com', 'Woodie Van De Cappelle', 'Pu6BDFElbqMw', 'wvan0');
+insert into User (userId, adress, avatar, email, fullname, password, userName) values (2, '9631 Mallory Junction', 'https://robohash.org/pariaturidsimilique.bmp?size=50x50&set=set1', 'emcelhinney1@un.org', 'Elena McElhinney', 'ZMGo06MR68m', 'emcelhinney1');
+insert into User (userId, adress, avatar, email, fullname, password, userName) values (3, '77 Heffernan Park', 'https://robohash.org/quasveniamnecessitatibus.jpg?size=50x50&set=set1', 'wshapiro2@angelfire.com', 'Woodie Shapiro', 'xt4RU0pwiAB', 'wshapiro2');
+insert into User (userId, adress, avatar, email, fullname, password, userName) values (4, '272 Northland Plaza', 'https://robohash.org/istenequetotam.bmp?size=50x50&set=set1', 'yrosenblath3@lulu.com', 'Yvette Rosenblath', 'Bqxwl85', 'yrosenblath3');
+insert into User (userId, adress, avatar, email, fullname, password, userName) values (5, '870 Mandrake Place', 'https://robohash.org/officiisutnam.png?size=50x50&set=set1', 'cswenson4@nih.gov', 'Cammy Swenson', 'Oxgaash1e3Fm', 'cswenson4');
+insert into User (userId, adress, avatar, email, fullname, password, userName) values (6, '2794 American Ash Parkway', 'https://robohash.org/animiarchitectomagni.bmp?size=50x50&set=set1', 'tparris5@gov.uk', 'Tate Parris', 'R5pV6OR1', 'tparris5');
+insert into User (userId, adress, avatar, email, fullname, password, userName) values (7, '8104 Westerfield Drive', 'https://robohash.org/quiasequidolores.jpg?size=50x50&set=set1', 'idemko6@baidu.com', 'Inessa Demko', 'E6yAeUR', 'idemko6');
+insert into User (userId, adress, avatar, email, fullname, password, userName) values (8, '22517 Dwight Park', 'https://robohash.org/consequaturporronam.bmp?size=50x50&set=set1', 'shandke7@cloudflare.com', 'Shea Handke', 'JFyVsXcgKZ', 'shandke7');
+insert into User (userId, adress, avatar, email, fullname, password, userName) values (9, '1525 2nd Plaza', 'https://robohash.org/etnondolor.bmp?size=50x50&set=set1', 'dwimsett8@dell.com', 'Damon Wimsett', 'X22nnvqgqlK', 'dwimsett8');
+insert into User (userId, adress, avatar, email, fullname, password, userName) values (10, '20 Hansons Road', 'https://robohash.org/laudantiumrepellendusin.bmp?size=50x50&set=set1', 'jbroadley9@printfriendly.com', 'Jayson Broadley', '0Qn4ZVsw', 'jbroadley9');
+--
+No newline at end of file
+
+
+
 
 --POSTS
 insert into Post (idPost, dateTime, popularity, text, title, user_userId) values (1, '2019-01-24 23:58:10', 98, 'Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum. Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est. Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum. Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem. Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit. Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque. Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus. In sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus. Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.', 'Programmable analyzing middleware', 7);
@@ -28,16 +44,5 @@ insert into Post (idPost, dateTime, popularity, text, title, user_userId) values
 
 No newline at end of file
 
--- USERS
-insert into User (userId, adress, avatar, email, fullname, password, userName) values (1, '6391 Vermont Crossing', 'https://robohash.org/nonerroret.png?size=50x50&set=set1', 'wvan0@wired.com', 'Woodie Van De Cappelle', 'Pu6BDFElbqMw', 'wvan0');
-insert into User (userId, adress, avatar, email, fullname, password, userName) values (2, '9631 Mallory Junction', 'https://robohash.org/pariaturidsimilique.bmp?size=50x50&set=set1', 'emcelhinney1@un.org', 'Elena McElhinney', 'ZMGo06MR68m', 'emcelhinney1');
-insert into User (userId, adress, avatar, email, fullname, password, userName) values (3, '77 Heffernan Park', 'https://robohash.org/quasveniamnecessitatibus.jpg?size=50x50&set=set1', 'wshapiro2@angelfire.com', 'Woodie Shapiro', 'xt4RU0pwiAB', 'wshapiro2');
-insert into User (userId, adress, avatar, email, fullname, password, userName) values (4, '272 Northland Plaza', 'https://robohash.org/istenequetotam.bmp?size=50x50&set=set1', 'yrosenblath3@lulu.com', 'Yvette Rosenblath', 'Bqxwl85', 'yrosenblath3');
-insert into User (userId, adress, avatar, email, fullname, password, userName) values (5, '870 Mandrake Place', 'https://robohash.org/officiisutnam.png?size=50x50&set=set1', 'cswenson4@nih.gov', 'Cammy Swenson', 'Oxgaash1e3Fm', 'cswenson4');
-insert into User (userId, adress, avatar, email, fullname, password, userName) values (6, '2794 American Ash Parkway', 'https://robohash.org/animiarchitectomagni.bmp?size=50x50&set=set1', 'tparris5@gov.uk', 'Tate Parris', 'R5pV6OR1', 'tparris5');
-insert into User (userId, adress, avatar, email, fullname, password, userName) values (7, '8104 Westerfield Drive', 'https://robohash.org/quiasequidolores.jpg?size=50x50&set=set1', 'idemko6@baidu.com', 'Inessa Demko', 'E6yAeUR', 'idemko6');
-insert into User (userId, adress, avatar, email, fullname, password, userName) values (8, '22517 Dwight Park', 'https://robohash.org/consequaturporronam.bmp?size=50x50&set=set1', 'shandke7@cloudflare.com', 'Shea Handke', 'JFyVsXcgKZ', 'shandke7');
-insert into User (userId, adress, avatar, email, fullname, password, userName) values (9, '1525 2nd Plaza', 'https://robohash.org/etnondolor.bmp?size=50x50&set=set1', 'dwimsett8@dell.com', 'Damon Wimsett', 'X22nnvqgqlK', 'dwimsett8');
-insert into User (userId, adress, avatar, email, fullname, password, userName) values (10, '20 Hansons Road', 'https://robohash.org/laudantiumrepellendusin.bmp?size=50x50&set=set1', 'jbroadley9@printfriendly.com', 'Jayson Broadley', '0Qn4ZVsw', 'jbroadley9');
---
-No newline at end of file
+
+

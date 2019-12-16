@@ -22,25 +22,11 @@
 
 <body class="d-block bg-dark">
 
-<div class="header mb-3">
-    <a href="${pageContext.request.contextPath}/homepage" class="logo">THE BLOGGERS</a>
-    <input class="menu-btn" type="checkbox" id="menu-btn"/>
-    <label class="menu-icon" for="menu-btn"
-    ><span class="navicon"></span
-    ></label>
-    <ul class="menu">
-        <li><a href="${pageContext.request.contextPath}/login">${login_logout}</a></li>
-        <li><a href="${pageContext.request.contextPath}/sign">Sign-In</a></li>
 
-        <li class="column ml-2 mr-3 mt-3">
-            <i class="fas fa-search" aria-hidden="true"></i>
-            <input style="background-color:#1a5caf2e;" type="text" placeholder="Search" aria-label="Search"
-                   class="form-control form-control-sm m-auto">
+<jsp:include page="../header/Header.jsp"/>
 
-        </li>
-    </ul>
 
-</div>
+
 
 
 <div style="height: 20vh;"></div>
@@ -62,11 +48,11 @@
                 class="dropdown-menu  bg-dark"
                 x-placement="bottom-start"
                 style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(15px, 48px, 0px);"
-                action="postssort"
+                action="postsort"
                 method="post"
 
         >
-            <input class="dropdown-item text-light" name="oldest" type="submit" value="By Oldest">
+            <input class="dropdown-item text-light" name="date" type="submit" value="By Date">
             <input class="dropdown-item text-light" name="mostpopular" type="submit" value="Most Popular">
             <input class="dropdown-item text-light" name="showmore" type="submit" value="Show More">
         </form>

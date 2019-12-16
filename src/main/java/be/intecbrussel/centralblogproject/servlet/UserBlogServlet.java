@@ -1,6 +1,7 @@
 package be.intecbrussel.centralblogproject.servlet;
+
 import be.intecbrussel.centralblogproject.model.User;
-import be.intecbrussel.centralblogproject.service.VisitorServicesImpl;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,7 +36,7 @@ public class UserBlogServlet extends HttpServlet {
         User user = (User) req.getSession().getAttribute("loggedUser");
 
         //Getting the posts and put them in the session attribute
-        req.getSession().setAttribute("postsFromUser", new VisitorServicesImpl().getPostsByAuthor(user.getUserId()));
+//        req.getSession().setAttribute("postsFromUser", new VisitorServicesImpl().getPostsByAuthor(user.getUserId()));
         req.getRequestDispatcher("WEB-INF/pages/user/user.jsp").forward(req, resp);
 
 
