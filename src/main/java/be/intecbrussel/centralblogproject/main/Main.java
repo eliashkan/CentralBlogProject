@@ -29,7 +29,7 @@ public class Main {
 
         AuthorServicesImpl aSI = new AuthorServicesImpl();
 
-        /*
+
         //creating users
         User userOne = new User();
         userOne.setUserName("hacker");
@@ -47,15 +47,26 @@ public class Main {
         userTwo.setEmail("conquerAndDivide@gmail.com");
         userTwo.setAvatar("https://tse3.mm.bing.net/th?id=OIP.99PxUepvbKCQ82vaUL0a8gHaEK&pid=Api");
 
+        User userThree = new User();
+        userThree.setUserName("TheDiviner");
+        userThree.setFullName("Justice Minankwo");
+        userThree.setPassword("Dubra!d0n");
+        userThree.setAddress("Rose Crescent 19, South Avenue");
+        userThree.setEmail("nowornever@gmail.com");
+        userThree.setAvatar("https://tse3.mm.bing.net/th?id=OIP.MJXyD3K0TTNQht5zwlZ9-QHaE8&pid=Api");
+
         //persisting users
         userDao.createUser(userOne);
         userDao.createUser(userTwo);
+        userDao.createUser(userThree);
 
         //create tags
         Tag tagOne = new Tag();
         tagOne.setName("secretive");
         Tag tagTwo = new Tag();
         tagTwo.setName("fairy");
+        Tag tagThree = new Tag();
+        tagThree.setName("David");
 
 
         //creating a post
@@ -71,7 +82,7 @@ public class Main {
         postOne.setDateTime(LocalDateTime.of(2017, 9, 11, 7, 32, 54));
         //creating a second post
         Post postTwo = new Post();
-        postTwo.setTitle("Salted caramel cheesecake recipe");
+        postTwo.setTitle("David's favorite festive cheesecake");
         postTwo.setText("Heat oven to 180C/160C fan/ gas 6. Butter a 23cm springform cake tin and line the base with baking parchment. Tip the biscuits into a food processor, blitz to crumbs and pour in the melted butter. (You could also tip the biscuits into a bag, bash with a rolling pin into crumbs and mix in the butter.) Press the biscuit mixture into the base of the tin – the easiest way to do this is by flattening it with your hand under a sheet of cling film. Place the tin on a tray and bake for 10 mins, then remove from the oven to cool.\n" +
                 "\n" +
                 "    Meanwhile, scrape the cream cheese into a bowl with 3 tbsp of the caramel sauce, the vanilla, sugar and flour, and beat until smooth. Beat in the eggs, one at a time, until you have a thick, smooth custard consistency. Tip over the base, scraping the bowl clean, and bake in the oven for 10 mins. Reduce the temperature to 140C/120C fan/gas 1 and continue to bake for 25-30 mins until there is a slight wobble in the centre. Turn off the heat and leave the door just slightly ajar – a tea towel holding the door open is ideal. This should leave you with a completely smooth top, but if there are a couple of small cracks, don’t worry. Leave the cheesecake in the oven until completely cool (overnight is fine), then chill until needed. Will keep in the fridge for two days.\n" +
@@ -80,6 +91,43 @@ public class Main {
         postTwo.setUser(userTwo);
         postTwo.setLikeCounter(2);
         postTwo.setDateTime(LocalDateTime.of(2019, 1, 31, 4, 52));
+        //creating a third post
+        Post postThree = new Post();
+        postThree.setTitle("How to Build a DIY Solar Panel");
+        postThree.setText("Solar Panel Power Output\n" +
+                "\n" +
+                "The second consideration is the power output you require. To calculate how many solar cells you need, divide the total power you need by the power of each cell. For example, if you need a 200W panel and you are using 4W cells then you need 200W / 4W = 50 cells. It is important to note that the power output is not related to whether the cells are connected in series or parallel. You can read this article on sizing your solar panel system correctly for your home for help estimating your home’s power consumption. There is also a spreadsheet available to assist you with the household power consumption calculations.\n" +
+                "Solar Panel Frame\n" +
+                "\n" +
+                "Lastly you need a frame for your solar cells. Solar cells are extremely fragile and need to be protected, usually with a perspex sheet or glass. Additionally you need to protect the back of the cells although this sheet does not have to be clear and can be made from wood, plywood, glass or plastic. You will also need to make a frame which attached to the backing for mounting the panel.\n" +
+                "How To Assemble The Panel\n" +
+                "\n" +
+                "In this guide, we will make a small 36W panel although the methodology to create a larger 200W or 300W panel is the same.\n" +
+                "What You Will Need For One Panel\n" +
+                "\n" +
+                "    9 Solar Cells (0.5V 4W) – Buy Here\n" +
+                "    2 Sheets of 3mm Safety/Shatterproof Glass 0.5m x 0.6m (20″ x 24″) – Buy Here\n" +
+                "    Silicon Sealant – Buy Here\n" +
+                "    Solar Bus Wire – Buy Here\n" +
+                "    Solar Tabbing Wire – Buy Here\n" +
+                "    Flux Pen / Solar Pen – Buy Here\n" +
+                "    Soldering Iron – Buy Here – Buy Here\n" +
+                "\n" +
+                "How To Build Your Panel\n" +
+                "\n" +
+                "First you need to start by planning your panel layout. This is usually done according to the space you have available for the panel, you may be restricted by length or width of the panel and you can adjust the other dimensions to suite. For the 9 solar cells, a sheet of glass 0.5m x 6m (20″ x 24″) was used and the cells were laid out as shown below:");
+        postThree.setUser(userThree);
+        postThree.setLikeCounter(8);
+        postThree.setDateTime(LocalDateTime.of(2019, 1, 11, 17, 55, 14));
+        //creating a fourth post
+        Post postFour = new Post();
+        postFour.setTitle("How To Build a Solar Oven");
+        postFour.setText("\n" +
+                "\n" +
+                "Use the sun's energy to heat up a tasty treat with this simple solar oven! Have you ever heard the expression that it's so hot out you could fry an egg on the sidewalk? Have you ever wondered if it's true? Find out with this easy, fun, and delicious solar oven science project that uses only household items and a pizza box. Plus, learn about absorption, insulation, and the sun's energy.\n" +
+                "\n" +
+                "Want even more solar energy science? Check out these solar energy science projects. And for another edible science project that teaches about insulation, make Baked Alaska.\n" +
+                "Use a box knife or sharp scissors to cut a flap in the lid of the pizza box. Cut along three sides, leaving about an inch between the sides of the flap and the edges of the lid. Fold this flap out so that it stands up when the box lid is closed.  Cover the inner side of the flap with aluminum foil so that it will reflect rays from the sun. To do this, tightly wrap foil around the flap, then tape it to the back, or outer side of the flap.Use clear plastic wrap to create an airtight window for sunlight to enter into the box. Do this by opening the box and taping a double layer of plastic wrap over the opening you made when you cut the flap in the lid. Leave about an inch of plastic overlap around the sides and tape each side down securely, sealing out air. If you use a plastic bag, cut out a square big enough to cover the opening, and tape one layer over the opening.");
 
         //adding the posts to the users
         userOne.setPosts(new ArrayList<>());
@@ -90,14 +138,15 @@ public class Main {
 
 
 
-        /*
-        //creating five posts
+
+        //creating more posts
         Post postThree = new Post();
         postThree.setTitle("post three");
         postDao.createPost(postThree);
         Post postFour = new Post();
         postFour.setTitle("post four");
         postDao.createPost(postFour);
+        /*
         Post postFive = new Post();
         postFive.setTitle("post five");
         postDao.createPost(postFive);
@@ -108,7 +157,7 @@ public class Main {
         postSeven.setTitle("post seven");
         postDao.createPost(postSeven);
         */
-        /*
+
         //connecting tags with posts
         Set<Post> setOfPostsOne = new HashSet<>();
         setOfPostsOne.add(postOne);

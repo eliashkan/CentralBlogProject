@@ -8,11 +8,9 @@ import be.intecbrussel.centralblogproject.model.User;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.TypedQuery;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class VisitorServicesImpl implements VisitorServices {
@@ -75,21 +73,31 @@ public class VisitorServicesImpl implements VisitorServices {
     }
 
 
-    //returns the UNION of the result of three searches
-    //these three results will have to be collection instances
-    @Override
-    public List<Post> searchAll(String text) {
+    //carries out a search by title, author's name and tag name
+    public Stream<Post> searchAll(String text) {
+        List<Post> resultListOne = searchByAuthorsNameUnionByPostTitle(text);
+        List<Post> resultListTwo = searchPostsByTagName(text);
+        //intersection of the above two lists
+        return resultListOne.stream().filter(resultListTwo::contains);
+
+
+    }
+    private List<Post> searchByAuthorsNameUnionByPostTitle(String text) {
         //testing according to title
         Predicate<Post> conditionPostTitle = p -> p.getTitle().toLowerCase().contains(text.toLowerCase());
         //testing according to author's name
         Predicate<Post> conditionAuthorsName = p -> p.getUser().getFullName().toLowerCase().contains(text.toLowerCase());
-        //testing according to the associated tag
-        return null;
+        return posts.
+                filter(conditionAuthorsName.or(conditionPostTitle))
+                .collect(Collectors.toList());
     }
 
-    private List<Post> sortPostsByTagName(String text) {
-        return posts.
-                map(Post::getTags).
-                map(t -> t.ge)
+    //via JPQL. Can't find any other way
+    private List<Post> searchPostsByTagName(String text) {
+        EntityManager em = EntityManagerFactoryProvider.getEM();
+        TypedQuery<Post> query = em.createQuery("select p from Post p join p.tags tag where tag.name=?1", Post.class);
+        query.setParameter(1, text);
+        return query.getResultList();
+
     }
 }

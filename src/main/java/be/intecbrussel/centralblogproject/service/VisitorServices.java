@@ -23,5 +23,5 @@ public interface VisitorServices {
     Stream<Post> sortPostsByPopularity();
 
     // Search element
-    List<Post> searchAll(String text);
+    Stream<Post> searchAll(String text);
 }
