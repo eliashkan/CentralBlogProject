@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(value = "/homepage")
-public class CentralBlogServlet extends HttpServlet {
+public class HomePageControllerServlet extends HttpServlet {
     int currentAmountOfUsers;
     String login = "Log-In";
     String logout = "Log-Out";
