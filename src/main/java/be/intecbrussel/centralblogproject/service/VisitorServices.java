@@ -16,7 +16,7 @@ public interface VisitorServices {
     List<Post> getSixPosts(int indexOfFirstElement);
 
     // Get posts by author
-    List<Post> getPostsByAuthor(String authorsName);
+    Collection getPostsByAuthor(Integer userId);
 
     // Sort posts on this page by popularity
     List<Post> sortPostsByPopularity();

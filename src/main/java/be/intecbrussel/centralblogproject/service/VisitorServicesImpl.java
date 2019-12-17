@@ -14,8 +14,10 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import be.intecbrussel.centralblogproject.model.Post;
 import be.intecbrussel.centralblogproject.model.Tag;
+import be.intecbrussel.centralblogproject.model.User;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 import java.util.Collection;
 import java.util.List;
@@ -39,15 +41,21 @@ public class VisitorServicesImpl implements VisitorServices{
                 collect(Collectors.toList());
     }
 
-    //getter
-    public List<Post> getPosts() {
-        return posts;
+    @Override
+    public List<Post> getPostsByAuthor(Integer userId) {
+
+        EntityManager entityManager = EntityManagerFactoryProvider.getEM();
+        TypedQuery<Post> query = entityManager.createQuery(
+                "SELECT p FROM Post p WHERE p.user.userId=?1",
+                Post.class
+        );
+        query.setParameter(1, userId);
+        List<Post> allPostFromUser = query.getResultList();
+        entityManager.close();
+
+        return allPostFromUser;
     }
 
-    //setter
-    public void setPosts(List<Post> posts) {
-        this.posts = posts;
-    }
 
     @Override
     //good old getter from the DAO
@@ -124,9 +132,10 @@ public class VisitorServicesImpl implements VisitorServices{
         EntityManager em = EntityManagerFactoryProvider.getEM();
 
         TypedQuery<Post> query = em.createQuery("select p from Post p join p.tags tag where tag.id = ?1", Post.class);
+        query.setParameter(1, tag.getId());
+
         em.close();
 
-        query.setParameter(1, tag.getId());
 
         return query.getResultList();
     }

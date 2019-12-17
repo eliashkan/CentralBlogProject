@@ -9,7 +9,7 @@ import java.util.Set;
 public class Post {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idPost;
     private String title;
     @Lob
@@ -29,7 +29,8 @@ public class Post {
         this.title = post.title;
         this.text = post.text;
         this.user = post.user;
-        this.dateTime = post.dateTime;
+        this.dateTime = post.dateTime;        this.comments = post.comments;
+
     }
 
     public Integer getIdPost() {
