@@ -5,7 +5,7 @@
 <body>
     <form method="post" action="upload" enctype="multipart/form-data">
         <input type="file" name="avatar" size="50">
-        <button type="Submit">Send</button>
+        <button type="Submit">Upload</button>
     </form>
 </body>
 </html>
