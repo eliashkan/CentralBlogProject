@@ -1,7 +1,7 @@
 package be.intecbrussel.centralblogproject.service;
 
-import be.intecbrussel.centralblogproject.model.Post;
 import be.intecbrussel.centralblogproject.model.Comment;
+import be.intecbrussel.centralblogproject.model.Post;
 import be.intecbrussel.centralblogproject.model.User;
 
 public interface AuthorServices {
@@ -20,8 +20,8 @@ public interface AuthorServices {
     // Create a post from submit form
     void submitBlogPost(Post post);
 
-    // Update avatar
-    void updateAvatar();
+//    // Update avatar
+//    void updateAvatar();
 
     // Delete profile
     void deleteProfile(User user);
