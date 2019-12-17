@@ -1,36 +1,19 @@
 package be.intecbrussel.centralblogproject.service;
 
-import be.intecbrussel.centralblogproject.dao.PostDao;
-import be.intecbrussel.centralblogproject.model.Post;
-
-public class AuthorServicesImpl implements AuthorServices {
-
-    private PostDao postDao;
-
-    public AuthorServicesImpl () {
-        this.postDao=new PostDao();
 import be.intecbrussel.centralblogproject.connection.EntityManagerFactoryProvider;
 import be.intecbrussel.centralblogproject.dao.CommentDao;
-import be.intecbrussel.centralblogproject.dao.PostDao;
 import be.intecbrussel.centralblogproject.dao.UserDao;
 import be.intecbrussel.centralblogproject.model.Comment;
-import be.intecbrussel.centralblogproject.model.Post;
 import be.intecbrussel.centralblogproject.model.User;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
+import javax.persistence.TypedQuery;
 
 public class AuthorServicesImpl implements AuthorServices {
 
     private UserDao userDAO;
-    private PostDao postDao;
     private CommentDao commentDao;
 
-    public AuthorServicesImpl() {
-        this.userDAO = new UserDao();
-        this.postDao = new PostDao();
-        this.commentDao = new CommentDao();
-    }
 
     @Override
     public void submitComment(Comment comment) {
@@ -39,26 +22,23 @@ public class AuthorServicesImpl implements AuthorServices {
     }
 
     @Override
-    public void deleteMyPost(Post post) {
-        postDao.deletePost(post);
+    public void deleteMyPost() {
+
     }
 
     @Override
-    public void updateMyPost(Post post, Post newPost) {
-        Post postToUpdate = postDao.getPost(post.getIdPost());
-        postToUpdate.setTitle(newPost.getTitle());
-        postToUpdate.setText(newPost.getText());
-        postDao.updatePost(postToUpdate);
+    public void updateMyPost() {
+
     }
 
     @Override
-    public void deleteAComment(Comment comment) {
-        commentDao.deleteComment(comment);
+    public void deleteAComment() {
+
     }
 
     @Override
-    public void submitBlogPost(Post post) {
-       postDao.createPost(post);
+    public void submitBlogPost() {
+
     }
 
     @Override
@@ -67,12 +47,9 @@ public class AuthorServicesImpl implements AuthorServices {
     }
 
     @Override
-    //1. it must delete the corresponding posts
-    //2. all the comments to the above post must be deleted whether it belongs to this author or not
-    //3. all comments of the user must be deleted on all other posts
-    //cascading from user to post and comment
-    public void deleteProfile(User user) {
-        userDAO.deleteUser(user);
+    public void deleteProfile() {
+
+
     }
 
     @Override
@@ -80,23 +57,9 @@ public class AuthorServicesImpl implements AuthorServices {
 
     }
 
-    //this does not contain avatar as setAvatar() does not currently take byte[] as parameter
     @Override
-    public void updateUserInformation(User userWithOldState, User userWithNewState) {
-        User userToBeUpdated = userDAO.getUser(userWithOldState.getUserId());
-        userToBeUpdated.setFullName(userWithNewState.getFullName());
-        userToBeUpdated.setAddress(userWithNewState.getAddress());
-        userToBeUpdated.setUserName(userWithNewState.getUserName());
-        userToBeUpdated.setPassword(userWithNewState.getPassword());
-        userToBeUpdated.setEmail(userWithNewState.getEmail());
-        userDAO.updateUser(userToBeUpdated);
-    }
+    public void updateUserinformation() {
 
-    //seperate update method for avatar so the argument list of updateUserInformation is not loaded with a string unnecessarily when updating avatar is not required
-    public void updateAvatar(User user, String newUrl) throws Exception {
-        User userToBeUpdated = userDAO.getUser(user.getUserId());
-        userToBeUpdated.setAvatar(newUrl);
-        userDAO.updateUser(userToBeUpdated);
     }
 
 
