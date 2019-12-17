@@ -50,16 +50,16 @@ public class VisitorServicesImpl implements VisitorServices {
     //receives a stream of posts
     public List<Post> getSixMorePosts(int multiplier) {
         int desiredLength = 6;
-        return posts.stream().
-                limit(desiredLength * multiplier).
-                collect(Collectors.toList());
+        return posts.stream()
+                .limit(desiredLength * multiplier)
+                .collect(Collectors.toList());
     }
 
     @Override
     public List<Post> getPostsByAuthor(String authorsName) {
-        return posts.stream().
-                filter(p -> p.getUser().getFullName().toLowerCase().contains(authorsName.toLowerCase())).
-                collect(Collectors.toList());
+        return posts.stream()
+                .filter(p -> p.getUser().getFullName().toLowerCase().contains(authorsName.toLowerCase()))
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -75,8 +75,7 @@ public class VisitorServicesImpl implements VisitorServices {
     //from most recent to oldest
     public List<Post> sortPostsByDate(int multiplier, List<Post> sessionPostList) {
         Comparator<Post> comparatorByDate = (p1, p2) -> p2.getDateTime().compareTo(p1.getDateTime());
-        return posts.
-                stream()
+        return posts.stream()
                 .sorted(comparatorByDate)
                 .limit(multiplier)
                 .collect(Collectors.toList());
@@ -107,7 +106,9 @@ public class VisitorServicesImpl implements VisitorServices {
     //via JPQL. Can't find any other way
     private List<Post> searchPostsByTagName(String text) {
         EntityManager em = EntityManagerFactoryProvider.getEM();
-        TypedQuery<Post> query = em.createQuery("select p from Post p join p.tags tag where tag.name=?1", Post.class);
+        TypedQuery<Post> query = em.createQuery(
+                "select p from Post p join p.tags tag where tag.name=?1",
+                Post.class);
         query.setParameter(1, text);
         return query.getResultList();
 
