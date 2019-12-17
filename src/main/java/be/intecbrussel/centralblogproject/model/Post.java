@@ -1,9 +1,7 @@
 package be.intecbrussel.centralblogproject.model;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -11,7 +9,7 @@ import java.util.Set;
 public class Post {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Integer idPost;
     private String title;
     @Lob
@@ -23,10 +21,8 @@ public class Post {
     private Set<Tag> tags;
     @ManyToOne
     private User user;
-
-    @OneToMany
-    @JoinColumn(name = "post")
-    private List<Comment> comments = new ArrayList<>();
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
+    private List<Comment> comments;
 
     public void cloneFrom(Post post) {
         this.idPost = post.idPost;
@@ -34,7 +30,6 @@ public class Post {
         this.text = post.text;
         this.user = post.user;
         this.dateTime = post.dateTime;
-        this.comments = post.comments;
     }
 
     public Integer getIdPost() {
@@ -109,7 +104,6 @@ public class Post {
                 ", text='" + text + '\'' +
                 ", localDate=" + dateTime +
                 ", user=" + user +
-                ", comments=" + comments +
                 '}';
     }
 }

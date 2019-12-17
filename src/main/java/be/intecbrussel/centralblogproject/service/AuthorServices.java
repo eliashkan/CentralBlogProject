@@ -1,5 +1,9 @@
 package be.intecbrussel.centralblogproject.service;
 
+import be.intecbrussel.centralblogproject.model.Post;
+import be.intecbrussel.centralblogproject.model.Comment;
+import be.intecbrussel.centralblogproject.model.User;
+
 public interface AuthorServices {
     // Create comment, link to author, post, .now()
     void submitComment();
@@ -8,10 +12,10 @@ public interface AuthorServices {
     void deleteMyPost();
 
     // Update/edit my own post
-    void updateMyPost();
+    void updateMyPost(Post post, Post newPost);
 
     // Delete a comment from your page
-    void deleteAComment();
+    void deleteAComment(Comment comment);
 
     // Create a post from submit form
     void submitBlogPost();
@@ -20,14 +24,16 @@ public interface AuthorServices {
     void updateAvatar();
 
     // Delete profile
-    void deleteProfile();
+    void deleteProfile(User user);
 
     // Log out
     void logOut();
 
     // add & update user information
-    void updateUserinformation();
+    void updateUserInformation(User userOne, User userTwo);
+
+    void updateAvatar(User user, String newUrl) throws Exception;
 
     // update password
-    void updatePassword();
+    void updatePassword(User user, String string);
 }

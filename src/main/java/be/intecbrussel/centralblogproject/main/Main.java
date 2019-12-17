@@ -8,22 +8,23 @@ import be.intecbrussel.centralblogproject.model.Comment;
 import be.intecbrussel.centralblogproject.model.Post;
 import be.intecbrussel.centralblogproject.model.Tag;
 import be.intecbrussel.centralblogproject.model.User;
+import be.intecbrussel.centralblogproject.service.AuthorServicesImpl;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class Main {
 
-    public static void main(String[] args) {
-
-
+    public static void main(String[] args) throws Exception {
 
         UserDao userDao = new UserDao();
         PostDao postDao = new PostDao();
         CommentDao commentDao = new CommentDao();
         TagRepositoryImpl tri = new TagRepositoryImpl();
+
+        AuthorServicesImpl asi = new AuthorServicesImpl();
 
 
 
@@ -97,7 +98,7 @@ public class Main {
                 "After some time, the queen arrives and sees a young man by the window, and puts pins on the window sill so that if the daughter leaned on it to flirt, she would be stabbed. These pins stab the prince in his canary form, and even when the princess restores him, the prince lies on the ground, bleeding, and his companions must bear him back to his father. The princess escapes by cutting up her sheets for a rope, and overhears witches talking of things; one describes how to heal the prince. She does so, and asks for his coat-of-arms, his standard, and his vest as her reward.\n" +
                 "\n" +
                 "He goes hunting, and she turns him into a canary. When he flies to her room and she turns him back, he reproaches her for his injury. She produces her reward to prove that she saved him, and tells him that it was her stepmother's doing. They marry, and the daughter reveals to her father how wicked her imprisonment had been. ");
-        postOne.setUser(user1);
+        postOne.setUser(userOne);
         postOne.setLikeCounter(3);
         postOne.setDateTime(LocalDateTime.of(2017, 9, 11, 7, 32, 54));
         //creating a second post
@@ -108,25 +109,15 @@ public class Main {
                 "    Meanwhile, scrape the cream cheese into a bowl with 3 tbsp of the caramel sauce, the vanilla, sugar and flour, and beat until smooth. Beat in the eggs, one at a time, until you have a thick, smooth custard consistency. Tip over the base, scraping the bowl clean, and bake in the oven for 10 mins. Reduce the temperature to 140C/120C fan/gas 1 and continue to bake for 25-30 mins until there is a slight wobble in the centre. Turn off the heat and leave the door just slightly ajar – a tea towel holding the door open is ideal. This should leave you with a completely smooth top, but if there are a couple of small cracks, don’t worry. Leave the cheesecake in the oven until completely cool (overnight is fine), then chill until needed. Will keep in the fridge for two days.\n" +
                 "\n" +
                 "    On the day, loosen the sides of the cheesecake from the tin with a knife and remove the base (although I usually serve it straight from the tin base). Add a large pinch of flaky sea salt to the rest of the caramel sauce, then spoon it over the cake and swirl with the back of the spoon. The cheesecake will sit happily on a stand at room temperature for a couple of hours. Just before serving, sprinkle with extra sea salt, if you like.");
-        postTwo.setUser(user2);
+        postTwo.setUser(userTwo);
         postTwo.setLikeCounter(2);
         postTwo.setDateTime(LocalDateTime.of(2019, 1, 31, 4, 52));
 
-        Post postThree = new Post();
-        postThree.setTitle("post three");
-        postDao.createPost(postThree);
-        Post postFour = new Post();
-        postFour.setTitle("post four");
-        postDao.createPost(postFour);
-        Post postFive = new Post();
-        postFive.setTitle("post five");
-        postDao.createPost(postFive);
-        Post postSix = new Post();
-        postSix.setTitle("post six");
-        postDao.createPost(postSix);
-        Post postSeven = new Post();
-        postSeven.setTitle("post seven");
-        postDao.createPost(postSeven);
+        //adding the posts to the users
+        userOne.setPosts(new ArrayList<>());
+        userOne.getPosts().add(postOne);
+        userTwo.setPosts(new ArrayList<>());
+        userTwo.getPosts().add(postTwo);
 
         //connecting tags with posts
         Set<Post> setOfPostsOne = new HashSet<>();
@@ -151,24 +142,31 @@ public class Main {
         tri.saveTag(tagOne);
         tri.saveTag(tagTwo);
 
+        //create a comment on post two
+        Comment commentOne = new Comment();
+        commentOne.setText("I will definitely make this cake this Christmas. Delicious!");
+        commentOne.setUser(userOne);
+        commentOne.setPost(postTwo);
 
+        //adding comment to user
+        userOne.setComments(new ArrayList<>());
+        userOne.getComments().add(commentOne);
 
-        //testing searchPost
-        //List<Post> result = postDao.searchPost(tagOne);
-        //result.forEach(p -> System.out.println(p.getTitle()));
+        //persisting this comment
+        commentDao.createComment(commentOne);
 
-        //testing sortPostsByDateDesc
-        //List<Post> result = postDao.sortPostsByDateAsc();
-        //result.forEach(p -> System.out.println(p.getTitle() + "\t" + p.getDateTime()));
+        //assigning the comment to the post's list
+        postTwo.setComments(new ArrayList<>());
+        postTwo.getComments().add(commentOne);
 
-        //testing sortPostsByPopularity
-        //List<Post> result = postDao.sortPostsByPopularityDesc();
-        //result.forEach(p -> System.out.println(p.getTitle() + "\t" + p.getLikeCounter()));
+        commentDao.deleteComment(commentOne);
 
         //testing paging
         /*
         List<Post> result = postDao.showSixPostsWithPaging(3);
         result.forEach(p -> System.out.println(p.getIdPost() + "\t" + p.getTitle()));
         */
+
+        asi.updateMyPost(postOne, postTwo);
     }
 }
