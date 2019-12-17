@@ -6,10 +6,10 @@ import be.intecbrussel.centralblogproject.model.User;
 
 public interface AuthorServices {
     // Create comment, link to author, post, .now()
-    void submitComment();
+    void submitComment(Comment comment);
 
     // Delete your own post
-    void deleteMyPost();
+    void deleteMyPost(Post post);
 
     // Update/edit my own post
     void updateMyPost(Post post, Post newPost);
@@ -18,7 +18,7 @@ public interface AuthorServices {
     void deleteAComment(Comment comment);
 
     // Create a post from submit form
-    void submitBlogPost();
+    void submitBlogPost(Post post);
 
     // Update avatar
     void updateAvatar();
