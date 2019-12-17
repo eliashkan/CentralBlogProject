@@ -51,6 +51,26 @@
 
 
 <!-- blog post and menus -->
+<div id="block " ;
+     class="d-flex row container-fluid col-12 col-md-12 col-lg-12 justify-content-around m-auto">
+
+    <div class="rounded  blogdivColor col-12 col-md-12 col-lg-6 mt-5"
+         style="height: 800px;overflow-y: auto;">
+
+
+        <c:forEach var="element" items="${postsToShow}">
+            <p class="d-flex rounded blogColors" style="font-weight: bold!important">
+                <c:out value="${element.getTitle()}"/><br>
+                <c:out value="${element.formatDateTime()}"/><br>
+                <c:out value="${element.getLikeCounter()}"/> Likes <br>
+
+            </p>
+        </c:forEach>
+
+
+    </div>
+
+</div>
 
 </body>
 

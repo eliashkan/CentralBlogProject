@@ -3,8 +3,22 @@ body {
     padding: 0;
 
     font-family: Helvetica, sans-serif;
-    background-color: #f4f4f4;
+    /*background-color: #f4f4f4;*/
+    background-color: #d2d2d2;
+
 }
+
+
+/*#canvas {*/
+/*    background-color: #000;*/
+/*    display: block;*/
+/*    margin: auto;*/
+/*}*/
+
+#logo {
+    display: none;
+}
+
 
 a {
     color: #000;
@@ -14,7 +28,8 @@ a {
 
 .header {
     background-color: #fff;
-    box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 4px 4px 9px 0px #6f6f6f;
+
     position: fixed;
     width: 100%;
     z-index: 3;

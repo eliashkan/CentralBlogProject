@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 
 <html lang="en">
 <head>
@@ -13,40 +15,26 @@
 
     <link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet"/>
-    <link href="${pageContext.request.contextPath}/resources/css/snow.css" rel="stylesheet"/>
+    <%--        <link href="${pageContext.request.contextPath}/resources/css/snow.css" rel="stylesheet"/>--%>
     <link href="" rel="stylesheet"/>
     <title>Blog App</title>
 </head>
 
 <body class="d-block bg-dark">
-<canvas style="position: absolute;  " id='canv'></canvas>
-<div class="header mb-3">
-    <a href="${pageContext.request.contextPath}/homepage" class="logo">THE BLOGGERS</a>
-    <input class="menu-btn" type="checkbox" id="menu-btn"/>
-    <label class="menu-icon" for="menu-btn"
-    ><span class="navicon"></span
-    ></label>
-    <ul class="menu">
-        <li><a href="${pageContext.request.contextPath}/login">Log-In</a></li>
-        <li><a href="${pageContext.request.contextPath}/sign">Sign-In</a></li>
 
-        <li class="column ml-2 mr-3 mt-3">
-            <i class="fas fa-search" aria-hidden="true"></i>
-            <input style="background-color:#1a5caf2e;" type="text" placeholder="Search" aria-label="Search"
-                   class="form-control form-control-sm m-auto">
 
-        </li>
-    </ul>
-
-</div>
+<jsp:include page="../header/Header.jsp"/>
 
 
 <div style="height: 20vh;"></div>
+
 
 <!-- menu button -->
 <div
         class="dropdown d-flex row container justify-content-center col-12 col-md-6 col-lg-6"
 >
+
+
     <div class="col-12 col-md-12 col-lg-8">
         <button
                 class=" btn rounded btn-info dropdown-toggle"
@@ -56,15 +44,18 @@
         >
             MENU
         </button>
-        <div
+        <form
                 class="dropdown-menu  bg-dark"
                 x-placement="bottom-start"
                 style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(15px, 48px, 0px);"
+                action="postsort"
+                method="post"
+
         >
-            <a class="dropdown-item text-light" href="#">By old user</a>
-            <a class="dropdown-item text-light" href="#">By new user</a>
-            <a class="dropdown-item text-light" href="#">Show more blogs</a>
-        </div>
+            <input class="dropdown-item text-light" name="date" type="submit" value="By Date">
+            <input class="dropdown-item text-light" name="mostpopular" type="submit" value="Most Popular">
+            <input class="dropdown-item text-light" name="showmore" type="submit" value="Show More">
+        </form>
     </div>
 </div>
 
@@ -75,29 +66,22 @@
 
 <!-- blog post and menus -->
 <div id="block " ;
-     class="d-flex row container-fluid col-12 col-md-12 col-lg-12 justify-content-around m-auto"
->
-    <div
-            class="rounded blogdivColor col-12 col-md-12 col-lg-6 mt-5"
-            style="height:fit-content;"
-    >
-        <p class="rounded blogColors ">
-            Test
-        </p>
+     class="d-flex row container-fluid col-12 col-md-12 col-lg-12 justify-content-around m-auto">
+
+    <div class="rounded  blogdivColor col-12 col-md-12 col-lg-6 mt-5"
+         style="height: 800px;overflow-y: auto;">
 
 
-        <p class="rounded blogColors ">
-            Morbi elementum lacus lobortis, faucibus enim vel, ultricies velit.
-            Nam blandit, dui ut sagittis pharetra, odio nisl facilisis velit,
-            sit Morbi elementum lacus lobortis, faucibus enim vel, ultricies
-            velit. Nam blandit, dui ut sagittis pharetra, odio nisl facilisis
-            velit, sit
-        </p>
-        <p class="rounded blogColors ">
-            Morbi elementum lacus lobortis, faucibus enim vel, ultricies velit.
-            Nam blandit, dui ut sagittis pharetra, odio nisl facilisis velit,
-            sit
-        </p>
+        <c:forEach var="element" items="${postsToShow}">
+            <p class="d-flex rounded blogColors" style="font-weight: bold!important">
+                <c:out value="${element.getTitle()}"/><br>
+                <c:out value="${element.formatDateTime()}"/><br>
+                <c:out value="${element.getLikeCounter()}"/> Likes <br>
+
+            </p>
+        </c:forEach>
+
+
     </div>
 
     <aside
@@ -108,6 +92,6 @@
 </div>
 
 
-<script src="resources/js/snow.js"></script>
+<%--<script src="resources/js/snow.js"></script>--%>
 </body>
 </html>
