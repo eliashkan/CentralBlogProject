@@ -3,8 +3,6 @@ package be.intecbrussel.centralblogproject.service;
 import be.intecbrussel.centralblogproject.model.User;
 
 public interface RegistrationLoginServices {
-    // Check if username exists in the database
-    boolean isUsernameInDb(String username);
 
     /*----------LOGIN-----------*/
 
