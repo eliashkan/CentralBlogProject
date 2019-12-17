@@ -5,20 +5,18 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>be.intecbrussel</groupId>
-    <artifactId>BlogCentral_OWN</artifactId>
+    <artifactId>CentralBlogProject</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
-        <project.build.sourceEncoding>
-            UTF-8
-        </project.build.sourceEncoding>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <build>
-        <finalName>GuestBook</finalName>
+        <finalName>CentralBlogProject</finalName>
         <plugins>
             <plugin>
                 <groupId>org.codehaus.cargo</groupId>
@@ -40,6 +38,12 @@
     </build>
 
     <dependencies>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>8.0.1</version>
+            <scope>provided</scope>
+        </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
