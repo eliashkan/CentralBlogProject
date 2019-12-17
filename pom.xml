@@ -26,15 +26,11 @@
                     <container>
                         <containerId>tomee8x</containerId>
                         <type>installed</type>
-
                         <home>/Applications/apache-tomee-plus-8.0.0/</home>
-
                     </container>
                     <configuration>
                         <type>existing</type>
-
                         <home>/Applications/apache-tomee-plus-8.0.0/</home>
-
                     </configuration>
                 </configuration>
             </plugin>
@@ -79,6 +75,12 @@
             <artifactId>ibatis-core</artifactId>
             <version>3.0</version>
         </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.4</version>
+        </dependency>
+
 
 
     </dependencies>
