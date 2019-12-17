@@ -2,17 +2,11 @@ package be.intecbrussel.centralblogproject.dao;
 
 import be.intecbrussel.centralblogproject.connection.EntityManagerFactoryProvider;
 import be.intecbrussel.centralblogproject.model.Post;
-import be.intecbrussel.centralblogproject.model.Tag;
-import be.intecbrussel.centralblogproject.model.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
-import javax.persistence.Query;
-import javax.persistence.TypedQuery;
-import java.util.List;
 
 public class PostDao {
-
     public Post createPost(Post post) {
         EntityManager em = EntityManagerFactoryProvider.getEM();
         EntityTransaction transaction = em.getTransaction();
@@ -43,35 +37,14 @@ public class PostDao {
         return dbPost;
     }
 
-    public Post updatePost(Post post) {
+    public Post updatPost(Post post) {
         EntityManager em = EntityManagerFactoryProvider.getEM();
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
-        em.merge(post);
+        Post dbPost = em.find(Post.class, post.getIdPost());
+        dbPost.cloneFrom(post);
         transaction.commit();
         em.close();
-        return post;
+        return dbPost;
     }
-
-
-        TypedQuery<Post> query = em.createQuery("select p from Post p order by p.dateTime desc", Post.class);
-
-        return query.getResultList();
-    }
-
-    public List<Post> sortPostsByDateAsc() {
-        EntityManager em = EntityManagerFactoryProvider.getEM();
-
-        TypedQuery<Post> query = em.createQuery("select p from Post p order by p.dateTime asc", Post.class);
-
-        return query.getResultList();
-    }
-
-}
-
-
-
-        return query.getResultList();
-    }
-
 }
