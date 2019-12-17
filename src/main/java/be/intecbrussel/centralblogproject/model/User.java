@@ -100,7 +100,7 @@ public class User {
         return avatar;
     }
 
-    public void setAvatar(String url) throws Exception{
+    public void setAvatar(String url) throws Exception {
         this.avatar = ImageRecovery.recoverImageFromUrl(url);
     }
 

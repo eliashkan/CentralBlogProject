@@ -35,5 +35,8 @@ public interface AuthorServices {
     void updateAvatar(User user, String newUrl) throws Exception;
 
     // update password
-    void updatePassword(User user, String string);
+    void updatePassword(User user, String newPassword);
+
+    //getting user from database with a username
+    User getUserByUsername(String user);
 }

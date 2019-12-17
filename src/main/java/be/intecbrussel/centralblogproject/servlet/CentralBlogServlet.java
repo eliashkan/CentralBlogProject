@@ -32,7 +32,7 @@ public class CentralBlogServlet extends HttpServlet {
         HttpSession httpSession = req.getSession();
         httpSession.setAttribute("post", dbPost);
 
-        req.getRequestDispatcher("resources/BlogAppFrontEnd/pages/home/index.jsp").forward(req, resp);
+        req.getRequestDispatcher("WEB-INF/pages/home/index.jsp").forward(req, resp);
 
 
     }

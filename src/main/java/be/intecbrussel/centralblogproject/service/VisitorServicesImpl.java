@@ -12,6 +12,13 @@ import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import be.intecbrussel.centralblogproject.model.Post;
+import be.intecbrussel.centralblogproject.model.Tag;
+
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+import java.util.Collection;
+import java.util.List;
 
 public class VisitorServicesImpl implements VisitorServices{
 
@@ -111,4 +118,28 @@ public class VisitorServicesImpl implements VisitorServices{
         return query.getResultList();
 
     }
+
+    @Override
+    public Collection searchAll(Tag tag) {
+        EntityManager em = EntityManagerFactoryProvider.getEM();
+
+        TypedQuery<Post> query = em.createQuery("select p from Post p join p.tags tag where tag.id = ?1", Post.class);
+        em.close();
+
+        query.setParameter(1, tag.getId());
+
+        return query.getResultList();
+    }
+
+    @Override
+    public List<Post> sortPostsByDateAsc() {
+        EntityManager em = EntityManagerFactoryProvider.getEM();
+
+        TypedQuery<Post> query = em.createQuery("select p from Post p order by p.dateTime asc", Post.class);
+        em.close();
+
+        return query.getResultList();
+    }
+
+
 }

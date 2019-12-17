@@ -11,11 +11,9 @@
     <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
 
 
-    <link href="${pageContext.request.contextPath}/WEB-INF/resources/BlogAppFrontEnd/css/bootstrap.min.css"
-          rel="stylesheet"/>
-    <link href="${pageContext.request.contextPath}/WEB-INF/resources/BlogAppFrontEnd/css/style.css" rel="stylesheet"/>
-    <link href="${pageContext.request.contextPath}/WEB-INF/resources/BlogAppFrontEnd/css/snow.css" rel="stylesheet"/>
-
+    <link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet"/>
+    <link href="${pageContext.request.contextPath}/resources/css/snow.css" rel="stylesheet"/>
     <link href="" rel="stylesheet"/>
     <title>Blog App</title>
 </head>
@@ -41,6 +39,7 @@
     </ul>
 
 </div>
+
 
 <div style="height: 20vh;"></div>
 
@@ -129,9 +128,8 @@
     ></aside>
 </div>
 </div>
-</canvas>
 
 
-<script src="resources/BlogAppFrontEnd/js/snow.js"></script>
+<script src="resources/js/snow.js"></script>
 </body>
 </html>

@@ -99,10 +99,29 @@ public class AuthorServicesImpl implements AuthorServices {
         userDAO.updateUser(userToBeUpdated);
     }
 
+
     @Override
     public void updatePassword(User user, String newPassword) {
         User userToBeUpdated = userDAO.getUser(user.getUserId());
         userToBeUpdated.setPassword(newPassword);
+        userDAO.createUser(userToBeUpdated);
         userDAO.updateUser(userToBeUpdated);
     }
+
+    @Override
+    public User getUserByUsername(String userName) {
+        //Making The query for getting the username id
+        EntityManager entityManager = EntityManagerFactoryProvider.getEM();
+        TypedQuery<Integer> query = entityManager.createQuery("Select userId from User where userName=?1", Integer.class);
+        query.setParameter(1, userName);
+        Integer userId = query.getSingleResult();
+
+        //Getting the user after getting the userId with the typedQuery
+        User userFromDB = new UserDao().getUser(userId);
+        entityManager.close();
+
+        //Getting user from database
+        return userFromDB;
+    }
+
 }

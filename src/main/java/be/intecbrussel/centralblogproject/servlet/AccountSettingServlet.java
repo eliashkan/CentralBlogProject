@@ -1,6 +1,7 @@
 package be.intecbrussel.centralblogproject.servlet;
 
-import be.intecbrussel.centralblogproject.model.User;
+import be.intecbrussel.centralblogproject.service.AuthorServices;
+import be.intecbrussel.centralblogproject.service.AuthorServicesImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,23 +9,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintStream;
+import java.io.PrintWriter;
 
-
-@WebServlet(value = "/myblog")
-public class UserBlogServlet extends HttpServlet {
+@WebServlet(value = "/account")
+public class AccountSettingServlet extends HttpServlet {
 
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-
-        User user = (User) req.getSession().getAttribute("loggedUser");
-
-        resp.getWriter().println(user.getUserId().toString());
-
-
-        //req.getRequestDispatcher("WEB-INF/pages/user/user.jsp").forward(req, resp);
-
+        req.getRequestDispatcher("WEB-INF/pages/user/account.jsp").forward(req, resp);
 
     }
 
@@ -34,6 +29,4 @@ public class UserBlogServlet extends HttpServlet {
 
 
     }
-
-
 }
