@@ -15,8 +15,8 @@ import java.util.List;
 
 @WebServlet(value = "/postsort")
 public class SortMenuServlet extends HttpServlet {
-    final int FACTOR = 6;
 
+    final int FACTOR = 6;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
