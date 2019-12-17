@@ -1,8 +1,5 @@
 package be.intecbrussel.centralblogproject.model;
 
-
-import be.intecbrussel.centralblogproject.model.Utilities.ImageRecovery;
-
 import javax.persistence.*;
 import java.util.Arrays;
 
@@ -87,9 +84,9 @@ public class User {
         return avatar;
     }
 
-    public void setAvatar(String url) throws Exception {
-        this.avatar = ImageRecovery.recoverImageFromUrl(url);
-    }
+//    public void setAvatar(String url) throws Exception {
+//        this.avatar = ImageRecovery.recoverImageFromUrl(url);
+//    }
 
     @Override
     public String toString() {
