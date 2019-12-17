@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-public class VisitorServicesImpl implements VisitorServices{
+public class VisitorServicesImpl implements VisitorServices {
 
     private PostDao postDAO;
     //we'll load in a list of posts from the database every time Visitor Services is instantiated
@@ -51,7 +51,7 @@ public class VisitorServicesImpl implements VisitorServices{
     public List<Post> getSixMorePosts(int multiplier) {
         int desiredLength = 6;
         return posts.stream().
-                limit(desiredLength*multiplier).
+                limit(desiredLength * multiplier).
                 collect(Collectors.toList());
     }
 
@@ -80,7 +80,7 @@ public class VisitorServicesImpl implements VisitorServices{
                 collect(Collectors.toList());
     }
 
-
+    @Override
     //carries out a search by title, author's name and tag name
     public List<Post> searchAll(String text) {
         List<Post> resultListOne = searchByAuthorsNameUnionByPostTitle(text);
@@ -91,6 +91,7 @@ public class VisitorServicesImpl implements VisitorServices{
         return resultListOne;
 
     }
+
     private List<Post> searchByAuthorsNameUnionByPostTitle(String text) {
         //testing according to title
         Predicate<Post> conditionPostTitle = p -> p.getTitle().toLowerCase().contains(text.toLowerCase());
@@ -107,39 +108,6 @@ public class VisitorServicesImpl implements VisitorServices{
         TypedQuery<Post> query = em.createQuery("select p from Post p join p.tags tag where tag.name=?1", Post.class);
         query.setParameter(1, text);
         return query.getResultList();
-
-    }
-
-
-    //carries out a search by title, author's name and tag name
-    public List<Post> searchAll(String text) {
-        List<Post> resultListOne = searchByAuthorsNameUnionByPostTitle(text);
-        List<Post> resultListTwo = searchPostsByTagName(text);
-        //list1 + (list2-list1)
-        resultListTwo.removeAll(resultListOne);
-        resultListOne.addAll(resultListTwo);
-        return resultListOne;
-
-    }
-
-    private List<Post> searchByAuthorsNameUnionByPostTitle(String text) {
-        //testing according to title
-        Predicate<Post> conditionPostTitle = p -> p.getTitle().toLowerCase().contains(text.toLowerCase());
-        //testing according to author's name
-        Predicate<Post> conditionAuthorsName = p -> p.getUser().getFullName().toLowerCase().contains(text.toLowerCase());
-        return posts.stream().
-                filter(conditionAuthorsName.or(conditionPostTitle))
-                .collect(Collectors.toList());
-    }
-
-    //via JPQL. Can't find any other way
-    private List<Post> searchPostsByTagName(String text) {
-        EntityManager em = EntityManagerFactoryProvider.getEM();
-        TypedQuery<Post> query = em.createQuery("select p from Post p join p.tags tag where tag.name=?1", Post.class);
-        query.setParameter(1, text);
-        List<Post> posts = query.getResultList();
-        em.close();
-        return posts;
 
     }
 }
