@@ -64,19 +64,21 @@ public class VisitorServicesImpl implements VisitorServices {
 
     @Override
     //from most poular to least popular
-    public List<Post> sortPostsByPopularity() {
+    public List<Post> sortPostsByPopularity(int multiplier, List<Post> sessionPostList) {
         Comparator<Post> comparator = (p1, p2) -> p2.getLikeCounter() - p1.getLikeCounter();
         return posts.stream()
                 .sorted(comparator)
+                .limit(multiplier)
                 .collect(Collectors.toList());
     }
 
     //from most recent to oldest
-    public List<Post> sortPostsByDate(int multiplier) {
+    public List<Post> sortPostsByDate(int multiplier, List<Post> sessionPostList) {
         Comparator<Post> comparatorByDate = (p1, p2) -> p2.getDateTime().compareTo(p1.getDateTime());
         return posts.
                 stream()
-                .sorted(comparatorByDate).limit(multiplier)
+                .sorted(comparatorByDate)
+                .limit(multiplier)
                 .collect(Collectors.toList());
     }
 
@@ -110,4 +112,5 @@ public class VisitorServicesImpl implements VisitorServices {
         return query.getResultList();
 
     }
+
 }

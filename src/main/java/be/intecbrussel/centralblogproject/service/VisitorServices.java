@@ -16,7 +16,7 @@ public interface VisitorServices {
     List<Post> getPostsByAuthor(String authorsName);
 
     // Sort posts on this page by popularity
-    List<Post> sortPostsByPopularity();
+    List<Post> sortPostsByPopularity(int i, List<Post> sessionPostList);
 
     // Search element
     List<Post> searchAll(String text);

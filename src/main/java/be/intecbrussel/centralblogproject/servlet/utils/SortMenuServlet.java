@@ -60,7 +60,7 @@ public class SortMenuServlet extends HttpServlet {
             List<Post> sessionPostList = (List<Post>) session.getAttribute("postsToShow");
             visitorServices.setPosts(sessionPostList);
 
-            List<Post> postList = visitorServices.sortPostsByDate(multiplier * FACTOR);
+            List<Post> postList = visitorServices.sortPostsByDate(multiplier * FACTOR, sessionPostList);
             session.setAttribute("postsToShow", postList);
         }
         if (req.getMethod().equals("GET")) {
