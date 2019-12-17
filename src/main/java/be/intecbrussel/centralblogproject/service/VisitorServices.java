@@ -1,9 +1,7 @@
 package be.intecbrussel.centralblogproject.service;
 
 import be.intecbrussel.centralblogproject.model.Post;
-import be.intecbrussel.centralblogproject.model.Tag;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -13,22 +11,14 @@ public interface VisitorServices {
     Post getSpecificPost(Integer postID);
 
     // Get next 6 posts ordered by date/time
-    List<Post> getSixPosts(int indexOfFirstElement);
+    List<Post> getSixPosts();
 
     // Get posts by author
-    Collection getPostsByAuthor(Integer userId);
+    Stream<Post> getPostsByAuthor(String authorsName);
 
     // Sort posts on this page by popularity
     List<Post> sortPostsByPopularity();
 
     // Search element
-    Collection searchAll(Tag tag);
-
-    List<Post> sortPostsByDateDesc();
-
-    List<Post> sortPostsByDateAsc();
-
-    List<Post> sortPostsByPopularityAsc();
-
-
+    Stream<Post> searchAll(String text);
 }
