@@ -31,18 +31,18 @@
 
 <!-- menu button -->
 <div
-        class="dropdown d-flex row container justify-content-center col-12 col-md-6 col-lg-6"
+        class="dropdown d-flex row container justify-content-center col-9 col-md-9 col-lg-9"
 >
 
 
-    <div class="col-12 col-md-12 col-lg-8">
+    <div class="col-12 col-md-12 col-lg-10 mb-2">
         <button
                 class=" btn rounded btn-info dropdown-toggle"
                 type="button"
                 data-toggle="dropdown"
                 aria-expanded="false"
         >
-            MENU
+            Sort
         </button>
         <form
                 class="dropdown-menu  bg-dark"
@@ -65,30 +65,75 @@
 </div>
 
 <!-- blog post and menus -->
-<div id="block " ;
-     class="d-flex row container-fluid col-12 col-md-12 col-lg-12 justify-content-around m-auto">
+<div
+        class="d-flex row container-fluid col-12 col-md-12 col-lg-10 justify-content-around"
+        style="height:fit-content;"
+>
 
-    <div class="rounded  blogdivColor col-12 col-md-12 col-lg-6 mt-5"
-         style="height: 800px;overflow-y: auto;">
 
+    <%--        //printing the posts from user (only the titles)--%>
 
-        <c:forEach var="element" items="${postsToShow}">
-            <p class="d-flex rounded blogColors" style="font-weight: bold!important">
-                <c:out value="${element.getTitle()}"/><br>
-                <c:out value="${element.formatDateTime()}"/><br>
-                <c:out value="${element.getLikeCounter()}"/> Likes <br>
+    <div class="rounded d-flex row blogdivColor justify-content-center col-12 col-md-12 col-lg-5"
+         style="height: 900px;overflow-y: auto;">
+        <c:forEach var="article" items="${postsToShow}">
+            <div class="card rounded d-flex row container-fluid col-12 col-md-12 col-lg-12 align-content-start mt-1 mb-3 bg-light"
+                 style="width: 18rem;">
+                <div class="card-body rounded bg-dark mt-2">
 
-            </p>
+                    <h5 class="card-title text-light">${article.getTitle()}</h5>
+
+                    <p class="card-text p-2 rounded-left bg-secondary font-weight-bold text-secondary"
+                       style="color: rebeccapurple">
+                        <c:set var="articleText" value="${article.getText()}"/>
+                        <%
+                            String shortArticle = (String) pageContext.getAttribute("articleText");
+                            // substring of the article from 0 to index of second period (2 phrases)
+                            shortArticle = shortArticle.substring(
+                                    0,
+                                    shortArticle.indexOf('.', shortArticle.indexOf('.') + 1) + 1
+                            );
+                            pageContext.setAttribute("shortArticle", shortArticle);
+                        %>
+                        <c:out value="${shortArticle} ..."/>
+                    </p>
+                </div>
+                <div class="card-body p-2 font-weight-bold text-info"><c:out value="${article.formatDateTime()}"/></div>
+                <div class="card-body pl-0 align-content-center">
+                    <div class="btn m-0 p-0 " role="group" aria-label="Basic example">
+                        <p class="btn btn-success m-0">
+                            <c:out value="${article.getLikeCounter()}"/>
+                        </p>
+                        <button type="button" class="btn btn-dark">Like</button>
+                    </div>
+                </div>
+            </div>
+
+            <%--            <p class="d-flex rounded blogColors" style="font-weight: bold!important ;">--%>
+
         </c:forEach>
-
-
     </div>
 
-    <aside
-            class=" rounded bg-light col-12 col-md-12 col-lg-2 mt-5"
-            style="height: 500px;"
-    ></aside>
+
+    <aside class="d-flex-block flex-nowrap rounded bg-light col-10 col-sm-6 col-md-6 col-lg-3 h-lg-25"
+           style="max-height:600px">
+        <img class="pt-2 rounded" src="https://via.placeholder.com/150C" alt="">
+
+
+        <div class="rounded col-12 object-fit=contain p-2">
+            <p class="rounded blogColors ">
+                Morbi elementum lacus lobortis, faucibus enim vel, ultricies velit.
+                Nam blandit, dui ut sagittis pharetra, odio nisl facilisis velit,
+                sit
+            </p>
+
+        </div>
+
+
+    </aside>
 </div>
+</div>
+
+
 </div>
 
 

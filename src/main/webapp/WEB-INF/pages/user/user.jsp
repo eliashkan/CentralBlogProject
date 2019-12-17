@@ -53,31 +53,31 @@
 
 <!-- blog post and menus -->
 <div
-        class="d-flex row container-fluid col-12 col-md-12 col-lg-11 justify-content-start m-auto"
+        class="d-flex row container-fluid col-12 col-md-12 col-lg-10 justify-content-around m-auto"
         style="height:fit-content;"
 >
 
 
     <%--        //printing the posts from user (only the titles)--%>
 
-    <%--    <div class="rounded  blogdivColor col-12 col-md-12 col-lg-6 mt-5" style="height: 600px;overflow-y: auto;">--%>
-    <c:forEach var="article" items="${postsToShow}">
-        <div class="card rounded d-flex row container-fluid col-12 col-md-6 col-lg-4 align-content-start m-2"
-             style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
+    <div class="rounded d-flex row blogdivColor justify-content-center col-12 col-md-12 col-lg-7 mt-5"
+         style="height: 900px;overflow-y: auto;">
+        <c:forEach var="article" items="${postsToShow}">
+            <div class="card rounded d-flex row container-fluid col-12 col-md-12 col-lg-12 align-content-start mt-1"
+                 style="width: 18rem;">
+                <div class="card-body">
 
-                <h5 class="card-title">${article.getTitle()}</h5>
+                    <h5 class="card-title">${article.getTitle()}</h5>
 
-                <p class="card-text" style="color: rebeccapurple">
-                    <c:set var="articleText" value="${article.getText()}"/>
-                    <%
-                        String shortArticle = ( String ) pageContext.getAttribute("articleText");
-                        // substring of the article from 0 to index of second period (2 phrases)
-                        shortArticle = shortArticle.substring(
-                                0,
-                                shortArticle.indexOf('.', shortArticle.indexOf('.') + 1) + 1
-                        );
+                    <p class="card-text" style="color: rebeccapurple">
+                        <c:set var="articleText" value="${article.getText()}"/>
+                        <%
+                            String shortArticle = (String) pageContext.getAttribute("articleText");
+                            // substring of the article from 0 to index of second period (2 phrases)
+                            shortArticle = shortArticle.substring(
+                                    0,
+                                    shortArticle.indexOf('.', shortArticle.indexOf('.') + 1) + 1
+                            );
                         pageContext.setAttribute("shortArticle", shortArticle);
                     %>
                     <c:out value="${shortArticle} ..."/>
@@ -97,7 +97,7 @@
         <%--            <p class="d-flex rounded blogColors" style="font-weight: bold!important ;">--%>
 
     </c:forEach>
-    <%--    </div>--%>
+    </div>
 
 
     <aside class="d-flex-block flex-nowrap rounded bg-light col-10 col-sm-6 col-md-6 col-lg-3 h-lg-25 mt-5"
@@ -118,6 +118,8 @@
     </aside>
 </div>
 </div>
+
+
 </canvas>
 
 
