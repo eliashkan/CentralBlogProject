@@ -76,7 +76,7 @@
     <div class="rounded d-flex row blogdivColor justify-content-center col-12 col-md-12 col-lg-5"
          style="height: 900px;overflow-y: auto;">
         <c:forEach var="article" items="${postsToShow}">
-            <div class="card rounded d-flex row container-fluid col-12 col-md-12 col-lg-12 align-content-start mt-1 mb-3 bg-light"
+            <div class="card rounded d-flex row container-fluid col-12 col-md-12 col-lg-12 mt-1 mb-3 bg-light"
                  style="width: 18rem;">
                 <div class="card-body rounded bg-dark mt-2">
 
