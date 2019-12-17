@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="header mb-3">
-    <a href="${pageContext.request.contextPath}/homepage" class="logo">THE BLOGGERS</a>
+    <a href="${pageContext.request.contextPath}/homepage" class="logo">BLOG CENTRAL</a>
     <input class="menu-btn" type="checkbox" id="menu-btn"/>
     <label class="menu-icon" for="menu-btn"
     ><span class="navicon"></span
@@ -12,7 +12,10 @@
                 <li><a href="${pageContext.request.contextPath}/login">Log-In</a></li>
             </c:when>
             <c:otherwise>
-                <li><a href="${pageContext.request.contextPath}/login">Log-Out</a></li>
+                <li><a href="${pageContext.request.contextPath}/logout">Log-Out</a></li>
+                <li><a href="${pageContext.request.contextPath}/login">My Account</a></li>
+
+
             </c:otherwise>
         </c:choose>
 

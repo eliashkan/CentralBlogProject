@@ -1,5 +1,5 @@
-<%@ page import="be.intecbrussel.centralblogproject.model.Post" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,21 +21,7 @@
 
 <body class="d-block bg-dark">
 <!--  <canvas style="position: absolute;" id='canv'></canvas> -->
-<div class="header mb-3">
-    <a href="${pageContext.request.contextPath}/homepage" class="logo">THE BLOGGERS</a>
-    <input class="menu-btn" type="checkbox" id="menu-btn"/>
-    <label class="menu-icon" for="menu-btn"
-    ><span class="navicon"></span
-    ></label>
-    <ul class="menu">
-
-        <li><a href="${pageContext.request.contextPath}/login">Log-Out</a></li>
-        <li><a href="">Create new post</a></li>
-        <li><a href="">Show my post</a></li>
-        <li><a href="${pageContext.request.contextPath}/account">Account Settings</a></li>
-
-    </ul>
-</div>
+<jsp:include page="../header/Header.jsp"/>
 
 <div style="height: 20vh;"></div>
 
@@ -67,21 +53,52 @@
 
 <!-- blog post and menus -->
 <div
-        class="d-flex row container-fluid col-12 col-md-12 col-lg-12 justify-content-around m-auto"
+        class="d-flex row container-fluid col-12 col-md-12 col-lg-11 justify-content-start m-auto"
         style="height:fit-content;"
 >
-    <div class="rounded  blogdivColor col-12 col-md-12 col-lg-6 mt-5" style="height:fit-content;">
 
 
-        <%--        //printing the posts from user (only the titles)--%>
+    <%--        //printing the posts from user (only the titles)--%>
 
-        <c:forEach var="element" items="${postsFromUser}">
-            <p class="d-flex rounded blogColors" style="font-weight: bold!important ;height: 600px;overflow-y: auto;">
-                <c:out value="${element.getTitle()}"/>
-            </p>
-        </c:forEach>
+    <%--    <div class="rounded  blogdivColor col-12 col-md-12 col-lg-6 mt-5" style="height: 600px;overflow-y: auto;">--%>
+    <c:forEach var="article" items="${postsToShow}">
+        <div class="card rounded d-flex row container-fluid col-12 col-md-6 col-lg-4 align-content-start m-2"
+             style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
 
-    </div>
+                <h5 class="card-title">${article.getTitle()}</h5>
+
+                <p class="card-text" style="color: rebeccapurple">
+                    <c:set var="articleText" value="${article.getText()}"/>
+                    <%
+                        String shortArticle = ( String ) pageContext.getAttribute("articleText");
+                        // substring of the article from 0 to index of second period (2 phrases)
+                        shortArticle = shortArticle.substring(
+                                0,
+                                shortArticle.indexOf('.', shortArticle.indexOf('.') + 1) + 1
+                        );
+                        pageContext.setAttribute("shortArticle", shortArticle);
+                    %>
+                    <c:out value="${shortArticle} ..."/>
+                </p>
+            </div>
+            <div class="card-body"><c:out value="${article.formatDateTime()}"/></div>
+            <div class="card-body">
+                <div class="btn-group btn-outline-primary" role="group" aria-label="Basic example">
+                    <p class="btn m-0 btn-secondary">
+                        <c:out value="${article.getLikeCounter()}"/>
+                    </p>
+                    <button type="button" class="btn btn-secondary">Like</button>
+                </div>
+            </div>
+        </div>
+
+        <%--            <p class="d-flex rounded blogColors" style="font-weight: bold!important ;">--%>
+
+    </c:forEach>
+    <%--    </div>--%>
+
 
     <aside class="d-flex-block flex-nowrap rounded bg-light col-10 col-sm-6 col-md-6 col-lg-3 h-lg-25 mt-5"
            style="max-height:600px">

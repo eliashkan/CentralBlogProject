@@ -3,8 +3,22 @@ body {
     padding: 0;
 
     font-family: Helvetica, sans-serif;
-    background-color: #f4f4f4;
+    /*background-color: #f4f4f4;*/
+    background-color: #d2d2d2;
+
 }
+
+
+/*#canvas {*/
+/*    background-color: #000;*/
+/*    display: block;*/
+/*    margin: auto;*/
+/*}*/
+
+#logo {
+    display: none;
+}
+
 
 a {
     color: #000;

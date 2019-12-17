@@ -4,6 +4,7 @@
     <meta charset="UTF-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -19,19 +20,9 @@
 </head>
 
 <body class="d-block bg-dark">
-<div class="header mb-3">
-    <a href="${pageContext.request.contextPath}/homepage" class="logo">THE BLOGGERS</a>
-    <input class="menu-btn" type="checkbox" id="menu-btn"/>
-    <label class="menu-icon" for="menu-btn"
-    ><span class="navicon"></span
-    ></label>
-    <ul class="menu">
+<jsp:include page="../header/Header.jsp"/>
+<canvas id=”canvas” width=”600px” height=”400px”></canvas>
 
-        <li><a href="${pageContext.request.contextPath}/login">Log-In</a></li>
-        <li><a href="${pageContext.request.contextPath}/sign">Sign-In</a></li>
-
-    </ul>
-</div>
 
 <div style="height: 20vh;"></div>
 
@@ -67,6 +58,8 @@
 
 
 <!-- blog post and menus -->
+
+<script src="resources/js/matrix.js"></script>
 
 </body>
 
