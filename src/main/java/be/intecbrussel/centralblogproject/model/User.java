@@ -2,41 +2,24 @@ package be.intecbrussel.centralblogproject.model;
 
 
 import be.intecbrussel.centralblogproject.model.Utilities.ImageRecovery;
-import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-import java.util.List;
+import java.util.Arrays;
 
 @Entity
 public class User {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userId;
-    private String fullName;
-    private String address;
-    @Length(min = 4)
-    @NotNull
     private String userName;
-    @Length(min = 8, max = 20, message = "A password must contain between 8 and 20 characters and a special character, digit and low and upper case letters.")
-    @NotNull
-    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,20}$")
+    private String fullName;
     private String password;
-    @NotNull
-    @Email
+    private String adress;
     private String email;
     @Lob
-    @Column(columnDefinition = "MEDIUMBLOB")
-    //BLOB has a size of 65535 bytes
-    //MEDIUMBLOB has a size of 16777215 bytes
+    @Column(columnDefinition = "BLOB")
     private byte[] avatar;
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Post> posts;
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Comment> comments;
 
 
     public void cloneFrom(User user) {
@@ -44,7 +27,7 @@ public class User {
         this.userName = user.userName;
         this.fullName = user.fullName;
         this.password = user.password;
-        this.address = user.address;
+        this.adress = user.adress;
         this.email = user.email;
     }
 
@@ -80,12 +63,12 @@ public class User {
         this.password = password;
     }
 
-    public String getAddress() {
-        return address;
+    public String getAdress() {
+        return adress;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setAdress(String adress) {
+        this.adress = adress;
     }
 
     public String getEmail() {
@@ -93,6 +76,10 @@ public class User {
     }
 
     public void setEmail(String email) {
+        while (!email.matches("^[A-Z0-9+_.-]+@[A-Z0-9.-]+$\n")) {
+            System.out.println("Wrong email-format");
+            setEmail(email);
+        }
         this.email = email;
     }
 
@@ -104,20 +91,17 @@ public class User {
         this.avatar = ImageRecovery.recoverImageFromUrl(url);
     }
 
-    public List<Post> getPosts() {
-        return posts;
-    }
-
-    public void setPosts(List<Post> posts) {
-        this.posts = posts;
-    }
-
-    public List<Comment> getComments() {
-        return comments;
-    }
-
-    public void setComments(List<Comment> comments) {
-        this.comments = comments;
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", userName='" + userName + '\'' +
+                ", fullName='" + fullName + '\'' +
+                ", password='" + password + '\'' +
+                ", adress='" + adress + '\'' +
+                ", email='" + email + '\'' +
+                ", avatar=" + Arrays.toString(avatar) +
+                '}';
     }
 }
 
