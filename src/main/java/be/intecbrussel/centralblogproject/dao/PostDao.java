@@ -37,7 +37,7 @@ public class PostDao {
         return dbPost;
     }
 
-    public Post updatPost(Post post) {
+    public Post updatePost(Post post) {
         EntityManager em = EntityManagerFactoryProvider.getEM();
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
