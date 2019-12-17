@@ -58,7 +58,15 @@ public class Post {
     }
 
     public LocalDateTime getDateTime() {
+
         return dateTime;
+    }
+
+    public String formatDateTime() {
+
+        String formatedDateTime = dateTime.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM));
+
+        return formatedDateTime;
     }
 
     public void setDateTime(LocalDateTime localDate) {
