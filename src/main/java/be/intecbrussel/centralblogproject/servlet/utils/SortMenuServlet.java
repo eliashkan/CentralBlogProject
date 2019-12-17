@@ -12,7 +12,6 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-
 @WebServlet(value = "/postsort")
 public class SortMenuServlet extends HttpServlet {
 
@@ -20,10 +19,8 @@ public class SortMenuServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         doPost(req, resp);
     }
-
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -32,46 +29,37 @@ public class SortMenuServlet extends HttpServlet {
 
         /* Sorting the list to be showed on homepage.
          * Two Session Attributes is needed for the check.(PostTOShow and multiplier)
-         * We Check First wich Parameter is trigger from the Index.Jsp. If no trigger,the list wil reset and the multiplier also to 1
-         * If trigger is happend Than we Set the actual session postList in the the visitorServices and the sort is start and back set to the session Atribute
+         * We Check First wich Parameter is trigger from the Index.Jsp.
+         * If no trigger,the list wil reset and the multiplier also to 1
+         * If trigger is happend Than we Set the actual session postList in the the visitorServices
+         * and the sort is start and back set to the session Atribute
          * */
 
+        /*
+         * Can this be more efficient and cleaner by having the dropdown sort menu link to seperate servlets?
+         * */
+
+        int multiplier = (Integer) session.getAttribute("multiplier");
+        List<Post> sessionPostList = (List<Post>) session.getAttribute("postsToShow");
+        visitorServices.setPosts(sessionPostList);
+
         if (req.getParameter("showmore") != null) {
-
-            int multiplier = (Integer) session.getAttribute("multiplier");
-            ++multiplier;
-
+            multiplier++;
             List<Post> postList = visitorServices.getSixMorePosts(multiplier);
             session.setAttribute("postsToShow", postList);
             session.setAttribute("multiplier", multiplier);
-        }
-        if (req.getParameter("mostpopular") != null) {
-
-            int multiplier = (Integer) session.getAttribute("multiplier");
-            List<Post> sessionPostList = (List<Post>) session.getAttribute("postsToShow");
-            visitorServices.setPosts(sessionPostList);
-
+        } else if (req.getParameter("mostpopular") != null) {
             List<Post> postList = visitorServices.sortPostsByPopularity(multiplier * FACTOR, sessionPostList);
             session.setAttribute("postsToShow", postList);
-
-        }
-        if (req.getParameter("date") != null) {
-            int multiplier = (Integer) session.getAttribute("multiplier");
-            List<Post> sessionPostList = (List<Post>) session.getAttribute("postsToShow");
-            visitorServices.setPosts(sessionPostList);
-
+        } else if (req.getParameter("date") != null) {
             List<Post> postList = visitorServices.sortPostsByDate(multiplier * FACTOR, sessionPostList);
             session.setAttribute("postsToShow", postList);
-        }
-        if (req.getMethod().equals("GET")) {
-            int multiplier = (Integer) session.getAttribute("multiplier");
+        } else if (req.getMethod().equals("GET")) {
             multiplier = 1;
             session.setAttribute("postsToShow", visitorServices.getSixMorePosts(multiplier));
             session.setAttribute("multiplier", multiplier);
         }
 
         req.getRequestDispatcher("WEB-INF/pages/home/index.jsp").forward(req, resp);
-
-
     }
 }
