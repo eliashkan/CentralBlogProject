@@ -1,7 +1,11 @@
 package be.intecbrussel.centralblogproject.servlet;
 
+import be.intecbrussel.centralblogproject.dao.UserDao;
+import be.intecbrussel.centralblogproject.model.Post;
+import be.intecbrussel.centralblogproject.model.User;
 import be.intecbrussel.centralblogproject.service.AuthorServicesImpl;
 import be.intecbrussel.centralblogproject.service.RegistrationLoginServicesImpl;
+import be.intecbrussel.centralblogproject.service.VisitorServicesImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 
 @WebServlet(value = "/login")
@@ -39,13 +44,20 @@ public class LoginServlet extends HttpServlet {
 
         //Checking if user pass the login check
         if (registrationLoginServices.isPasswordMatchingUsername(username, password)) {
+            VisitorServicesImpl visitorServices = new VisitorServicesImpl();
+
 
             //Put Logged user in the session and getting data
             HttpSession session = req.getSession();
-            session.setAttribute("loggedUser", new AuthorServicesImpl().getUserByUsername(username));
+            User user = new AuthorServicesImpl().getUserByUsername(username);
+            session.setAttribute("loggedUser", user);
+            List<Post> postList = visitorServices.getPostsByAuthor(username);
+            session.setAttribute("postsFromUser", postList);
+            session.setAttribute("avatar", user.getAvatar());
+
 
             //Dispatch req to his blog and loading user détails
-            resp.sendRedirect(req.getContextPath() + "/myblog");
+            req.getRequestDispatcher("WEB-INF/pages/user/user.jsp").forward(req, resp);
 
         } else {
 

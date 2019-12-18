@@ -1,8 +1,5 @@
 package be.intecbrussel.centralblogproject.servlet;
 
-import be.intecbrussel.centralblogproject.model.Post;
-import be.intecbrussel.centralblogproject.service.VisitorServicesImpl;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,7 +8,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 
 @WebServlet(value = "/testing")
 public class TestingServlet extends HttpServlet {

@@ -29,7 +29,7 @@
 <div class="card bg-dark" ; style="border:none">
     <article class="card-body mx-auto" style="max-width: 500px;">
 
-        <h4 class="card-title mt-3 text-light text-center">THE BLOGGERS</h4>
+        <h4 class="card-title mt-3 text-light text-center">Blog Central</h4>
 
 
         <form action="login" method="post">

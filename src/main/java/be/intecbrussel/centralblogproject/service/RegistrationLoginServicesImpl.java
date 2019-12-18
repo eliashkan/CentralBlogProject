@@ -6,8 +6,6 @@ import be.intecbrussel.centralblogproject.model.User;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
-import java.sql.ResultSet;
-import java.util.List;
 
 
 public class RegistrationLoginServicesImpl implements RegistrationLoginServices {

@@ -19,7 +19,7 @@ public class User {
     private String email;
     @Lob
     @Column(columnDefinition = "BLOB")
-    private byte[] avatar;
+    private String avatar;
 
 
     public void cloneFrom(User user) {
@@ -76,19 +76,19 @@ public class User {
     }
 
     public void setEmail(String email) {
-        while (!email.matches("^[A-Z0-9+_.-]+@[A-Z0-9.-]+$\n")) {
-            System.out.println("Wrong email-format");
-            setEmail(email);
-        }
+//        while (!email.matches("^[A-Z0-9+_.-]+@[A-Z0-9.-]+$\n")) {
+//            System.out.println("Wrong email-format");
+//            setEmail(email);
+//        }
         this.email = email;
     }
 
-    public byte[] getAvatar() {
+    public String getAvatar() {
         return avatar;
     }
 
     public void setAvatar(String url) throws Exception {
-        this.avatar = ImageRecovery.recoverImageFromUrl(url);
+        this.avatar = url;
     }
 
     @Override
@@ -100,7 +100,7 @@ public class User {
                 ", password='" + password + '\'' +
                 ", adress='" + adress + '\'' +
                 ", email='" + email + '\'' +
-                ", avatar=" + Arrays.toString(avatar) +
+                ", avatar=" + avatar +
                 '}';
     }
 }

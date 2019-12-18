@@ -27,6 +27,7 @@ public class SignInServlet extends HttpServlet {
         req.getRequestDispatcher("WEB-INF/pages/signin/sign.jsp").forward(req, resp);
 
 
+
     }
 
 
@@ -41,6 +42,7 @@ public class SignInServlet extends HttpServlet {
         //todo match 2 samepasswords
         String passwordRepeat = req.getParameter("passwordRepeat");
         RegistrationLoginServicesImpl registrationLoginServices = new RegistrationLoginServicesImpl();
+
         if (registrationLoginServices.isUsernameInDB(userName)) {
 
             out.println("<html> ");
@@ -51,6 +53,7 @@ public class SignInServlet extends HttpServlet {
 
         } else {
             //Making Object User
+
             User user = new User();
             user.setUserName(userName);
             user.setEmail(emailAdress);
@@ -59,6 +62,10 @@ public class SignInServlet extends HttpServlet {
             //Push User in Database
             UserDao userDao = new UserDao();
             userDao.createUser(user);
+
+            req.getSession().setAttribute("loggedUser", user);
+
+
             resp.sendRedirect("myblog");
 
 

@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +10,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
     <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
 
     <link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet"/>
@@ -27,28 +30,41 @@
 
 <!-- menu button -->
 <div
-        class="dropdown d-flex row container justify-content-center col-12 col-md-6 col-lg-6"
+        class="dropdown d-flex row container justify-content-center col-9 col-md-9 col-lg-9"
 >
-    <div class="col-12 col-md-12 col-lg-8">
+
+
+    <div class="col-12 col-md-12 col-lg-7 mb-2">
         <button
-                class=" btn btn-info rounded dropdown-toggle"
+                class=" btn rounded btn-info dropdown-toggle"
                 type="button"
                 data-toggle="dropdown"
                 aria-expanded="false"
-
         >
-            MENU
+            Sort
         </button>
-        <div
-                class="dropdown-menu bg-dark"
+
+
+        <form
+                class="dropdown-menu  bg-dark"
                 x-placement="bottom-start"
                 style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(15px, 48px, 0px);"
+                action="postsort"
+                method="post"
+
         >
-            <a class="dropdown-item text-light" href="#">By old user</a>
-            <a class="dropdown-item text-light" href="#">By new user</a>
-            <a class="dropdown-item text-light" href="#">Show more blogs</a>
-        </div>
+            <input class="dropdown-item text-light" name="date" type="submit" value="By Date">
+            <input class="dropdown-item text-light" name="mostpopular" type="submit" value="Most Popular">
+            <input class="dropdown-item text-light" name="showmore" type="submit" value="Show More">
+        </form>
+
+
     </div>
+</div>
+
+<div>
+
+
 </div>
 
 <!-- blog post and menus -->
@@ -58,51 +74,77 @@
 >
 
 
-    <%--        //printing the posts from user (only the titles)--%>
-
-    <div class="rounded d-flex row blogdivColor justify-content-center col-12 col-md-12 col-lg-7 mt-5"
+    <%--        //printing the posts User (only the titles)--%>
+    <div class="rounded d-flex row blogdivColor justify-content-center col-12 col-md-12 col-lg-5"
          style="height: 900px;overflow-y: auto;">
-        <c:forEach var="article" items="${postsToShow}">
-            <div class="card rounded d-flex row container-fluid col-12 col-md-12 col-lg-12 align-content-start mt-1"
-                 style="width: 18rem;">
-                <div class="card-body">
+        <c:forEach var="article" items="${postsFromUser}">
+        <div class="card rounded d-flex row container-fluid col-12 col-md-12 col-lg-12 mt-3 mb-3 bg-light"
+             style="width: 18rem;height: fit-content">
+            <div class="card-body rounded bg-dark mt-2">
 
-                    <h5 class="card-title">${article.getTitle()}</h5>
+                    <%--                Setting the url for each post--%>
+                <c:url var="templink" value="/blogmanager">
+                    <c:param name="command" value="DELETE"/>
+                    <c:param name="postId" value="${article.getIdPost()}"/>
 
-                    <p class="card-text" style="color: rebeccapurple">
-                        <c:set var="articleText" value="${article.getText()}"/>
-                        <%
-                            String shortArticle = (String) pageContext.getAttribute("articleText");
-                            // substring of the article from 0 to index of second period (2 phrases)
-                            shortArticle = shortArticle.substring(
-                                    0,
-                                    shortArticle.indexOf('.', shortArticle.indexOf('.') + 1) + 1
-                            );
+                </c:url>
+
+
+                <h5 class="card-title text-light">${article.getTitle()}</h5>
+
+                <p class="card-text p-2 rounded-left bg-light text-primary"
+                   style="color: rebeccapurple">
+                    <c:set var="articleText" value="${article.getText()}"/>
+                    <%
+                        String shortArticle = (String) pageContext.getAttribute("articleText");
+                        // substring of the article from 0 to index of second period (2 phrases)
+                        shortArticle = shortArticle.substring(
+                                0,
+                                shortArticle.indexOf('.', shortArticle.indexOf('.') + 1) + 1
+                        );
                         pageContext.setAttribute("shortArticle", shortArticle);
                     %>
                     <c:out value="${shortArticle} ..."/>
                 </p>
             </div>
-            <div class="card-body"><c:out value="${article.formatDateTime()}"/></div>
-            <div class="card-body">
-                <div class="btn-group btn-outline-primary" role="group" aria-label="Basic example">
-                    <p class="btn m-0 btn-secondary">
-                        <c:out value="${article.getLikeCounter()}"/>
-                    </p>
-                    <button type="button" class="btn btn-secondary">Like</button>
+            <div class="card-body p-2 font-weight-bold text-info"><c:out value="${article.formatDateTime()}"/></div>
+
+
+            <div class="card-body pl-0 d-flex column col-1 col-sm-12">
+                <div class="m-0 p-0" role="group" aria-label="Basic example">
+                    <form action="blogmanager" method="get">
+                            <span class="rounded text-dark p-2 mb-1">
+                            <c:out value="${article.getLikeCounter()}"/> Like
+
+                            </span>
+
+
+                        <button type="submit" name="Like" class="badge-danger rounded mb-1"><a class="btn-link"
+                                                                                               role="button"
+                                                                                               href="${templink}">Like
+                            Post</a></button>
+                        <button type="submit" name="create" class="badge-danger rounded mb-1"><a class="btn-link"
+                                                                                                 role="button"
+                                                                                                 href="${templink}">Create
+                            Post</a></button>
+
+
+                        <button type="submit" name="delete" class="badge-danger rounded mb-1"><a class="btn-link"
+                                                                                                 role="button"
+                                                                                                 href="${templink}"
+                                                                                                 onclick="if (!(confirm('Are you sure you want to delete the post ?')))return false">Delete
+                            Post</a></button>
+
+                    </form>
                 </div>
             </div>
         </div>
-
-        <%--            <p class="d-flex rounded blogColors" style="font-weight: bold!important ;">--%>
-
-    </c:forEach>
     </div>
 
 
-    <aside class="d-flex-block flex-nowrap rounded bg-light col-10 col-sm-6 col-md-6 col-lg-3 h-lg-25 mt-5"
+    <aside class="d-flex-block flex-nowrap rounded bg-light col-10 col-sm-6 col-md-6 col-lg-3 h-lg-25 mt-2"
            style="max-height:600px">
-        <img class="pt-2 rounded" src="https://via.placeholder.com/150C" alt="">
+        <img class="pt-2 rounded" style="height: 100px" src="${avatar}" alt="">
 
 
         <div class="rounded col-12 object-fit=contain p-2">
@@ -116,7 +158,11 @@
 
 
     </aside>
-</div>
+
+
+        <%--            <p class="d-flex rounded blogColors" style="font-weight: bold!important ;">--%>
+
+    </c:forEach>
 </div>
 
 

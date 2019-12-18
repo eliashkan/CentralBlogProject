@@ -71,13 +71,13 @@
 >
 
 
-    <%--        //printing the posts from user (only the titles)--%>
 
+    <%--        //printing the posts global (only the titles)--%>
     <div class="rounded d-flex row blogdivColor justify-content-center col-12 col-md-12 col-lg-5"
          style="height: 900px;overflow-y: auto;">
         <c:forEach var="article" items="${postsToShow}">
-            <div class="card rounded d-flex row container-fluid col-12 col-md-12 col-lg-12 mt-1 mb-3 bg-light"
-                 style="width: 18rem;">
+            <div class="card rounded d-flex row container-fluid col-12 col-md-12 col-lg-12 mt-3 mb-3 bg-light"
+                 style="width: 18rem;height: fit-content">
                 <div class="card-body rounded bg-dark mt-2">
 
                     <h5 class="card-title text-light">${article.getTitle()}</h5>

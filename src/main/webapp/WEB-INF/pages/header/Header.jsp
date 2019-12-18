@@ -10,6 +10,7 @@
         <c:choose>
             <c:when test="${loggedUser==null}">
                 <li><a href="${pageContext.request.contextPath}/login">Log-In</a></li>
+                <li><a href="${pageContext.request.contextPath}/sign">Sign-In</a></li>
             </c:when>
             <c:otherwise>
                 <li><a href="${pageContext.request.contextPath}/logout">Log-Out</a></li>
@@ -19,7 +20,6 @@
             </c:otherwise>
         </c:choose>
 
-        <li><a href="${pageContext.request.contextPath}/sign">Sign-In</a></li>
 
         <li class="column ml-2 mr-3 mt-3 mb-1">
             <i class="fas fa-search" aria-hidden="true"></i>

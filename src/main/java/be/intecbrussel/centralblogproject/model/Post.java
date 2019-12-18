@@ -1,7 +1,6 @@
 package be.intecbrussel.centralblogproject.model;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
@@ -26,7 +25,7 @@ public class Post {
     @ManyToOne
     private User user;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "post")
     private List<Comment> comments = new ArrayList<>();
 
@@ -111,15 +110,5 @@ public class Post {
         this.comments = comments;
     }
 
-    @Override
-    public String toString() {
-        return "Post{" +
-                "idPost=" + idPost +
-                ", title='" + title + '\'' +
-                ", text='" + text + '\'' +
-                ", localDate=" + dateTime +
-                ", user=" + user +
-                ", comments=" + comments +
-                '}';
-    }
+
 }

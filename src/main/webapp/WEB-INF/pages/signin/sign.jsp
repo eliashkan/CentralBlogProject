@@ -21,7 +21,7 @@
 
 <body class="d-block bg-dark">
 <div class="header mb-3">
-    <a href="${pageContext.request.contextPath}/homepage" class="logo">THE BLOGGERS</a>
+    <a href="${pageContext.request.contextPath}/homepage" class="logo">Blog Central</a>
     <input class="menu-btn" type="checkbox" id="menu-btn"/>
     <label class="menu-icon" for="menu-btn"
     ><span class="navicon"></span
