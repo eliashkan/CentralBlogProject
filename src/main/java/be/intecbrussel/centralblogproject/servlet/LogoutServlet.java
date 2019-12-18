@@ -20,7 +20,7 @@ public class LogoutServlet extends HttpServlet {
 
         session.removeAttribute("loggedUser");
 
-        req.getRequestDispatcher("WEB-INF/pages/home/index.jsp").forward(req, resp);
+        req.getRequestDispatcher("homepage").forward(req, resp);
 
 
     }

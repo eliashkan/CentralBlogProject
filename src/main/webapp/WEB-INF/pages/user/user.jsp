@@ -68,77 +68,76 @@
 </div>
 
 <!-- blog post and menus -->
-<div
-        class="d-flex row container-fluid col-12 col-md-12 col-lg-10 justify-content-around m-auto"
-        style="height:fit-content;"
->
-
+<div class="d-flex row container-fluid col-12 col-md-12 col-lg-10 justify-content-around m-auto"
+     style="height:fit-content;">
 
     <%--        //printing the posts User (only the titles)--%>
     <div class="rounded d-flex row blogdivColor justify-content-center col-12 col-md-12 col-lg-5"
          style="height: 900px;overflow-y: auto;">
-        <c:forEach var="article" items="${postsFromUser}">
-        <div class="card rounded d-flex row container-fluid col-12 col-md-12 col-lg-12 mt-3 mb-3 bg-light"
-             style="width: 18rem;height: fit-content">
-            <div class="card-body rounded bg-dark mt-2">
 
-                    <%--                Setting the url for each post--%>
+        <c:forEach var="article" items="${postsFromUser}">
+            <div class="card rounded d-flex row container-fluid col-12 col-md-12 col-lg-12 mt-3 mb-3 bg-light"
+                 style="width: 18rem;height: fit-content">
+                <div class="card-body rounded bg-dark mt-2">
+
+                        <%--Setting the url for each post--%>
                 <c:url var="templink" value="/blogmanager">
                     <c:param name="command" value="DELETE"/>
                     <c:param name="postId" value="${article.getIdPost()}"/>
-
                 </c:url>
 
 
                 <h5 class="card-title text-light">${article.getTitle()}</h5>
+                    <p class="card-text p-2 rounded-left bg-light text-primary" style="color: rebeccapurple">
 
-                <p class="card-text p-2 rounded-left bg-light text-primary"
-                   style="color: rebeccapurple">
-                    <c:set var="articleText" value="${article.getText()}"/>
-                    <%
-                        String shortArticle = (String) pageContext.getAttribute("articleText");
-                        // substring of the article from 0 to index of second period (2 phrases)
-                        shortArticle = shortArticle.substring(
-                                0,
-                                shortArticle.indexOf('.', shortArticle.indexOf('.') + 1) + 1
-                        );
-                        pageContext.setAttribute("shortArticle", shortArticle);
-                    %>
-                    <c:out value="${shortArticle} ..."/>
-                </p>
-            </div>
-            <div class="card-body p-2 font-weight-bold text-info"><c:out value="${article.formatDateTime()}"/></div>
+                        <c:set var="articleText" value="${article.getText()}"/>
+                        <%
+                            String shortArticle = (String) pageContext.getAttribute("articleText");
+                            // substring of the article from 0 to index of second period (2 phrases)
+                            shortArticle = shortArticle.substring(
+                                    0,
+                                    shortArticle.indexOf('.', shortArticle.indexOf('.') + 1) + 1
+                            );
+                            pageContext.setAttribute("shortArticle", shortArticle);
+                        %>
 
+                        <c:out value="${shortArticle} ..."/>
+                    </p>
+                </div>
 
-            <div class="card-body pl-0 d-flex column col-1 col-sm-12">
-                <div class="m-0 p-0" role="group" aria-label="Basic example">
-                    <form action="blogmanager" method="get">
-                            <span class="rounded text-dark p-2 mb-1">
-                            <c:out value="${article.getLikeCounter()}"/> Like
-
-                            </span>
+                <div class="card-body p-2 font-weight-bold text-info"><c:out value="${article.formatDateTime()}"/></div>
 
 
-                        <button type="submit" name="Like" class="badge-danger rounded mb-1"><a class="btn-link"
-                                                                                               role="button"
-                                                                                               href="${templink}">Like
-                            Post</a></button>
-                        <button type="submit" name="create" class="badge-danger rounded mb-1"><a class="btn-link"
-                                                                                                 role="button"
-                                                                                                 href="${templink}">Create
-                            Post</a></button>
+                <div class="card-body pl-0 d-flex column col-1 col-sm-12">
+                    <div class="m-0 p-0" role="group" aria-label="Basic example">
+                        <form action="blogmanager" method="get">
+                            <span class="rounded text-dark p-2 mb-1"><c:out
+                                    value="${article.getLikeCounter()}"/> Like</span>
+
+                            <button type="submit" name="Like" class="badge-success rounded mb-1"><a
+                                    class="btn-link badge-success"
+                                    role="button"
+                                    href="${templink}">Like
+                                Post</a></button>
+                            <button type="submit" name="create" class="badge-info rounded mb-1"><a
+                                    class="btn-link badge-info"
+                                    role="button"
+                                    href="${templink}">Create
+                                Post</a></button>
+                            <button type="submit" name="delete" class="badge-danger rounded mb-1"><a
+                                    class="btn-link badge-danger"
+                                    role="button"
+                                    href="${templink}"
+                                    onclick="if (!(confirm('Are you sure you want to delete the post ?')))return false">Delete
+                                Post</a></button>
+
+                        </form>
 
 
-                        <button type="submit" name="delete" class="badge-danger rounded mb-1"><a class="btn-link"
-                                                                                                 role="button"
-                                                                                                 href="${templink}"
-                                                                                                 onclick="if (!(confirm('Are you sure you want to delete the post ?')))return false">Delete
-                            Post</a></button>
-
-                    </form>
+                    </div>
                 </div>
             </div>
-        </div>
+        </c:forEach>
     </div>
 
 
@@ -158,11 +157,6 @@
 
 
     </aside>
-
-
-        <%--            <p class="d-flex rounded blogColors" style="font-weight: bold!important ;">--%>
-
-    </c:forEach>
 </div>
 
 
