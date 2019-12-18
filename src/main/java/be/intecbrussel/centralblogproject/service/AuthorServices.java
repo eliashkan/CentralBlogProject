@@ -23,6 +23,8 @@ public interface AuthorServices {
 //    // Update avatar
 //    void updateAvatar();
 
+    void updateAvatar();
+
     // Delete profile
     void deleteProfile(User user);
 
