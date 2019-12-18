@@ -2,6 +2,9 @@ package be.intecbrussel.centralblogproject.servlet.utils;
 
 import be.intecbrussel.centralblogproject.dao.PostDao;
 import be.intecbrussel.centralblogproject.model.Post;
+import be.intecbrussel.centralblogproject.model.User;
+import be.intecbrussel.centralblogproject.service.VisitorServices;
+import be.intecbrussel.centralblogproject.service.VisitorServicesImpl;
 
 
 import javax.servlet.ServletException;
@@ -12,6 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @WebServlet(value = "/blogmanager")
@@ -21,8 +26,8 @@ public class BlogManagementServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         PrintWriter printWriter = resp.getWriter();
         HttpSession session = req.getSession();
-        List<Post> postList = (List<Post>) session.getAttribute("postsFromUser");
-        int postId = Integer.parseInt(req.getParameter("postId"));
+        List<Post> postList;
+        User user = (User) session.getAttribute("loggedUser");
 
 
         try {
@@ -31,21 +36,45 @@ public class BlogManagementServlet extends HttpServlet {
 
             // route to the appropriate method
             switch (theCommand) {
+
                 case "CREATE":
+                    String blogTitle = req.getParameter("title");
+                    String blogText = req.getParameter("blogtext");
+
+
+                    Post post = new Post();
+                    post.setUser(user);
+                    post.setTitle(blogTitle);
+                    post.setText(blogText);
+                    post.setDateTime(LocalDateTime.now());
+                    new PostDao().createPost(post);
+
+                    postList = new VisitorServicesImpl().getPostsByAuthor(user.getUserName());
+                    session.setAttribute("postsFromUser", postList);
+                    req.getRequestDispatcher("WEB-INF/pages/user/user.jsp").forward(req, resp);
                     break;
 
                 case "DELETE":
+
+                    int postId = Integer.parseInt(req.getParameter("postId"));
                     new PostDao().deletePost(new PostDao().getPost(postId));
-                    req.getRequestDispatcher("myblog");
+                    postList = new VisitorServicesImpl().getPostsByAuthor(user.getUserName());
+                    session.setAttribute("postsFromUser", postList);
+                    req.getRequestDispatcher("WEB-INF/pages/user/user.jsp").forward(req, resp);
                     break;
+
 
                 case "LIKE":
                     break;
+
+
             }
 
         } catch (Exception e) {
 
         }
+
+
     }
 }
 

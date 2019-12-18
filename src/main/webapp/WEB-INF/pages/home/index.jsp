@@ -82,8 +82,8 @@
 
                     <h5 class="card-title text-light">${article.getTitle()}</h5>
 
-                    <p class="card-text p-2 rounded-left bg-secondary font-weight-bold text-secondary"
-                       style="color: rebeccapurple">
+                    <p class="card-text p-2 rounded-left bg-light font-weight-bold text-secondary"
+                       style="color: rebeccapurple;">
                         <c:set var="articleText" value="${article.getText()}"/>
                         <%
                             String shortArticle = (String) pageContext.getAttribute("articleText");

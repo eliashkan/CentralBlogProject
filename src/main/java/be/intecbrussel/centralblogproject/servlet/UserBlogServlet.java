@@ -25,7 +25,7 @@ public class UserBlogServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        if (req.getSession().isNew() || req.getSession().getAttribute("loggedUser") == null) {
+        if (req.getSession().getAttribute("loggedUser") == null) {
             req.getRequestDispatcher("WEB-INF/pages/login/login.jsp").forward(req, resp);
 
         } else doPost(req, resp);

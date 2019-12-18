@@ -36,12 +36,12 @@
 
     <div class="col-12 col-md-12 col-lg-7 mb-2">
         <button
-                class=" btn rounded btn-info dropdown-toggle"
+                class=" btn rounded btn-info dropdown- h-75"
                 type="button"
                 data-toggle="dropdown"
                 aria-expanded="false"
-        >
-            Sort
+
+        >Sort
         </button>
 
 
@@ -57,6 +57,12 @@
             <input class="dropdown-item text-light" name="mostpopular" type="submit" value="Most Popular">
             <input class="dropdown-item text-light" name="showmore" type="submit" value="Show More">
         </form>
+
+        <button type="submit" name="create" class="badge-info rounded mb-1 h-75"><a
+                class="btn-link badge-info "
+                role="button"
+                onclick="window.location.href='createpost'">Create
+            Post</a></button>
 
 
     </div>
@@ -81,13 +87,13 @@
                 <div class="card-body rounded bg-dark mt-2">
 
                         <%--Setting the url for each post--%>
-                <c:url var="templink" value="/blogmanager">
-                    <c:param name="command" value="DELETE"/>
-                    <c:param name="postId" value="${article.getIdPost()}"/>
-                </c:url>
+                    <c:url var="templink" value="/blogmanager">
+                        <c:param name="command" value="DELETE"/>
+                        <c:param name="postId" value="${article.getIdPost()}"/>
+                    </c:url>
 
 
-                <h5 class="card-title text-light">${article.getTitle()}</h5>
+                    <h5 class="card-title text-light">${article.getTitle()}</h5>
                     <p class="card-text p-2 rounded-left bg-light text-primary" style="color: rebeccapurple">
 
                         <c:set var="articleText" value="${article.getText()}"/>
@@ -110,25 +116,22 @@
 
                 <div class="card-body pl-0 d-flex column col-1 col-sm-12">
                     <div class="m-0 p-0" role="group" aria-label="Basic example">
-                        <form action="blogmanager" method="get">
+
+
+                        <form action="blogmanager" method="GET">
                             <span class="rounded text-dark p-2 mb-1"><c:out
                                     value="${article.getLikeCounter()}"/> Like</span>
 
-                            <button type="submit" name="Like" class="badge-success rounded mb-1"><a
+                            <button type="submit" name="LIKE" class="badge-success rounded mb-1"><a
                                     class="btn-link badge-success"
                                     role="button"
                                     href="${templink}">Like
                                 Post</a></button>
-                            <button type="submit" name="create" class="badge-info rounded mb-1"><a
-                                    class="btn-link badge-info"
+
+                            <button type="submit" name="DELETE" class="badge-success rounded mb-1"><a
+                                    class="btn-link badge-success"
                                     role="button"
-                                    href="${templink}">Create
-                                Post</a></button>
-                            <button type="submit" name="delete" class="badge-danger rounded mb-1"><a
-                                    class="btn-link badge-danger"
-                                    role="button"
-                                    href="${templink}"
-                                    onclick="if (!(confirm('Are you sure you want to delete the post ?')))return false">Delete
+                                    href="${templink}">delete
                                 Post</a></button>
 
                         </form>
