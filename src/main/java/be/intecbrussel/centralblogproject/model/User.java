@@ -12,7 +12,7 @@ public class User {
     private String userName;
     private String fullName;
     private String password;
-    private String adress;
+    private String address;
     private String email;
     @Lob
     @Column(columnDefinition = "BLOB")
@@ -24,7 +24,7 @@ public class User {
         this.userName = user.userName;
         this.fullName = user.fullName;
         this.password = user.password;
-        this.adress = user.adress;
+        this.address = user.address;
         this.email = user.email;
     }
 
@@ -60,12 +60,12 @@ public class User {
         this.password = password;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setAddress(String adress) {
+        this.address = adress;
     }
 
     public String getEmail() {
@@ -95,7 +95,7 @@ public class User {
                 ", userName='" + userName + '\'' +
                 ", fullName='" + fullName + '\'' +
                 ", password='" + password + '\'' +
-                ", adress='" + adress + '\'' +
+                ", adress='" + address + '\'' +
                 ", email='" + email + '\'' +
                 ", avatar=" + Arrays.toString(avatar) +
                 '}';
