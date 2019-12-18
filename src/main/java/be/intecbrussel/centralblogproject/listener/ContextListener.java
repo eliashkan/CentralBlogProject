@@ -10,7 +10,6 @@ import java.io.Reader;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class ContextListener implements ServletContextListener {
     @Override
@@ -18,19 +17,13 @@ public class ContextListener implements ServletContextListener {
         String scriptPath = "src/main/java/be/intecbrussel/centralblogproject/data/MockarooDataListenerScript.sql";
 
         // Create MySql Connection
-        Connection con = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection(
-                    "jdbc:mysql://localhost/blogApp", "root", "");
-            Statement stmt = null;
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+            Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://localhost/blogApp",
+                    "root",
+                    "S0wiesoo");
 
-        try {
             // Initialize object for ScripRunner
             ScriptRunner sr = new ScriptRunner(con);
 
@@ -39,19 +32,16 @@ public class ContextListener implements ServletContextListener {
                     new BufferedReader(
                             new FileReader(scriptPath));
 
-            // Executute script
+            // Execute script
             sr.runScript(reader);
 
+            // Close the connection
+            con.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         } catch (Exception e) {
             System.err.println("Failed to Execute" + scriptPath
                     + " The error is " + e.getMessage());
         }
     }
-
-    @Override
-    public void contextDestroyed(ServletContextEvent servletContextEvent) {
-
-    }
-
-
 }
