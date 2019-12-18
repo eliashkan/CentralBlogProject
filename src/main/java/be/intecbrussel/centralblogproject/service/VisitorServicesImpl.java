@@ -1,5 +1,6 @@
 package be.intecbrussel.centralblogproject.service;
 
+
 import be.intecbrussel.centralblogproject.connection.EntityManagerFactoryProvider;
 import be.intecbrussel.centralblogproject.dao.PostDao;
 import be.intecbrussel.centralblogproject.model.Post;
@@ -58,7 +59,7 @@ public class VisitorServicesImpl {
 
     public List<Post> getPostsByAuthor(String authorsName) {
         return posts.stream().
-                filter(p -> p.getUser().getFullName().toLowerCase().contains(authorsName.toLowerCase())).
+                filter(p -> p.getUser().getUserName().toLowerCase().contains(authorsName.toLowerCase())).
                 collect(Collectors.toList());
     }
 

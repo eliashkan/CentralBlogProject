@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /*
@@ -33,7 +34,7 @@ public class UserBlogServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //Casting session attribute to User after redirecting from the login page.I need the User for pull the posts from User.
-        User user = (User) req.getSession().getAttribute("loggedUser");
+
 
         //Getting the posts and put them in the session attribute
 //        req.getSession().setAttribute("postsFromUser", new VisitorServicesImpl().getPostsByAuthor(user.getUserId()));
