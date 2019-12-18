@@ -20,11 +20,11 @@
 
 <body class="d-block bg-dark">
 <div class="header mb-3">
-    <a href="${pageContext.request.contextPath}/homepage" class="logo">THE BLOGGERS</a>
+    <a href="${pageContext.request.contextPath}/homepage" class="logo">BLOG CENTRAL</a>
     <input class="menu-btn" type="checkbox" id="menu-btn"/>
-    <label class="menu-icon" for="menu-btn"
-    ><span class="navicon"></span
-    ></label>
+    <label class="menu-icon" for="menu-btn">
+        <span class="navicon"></span>
+    </label>
     <ul class="menu">
 
 
@@ -33,7 +33,7 @@
 
 <div style="height: 20vh;"></div>
 
-<div class="card bg-dark" ; style="border:none">
+<div class="card bg-dark" style="border:none">
     <article class="card-body mx-auto" style="max-width: 500px;">
 
         <h4 class="card-title mt-3 text-light text-center">THE BLOGGERS</h4>

@@ -17,7 +17,7 @@
     <link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet"/>
     <%--        <link href="${pageContext.request.contextPath}/resources/css/snow.css" rel="stylesheet"/>--%>
     <link href="" rel="stylesheet"/>
-    <title>Blog App</title>
+    <title>Blog Central</title>
 </head>
 
 <body class="d-block bg-dark">
@@ -114,19 +114,19 @@
     </div>
 
 
-    <aside class="d-flex-block flex-nowrap rounded bg-light col-10 col-sm-6 col-md-6 col-lg-3 h-lg-25"
-           style="max-height:600px">
-        <img class="pt-2 rounded" src="https://via.placeholder.com/150C" alt="">
+        <aside class="d-flex-block flex-nowrap rounded bg-light col-10 col-sm-6 col-md-6 col-lg-3 h-lg-25"
+               style="max-height:600px">
+            <img class="pt-2 rounded" src="${avatar}" alt="">
 
 
-        <div class="rounded col-12 object-fit=contain p-2">
-            <p class="rounded blogColors ">
-                Morbi elementum lacus lobortis, faucibus enim vel, ultricies velit.
-                Nam blandit, dui ut sagittis pharetra, odio nisl facilisis velit,
-                sit
-            </p>
+            <div class="rounded col-12 object-fit=contain p-2">
+                <p class="rounded blogColors ">
+                    Morbi elementum lacus lobortis, faucibus enim vel, ultricies velit.
+                    Nam blandit, dui ut sagittis pharetra, odio nisl facilisis velit,
+                    sit
+                </p>
 
-        </div>
+            </div>
 
 
     </aside>
