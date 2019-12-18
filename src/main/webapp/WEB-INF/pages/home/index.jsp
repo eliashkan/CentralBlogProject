@@ -30,11 +30,10 @@
 
 
 <!-- menu button -->
-<div
-        class="dropdown d-flex row container justify-content-center col-12 col-md-6 col-lg-6"
->
+<div class="dropdown d-flex row container justify-content-center col-12 col-md-6 col-lg-6">
 
 
+    <%--
     <div class="col-12 col-md-12 col-lg-8">
         <button
                 class=" btn rounded btn-info dropdown-toggle"
@@ -57,15 +56,32 @@
             <input class="dropdown-item text-light" name="showmore" type="submit" value="Show More">
         </form>
     </div>
-</div>
-
-<div>
-
-
+    --%>
+    <div class="dropdown col-12 col-md-12 col-lg-8">
+        <button class="btn btn-secondary rounded dropdown-toggle"
+                type="button"
+                id="dropdownMenuButton"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false">
+            Sort
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item text-light"
+               name="date"
+               href="${pageContext.request.contextPath}/sortbydate">by date</a>
+            <a class="dropdown-item text-light"
+               name="mostpopular"
+               href="${pageContext.request.contextPath}/sortbymostpopular">by most popular</a>
+            <a class="dropdown-item text-light"
+               name="showmore"
+               href="${pageContext.request.contextPath}/showmore">show more</a>
+        </div>
+    </div>
 </div>
 
 <!-- blog post and menus -->
-<div id="block " ;
+<div id="block "
      class="d-flex row container-fluid col-12 col-md-12 col-lg-12 justify-content-around m-auto">
 
     <div class="rounded  blogdivColor col-12 col-md-12 col-lg-6 mt-5"
