@@ -65,6 +65,9 @@ public class BlogManagementServlet extends HttpServlet {
 
 
                 case "LIKE":
+                    
+
+                    req.getRequestDispatcher("WEB-INF/pages/user/user.jsp").forward(req, resp);
                     break;
 
 

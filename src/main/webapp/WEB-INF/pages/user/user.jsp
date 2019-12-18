@@ -92,6 +92,16 @@
                         <c:param name="postId" value="${article.getIdPost()}"/>
                     </c:url>
 
+                    <c:url var="templink" value="/blogmanager">
+                        <c:param name="command" value="LIKE"/>
+                        <c:param name="postId" value="${article.getIdPost()}"/>
+                    </c:url>
+
+                    <c:url var="templink" value="/blogmanager">
+                        <c:param name="command" value="COMMENT"/>
+                        <c:param name="postId" value="${article.getIdPost()}"/>
+                    </c:url>
+
 
                     <h5 class="card-title text-light">${article.getTitle()}</h5>
                     <p class="card-text p-2 rounded-left bg-light text-primary" style="color: rebeccapurple">
@@ -126,13 +136,21 @@
                                     class="btn-link badge-success"
                                     role="button"
                                     href="${templink}">Like
-                                Post</a></button>
+                            </a></button>
 
-                            <button type="submit" name="DELETE" class="badge-success rounded mb-1"><a
-                                    class="btn-link badge-success"
+                            <button type="submit" name="DELETE" class="badge-danger rounded mb-1"><a
+                                    class="btn-link badge-danger"
                                     role="button"
-                                    href="${templink}">delete
-                                Post</a></button>
+                                    onclick="if(!(confirm('Are you sure you wante to delete'))) return false;"
+                                    href="${templink}">Delete
+
+                            </a></button>
+
+                            <button type="submit" name="COMMENT" class="badge-info rounded mb-1"><a
+                                    class="btn-link badge-info"
+                                    role="button"
+                                    href="${templink}">Comment
+                            </a></button>
 
                         </form>
 

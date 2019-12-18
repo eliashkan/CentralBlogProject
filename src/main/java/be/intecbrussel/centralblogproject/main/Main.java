@@ -9,13 +9,6 @@ public class Main {
 
         EntityManagerFactoryProvider.getEM();
 
-
-        VisitorServicesImpl vo = new VisitorServicesImpl();
-
-
-        for (Post post : vo.getPostsByAuthor("wvan0")) {
-            System.out.println(post.getTitle());
-        }
     }
 }
 

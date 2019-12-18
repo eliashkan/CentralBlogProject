@@ -15,14 +15,13 @@ import java.sql.Statement;
 public class ContextListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-        String scriptPath = "src/main/java/be/intecbrussel/centralblogproject/data/MockarooDataListenerScript.sql";
-
+        String scriptPath = "/Users/vincenthonca/Java Cursus/Vincent Honca Intelij/CentralBlogProject/src/main/java/be/intecbrussel/centralblogproject/data/MockarooDataListenerScript.sql";
         // Create MySql Connection
         Connection con = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection(
-                    "jdbc:mysql://localhost/blogApp", "root", "");
+                    "jdbc:mysql://localhost:3306/blogApp", "root", "");
             Statement stmt = null;
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
