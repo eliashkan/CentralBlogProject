@@ -28,6 +28,7 @@ public class VisitorServicesImpl implements VisitorServices {
         this.posts = query.getResultStream().
                 sorted(comparatorByDate).
                 collect(Collectors.toList());
+        em.close();
     }
 
     //getter
@@ -110,8 +111,8 @@ public class VisitorServicesImpl implements VisitorServices {
                 "select p from Post p join p.tags tag where tag.name=?1",
                 Post.class);
         query.setParameter(1, text);
+        em.close();
         return query.getResultList();
-
     }
 
 }
