@@ -14,11 +14,12 @@ import java.util.List;
 
 @WebServlet(value = "/postsort")
 public class SortMenuServlet extends HttpServlet {
-
+    // Servlet instance variables are not thread safe, but considering this is a constant there's less immediate danger.
     final int FACTOR = 6;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        // Redirecting doGet to doPost is considered bad practice and has no purpose in this situation.
         doPost(req, resp);
     }
 
