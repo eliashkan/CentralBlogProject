@@ -30,13 +30,13 @@
 
 <!-- menu button -->
 <div
-        class="dropdown d-flex row container justify-content-center col-9 col-md-9 col-lg-9"
+        class="dropdown d-flex row m-auto container-fluid col-12 col-sm-12 col-md-12 col-lg-7"
 >
 
 
-    <div class="col-12 col-md-12 col-lg-7 mb-2">
+    <div class="col-12 col-md-12 col-lg-10 mb-2">
         <button
-                class=" btn rounded btn-info dropdown-toggle"
+                class="btn rounded bg-primary dropdown-toggle text-light"
                 type="button"
                 data-toggle="dropdown"
                 aria-expanded="false"
@@ -46,7 +46,7 @@
 
 
         <form
-                class="dropdown-menu  bg-dark"
+                class="dropdown-menu bg-primary"
                 x-placement="bottom-start"
                 style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(15px, 48px, 0px);"
                 action="postsort"
@@ -63,137 +63,32 @@
                 role="button"
                 onclick="window.location.href='createpost'">Create
             Post</a></button>
-
-
     </div>
 </div>
 
-<div>
+
+<%--printing the posts from the user (only the titles)--%>
+<jsp:include page="../blogs/blogsprintingUser.jsp"/>
 
 
-</div>
-
-<!-- blog post and menus -->
-<div class="d-flex row container-fluid col-12 col-md-12 col-lg-10 justify-content-around m-auto"
-     style="height:fit-content;">
-
-    <%--        //printing the posts User (only the titles)--%>
-    <div class="rounded d-flex row blogdivColor justify-content-center col-12 col-md-12 col-lg-5"
-         style="height: 900px;overflow-y: auto;">
-
-        <c:forEach var="article" items="${postsFromUser}">
-            <div class="card rounded d-flex row container-fluid col-12 col-md-12 col-lg-12 mt-3 mb-3 bg-light"
-                 style="width: 18rem;height: fit-content">
-                <div class="card-body rounded bg-dark mt-2">
+<aside class="d-flex-inline flex-nowrap justify-content-center rounded bg-light col-12 col-sm-6 col-md-6 col-lg-3 h-lg-25"
+       style="max-height:600px">
+    <img class="pt-2 col-7 col-md-7 col-lg-6" src="${avatar}" alt="">
 
 
-                        <%--getting comments for every post--%>
-                    <c:set var="comments" value="${article.comments}" scope="session">
+    <div class="card text-info bg- col-12 p-2 mt-3 mb-2" style="object-fit:contain">
+        <strong class="card-body mt-2">
+            Morbi elementum lacus lobortis, faucibus enim vel, ultricies velit.
+            Nam blandit, dui ut sagittis pharetra, odio nisl facilisis velit,
+            sit
+        </strong>
 
-
-
-                    </c:set>
-
-                        <%--Setting the url for each post--%>
-
-
-                    <c:url var="deletelink" value="/blogmanager">
-                        <c:param name="command" value="DELETE"/>
-                        <c:param name="postId" value="${article.idPost}"/>
-                    </c:url>
-
-
-                    <c:url var="comments" value="/blogmanager">
-                        <c:param name="command" value="READMORE"/>
-                        <c:param name="postid" value="${article.idPost}"/>
-                    </c:url>
-
-
-                    <h5 class="card-title text-light">${article.title}</h5>
-                    <p class="card-text p-2 rounded-left bg-light text-primary" style="color: rebeccapurple">
-
-                        <c:set var="articleText" value="${article.text}"/>
-                        <%
-                            String shortArticle = ( String ) pageContext.getAttribute("articleText");
-                            // substring of the article from 0 to index of second period (2 phrases)
-                            shortArticle = shortArticle.substring(
-                                    0,
-                                    shortArticle.indexOf('.', shortArticle.indexOf('.') + 1) + 1
-                            );
-                            pageContext.setAttribute("shortArticle", shortArticle);
-                        %>
-
-                        <c:out value="${shortArticle} ..."/>
-                    </p>
-                </div>
-
-                <div class="card-body p-2 font-weight-bold text-info"><c:out value="${article.formatDateTime()}"/></div>
-
-
-                <div class="card-body pl-0 d-flex column col-1 col-sm-12">
-                    <div class="m-0 p-0" role="group" aria-label="Basic example">
-
-
-                        <form action="blogmanager" method="GET">
-                            <span class="rounded text-dark p-2 mb-1"><c:out
-                                    value="${article.likeCounter}"/> Like</span>
-
-                            <button type="submit" name="LIKE" class="badge-success rounded mb-1"><a
-                                    class="btn-link badge-success"
-                                    role="button"
-                                    href="${templink}">Like
-                                Post</a></button>
-
-                            <button type="submit" name="DELETE" class="badge-danger rounded mb-1"><a
-                                    class="btn-link badge-danger"
-                                    role="button"
-                                    href="${deletelink}">Delete
-                                Post</a></button>
-
-                            <button type="submit" name="READMORE" class="badge-info rounded mb-1"><a
-                                    class="btn-link badge-info"
-                                    role="button"
-                                    href="${comments}">READMORE
-                            </a></button>
-
-
-                        </form>
-
-
-                            <%--                        getting comments--%>
-
-
-                    </div>
-                </div>
-            </div>
-        </c:forEach>
     </div>
+    <jsp:include page="../sessioncounterbadges/sessioncounterbadges.jsp"/>
 
 
-    <aside class="d-flex-block flex-nowrap rounded bg-light col-10 col-sm-6 col-md-6 col-lg-3 h-lg-25 mt-2"
-           style="max-height:600px">
-        <img class="pt-2 rounded" style="height: 100px" src="${avatar}" alt="">
+</aside>
 
 
-        <div class="rounded col-12 object-fit=contain p-2">
-            <p class="rounded blogColors ">
-                Morbi elementum lacus lobortis, faucibus enim vel, ultricies velit.
-                Nam blandit, dui ut sagittis pharetra, odio nisl facilisis velit,
-                sit
-            </p>
-
-        </div>
-
-        <jsp:include page="../sessioncounterbadges/sessioncounterbadges.jsp"/>
-
-
-    </aside>
-</div>
-
-
-</canvas>
-
-
-<script src="/BlogAppFrontEnd/js/snow.js"></script>
 </body>
 </html>

@@ -74,7 +74,7 @@
 >
 
 
-    <%--        //printing the posts global (only the titles)--%>
+          <%--printing the posts global (only the titles)--%>
         <jsp:include page="../blogs/blogsprintingVisitor.jsp"/>
 
 

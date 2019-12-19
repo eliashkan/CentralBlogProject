@@ -46,7 +46,7 @@ public class BlogManagementServlet extends HttpServlet {
 
                     postList = new VisitorServicesImpl().getPostsByAuthor(user.getUserName());
                     session.setAttribute("postsFromUser", postList);
-                    resp.sendRedirect("userpage");
+                    resp.sendRedirect("fulluserpage");
                     break;
 
                 case "DELETE":
@@ -55,14 +55,14 @@ public class BlogManagementServlet extends HttpServlet {
                     new PostDao().deletePost(new PostDao().getPost(postId));
                     postList = new VisitorServicesImpl().getPostsByAuthor(user.getUserName());
                     session.setAttribute("postsFromUser", postList);
-                    resp.sendRedirect("userpage");
+                    resp.sendRedirect("fulluserpage");
                     break;
 
 
                 case "LIKE":
 
 
-                    resp.sendRedirect("userpage");
+                    resp.sendRedirect("fulluserpage");
                     break;
 
                 case "READMORE":
