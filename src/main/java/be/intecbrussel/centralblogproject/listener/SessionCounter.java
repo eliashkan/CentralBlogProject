@@ -28,7 +28,7 @@ public class SessionCounter implements HttpSessionListener {
         HttpSession session = event.getSession();
         sessions.remove(session.getId());
         if (event.getSession().getAttribute("loggedUser") != null) {
-            loggedInSessions.add(session.getId());
+            loggedInSessions.remove(session.getId());
         }
         session.setAttribute(SessionCounter.COUNTER, this);
     }
