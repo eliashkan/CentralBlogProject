@@ -184,6 +184,8 @@
 
         </div>
 
+        <jsp:include page="../sessioncounterbadges/sessioncounterbadges.jsp"/>
+
 
     </aside>
 </div>

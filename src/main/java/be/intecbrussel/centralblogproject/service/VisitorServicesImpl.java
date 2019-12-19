@@ -23,6 +23,7 @@ public class VisitorServicesImpl {
         this.postDAO = new PostDao();
 
         //loading the stream of posts
+        System.out.println("BOOP DA SNOOT");
         EntityManager em = EntityManagerFactoryProvider.getEM();
         TypedQuery<Post> query = em.createQuery("select p from Post p", Post.class);
         //a stream of posts from new to old by default
