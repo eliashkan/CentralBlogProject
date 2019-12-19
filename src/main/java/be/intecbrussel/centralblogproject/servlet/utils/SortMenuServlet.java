@@ -32,8 +32,8 @@ public class SortMenuServlet extends HttpServlet {
 
         /* Sorting the list to be showed on homepage.
          * Two Session Attributes is needed for the check.(PostTOShow and multiplier)
-         * We Check First wich Parameter is trigger from the Index.Jsp. If no trigger,the list wil reset and the multiplier also to 1
-         * If trigger is happend Than we Set the actual session postList in the the visitorServices and the sort is start and back set to the session Atribute
+         * We Check First which Parameter is trigger from the Index.Jsp. If no trigger,the list wil reset and the multiplier also to 1
+         * If trigger is happened Than we Set the actual session postList in the the visitorServices and the sort is start and back set to the session Attribute
          * */
 
         if (req.getParameter("showmore") != null) {
