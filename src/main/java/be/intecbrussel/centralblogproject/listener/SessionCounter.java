@@ -9,12 +9,16 @@ import java.util.List;
 public class SessionCounter implements HttpSessionListener {
     public static final String COUNTER = "session-counter";
     private List<String> sessions = new ArrayList<>();
+    private List<String> loggedInSessions = new ArrayList<>();
 
     @Override
     public void sessionCreated(HttpSessionEvent event) {
         System.out.println("SessionCounter.sessionCreated");
         HttpSession session = event.getSession();
         sessions.add(session.getId());
+        if (event.getSession().getAttribute("loggedUser") != null) {
+            loggedInSessions.add(session.getId());
+        }
         session.setAttribute(SessionCounter.COUNTER, this);
     }
 
@@ -28,5 +32,9 @@ public class SessionCounter implements HttpSessionListener {
 
     public int getActiveSessionNumber() {
         return sessions.size();
+    }
+
+    public int getActiveLoggedInSessionNumber() {
+        return loggedInSessions.size();
     }
 }
