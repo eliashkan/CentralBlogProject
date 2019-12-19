@@ -10,7 +10,7 @@
         <c:choose>
             <c:when test="${loggedUser==null}">
                 <li><a class="text-dark" href="${pageContext.request.contextPath}/login">Log-In</a></li>
-                <li><a class="text-dark" href="${pageContext.request.contextPath}/sign">Sign-In</a></li>
+                <li><a class="text-dark" href="${pageContext.request.contextPath}/sign">Create Account</a></li>
             </c:when>
             <c:otherwise>
                 <li><a class="text-dark" href="${pageContext.request.contextPath}/logout">Log-Out</a></li>

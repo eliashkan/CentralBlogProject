@@ -1,5 +1,6 @@
 package be.intecbrussel.centralblogproject.listener;
 
+import be.intecbrussel.centralblogproject.connection.EntityManagerFactoryProvider;
 import org.apache.ibatis.jdbc.ScriptRunner;
 
 import javax.servlet.ServletContextEvent;
@@ -15,7 +16,9 @@ import java.sql.Statement;
 public class ContextListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-        String scriptPath = "/Users/vincenthonca/Java Cursus/Vincent Honca Intelij/CentralBlogProject/src/main/java/be/intecbrussel/centralblogproject/data/MockarooDataListenerScript.sql";
+        EntityManagerFactoryProvider.getEM();
+
+        String scriptPath = "/Users/vincenthonca/CentralBlogProject/src/main/java/be/intecbrussel/centralblogproject/data/MockarooDataListenerScript.sql";
         // Create MySql Connection
         Connection con = null;
         try {
@@ -40,6 +43,7 @@ public class ContextListener implements ServletContextListener {
 
             // Executute script
             sr.runScript(reader);
+            con.close();
 
         } catch (Exception e) {
             System.err.println("Failed to Execute" + scriptPath

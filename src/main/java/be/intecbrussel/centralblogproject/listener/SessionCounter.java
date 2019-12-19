@@ -8,8 +8,8 @@ import java.util.List;
 
 public class SessionCounter implements HttpSessionListener {
     public static final String COUNTER = "session-counter";
-    private List<String> sessions = new ArrayList<>();
-    private List<String> loggedInSessions = new ArrayList<>();
+    static private List<String> sessions = new ArrayList<>();
+    static private List<String> loggedInSessions = new ArrayList<>();
 
     @Override
     public void sessionCreated(HttpSessionEvent event) {
@@ -40,4 +40,14 @@ public class SessionCounter implements HttpSessionListener {
     public int getActiveLoggedInSessionNumber() {
         return loggedInSessions.size();
     }
+
+    public static void addLoggedInUser(HttpSession session) {
+        loggedInSessions.add(session.getId());
+    }
+
+    public static void removeLoggedInUser(HttpSession session) {
+        loggedInSessions.remove(session.getId());
+    }
+
+
 }

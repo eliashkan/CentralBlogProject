@@ -1,6 +1,5 @@
 package be.intecbrussel.centralblogproject.servlet;
 
-import be.intecbrussel.centralblogproject.dao.UserDao;
 import be.intecbrussel.centralblogproject.model.Post;
 import be.intecbrussel.centralblogproject.model.User;
 import be.intecbrussel.centralblogproject.service.AuthorServicesImpl;
@@ -16,6 +15,8 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+
+import static be.intecbrussel.centralblogproject.listener.SessionCounter.addLoggedInUser;
 
 
 @WebServlet(value = "/login")
@@ -55,6 +56,7 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("postsFromUser", postList);
             session.setAttribute("avatar", user.getAvatar());
 
+            addLoggedInUser(session);
 
             //Dispatch req to his blog and loading user détails
             req.getRequestDispatcher("WEB-INF/pages/user/user.jsp").forward(req, resp);

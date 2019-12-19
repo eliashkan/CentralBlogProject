@@ -88,7 +88,9 @@
 
 
                         <%--getting comments for every post--%>
-                    <c:set var="comments" value="${article.getComments()}" scope="session">
+                    <c:set var="comments" value="${article.comments}" scope="session">
+
+
 
                     </c:set>
 
@@ -97,21 +99,22 @@
 
                     <c:url var="deletelink" value="/blogmanager">
                         <c:param name="command" value="DELETE"/>
-                        <c:param name="postId" value="${article.getIdPost()}"/>
+                        <c:param name="postId" value="${article.idPost}"/>
                     </c:url>
 
-                    <c:url var="readmore" value="/comment">
+
+                    <c:url var="comments" value="/blogmanager">
                         <c:param name="command" value="READMORE"/>
-                        <c:param name="postId" value="${article.getComments()}"/>
+                        <c:param name="postid" value="${article.idPost}"/>
                     </c:url>
 
 
-                    <h5 class="card-title text-light">${article.getTitle()}</h5>
+                    <h5 class="card-title text-light">${article.title}</h5>
                     <p class="card-text p-2 rounded-left bg-light text-primary" style="color: rebeccapurple">
 
-                        <c:set var="articleText" value="${article.getText()}"/>
+                        <c:set var="articleText" value="${article.text}"/>
                         <%
-                            String shortArticle = (String) pageContext.getAttribute("articleText");
+                            String shortArticle = ( String ) pageContext.getAttribute("articleText");
                             // substring of the article from 0 to index of second period (2 phrases)
                             shortArticle = shortArticle.substring(
                                     0,
@@ -133,7 +136,7 @@
 
                         <form action="blogmanager" method="GET">
                             <span class="rounded text-dark p-2 mb-1"><c:out
-                                    value="${article.getLikeCounter()}"/> Like</span>
+                                    value="${article.likeCounter}"/> Like</span>
 
                             <button type="submit" name="LIKE" class="badge-success rounded mb-1"><a
                                     class="btn-link badge-success"
@@ -150,9 +153,7 @@
                             <button type="submit" name="READMORE" class="badge-info rounded mb-1"><a
                                     class="btn-link badge-info"
                                     role="button"
-
-                                    href="${readmore}">readmore
-
+                                    href="${comments}">READMORE
                             </a></button>
 
 
