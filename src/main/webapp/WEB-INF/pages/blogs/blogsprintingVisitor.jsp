@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 
 <%--printing the posts global (only the titles)--%>
@@ -39,20 +40,42 @@
 
                 <div class="collapse h-25" id="iteration${theCount.count}">
 
-                    <div class="card card-body">
+                    <div class="card card-body mb-1">
                         <p><c:out value="${article.text}"/></p>
+                    </div>
+
+                        <%--                    *************************************************--%>
+
+                        <%--                    PUT THE COMMENT PLLUs USER ID--%>
+                    <div class="text-light">
+                        <c:forEach var="comments" items="${article.comments}">
+                            <div class="w3-display-container mt-2-container mb-2">
+                                <div class="w3-round-xxlarge w3-black row d-flex col-12 m-0">
+                                    <h5 class="col-12 text-light" style="font-size: xx-small">
+                                        <c:out value="${article.user.fullName} :${comments.text}"/> <br>
+                                    </h5>
+
+                                </div>
+
+                            </div>
+
+                        </c:forEach>
                     </div>
                 </div>
 
+
+                    <%--                *************************************************--%>
+
             </div>
 
-            <div class="card-body p-2 font-weight-bold text-info"><c:out value="${article.formatDateTime()}"/></div>
+                    <div class="card-body p-2 font-weight-bold text-info"><c:out
+                            value="${article.formatDateTime()}"/></div>
 
-            <div class="card-body pl-0 d-flex column col-1 col-sm-12">
-                <div class="m-0 p-0" role="group" aria-label="Basic example">
+                    <div class="card-body pl-0 d-flex column col-1 col-sm-12">
+                        <div class="m-0 p-0" role="group" aria-label="Basic example">
 
-                    <c:choose>
-                        <c:when test="${loggedUser==null}">
+                            <c:choose>
+                                <c:when test="${loggedUser==null}">
                             <%--Only likes if user is not logged --%>
                             <form action="blogmanager" method="GET">
 

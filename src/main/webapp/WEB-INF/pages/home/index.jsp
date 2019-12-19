@@ -14,6 +14,7 @@
     <link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet"/>
     <link href="${pageContext.request.contextPath}/resources/css/snow.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link href="" rel="stylesheet"/>
 
     <title>Blog App</title>
@@ -34,7 +35,7 @@
 
 <!-- menu button -->
 <div
-        class="dropdown d-flex row container justify-content-center col-9 col-md-9 col-lg-9"
+        class="dropdown d-flex row container justify-content-center col-9 col-md-9 col-lg-9 m-auto"
 >
 
 
@@ -69,12 +70,12 @@
 
 <!-- blog post and menus -->
 <div
-        class="d-flex row container-fluid col-12 col-md-12 col-lg-10 justify-content-around"
+        class="d-flex row container-fluid col-12 col-md-12 col-lg-10 justify-content-around m-auto"
         style="height:fit-content;"
 >
 
 
-          <%--printing the posts global (only the titles)--%>
+    <%--printing the posts global (only the titles)--%>
         <jsp:include page="../blogs/blogsprintingVisitor.jsp"/>
 
 

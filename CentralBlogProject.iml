@@ -62,5 +62,6 @@
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax.servlet:jstl:1.2" level="project" />
     <orderEntry type="library" name="Maven: c3p0:c3p0:0.9.1.2" level="project" />
     <orderEntry type="library" name="Maven: org.apache.ibatis:ibatis-core:3.0" level="project" />
+    <orderEntry type="library" name="w3" level="application" />
   </component>
 </module>
