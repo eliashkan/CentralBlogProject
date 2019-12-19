@@ -11,17 +11,10 @@ import java.io.IOException;
 
 @WebServlet(value = "/homepage")
 public class HomePageServlet extends HttpServlet {
-    static int currentAmountOfUsers;
     int multiplier = 1;
     String login = "Log-In";
     String logout = "Log-Out";
 
-
-    @Override
-    public void init() throws ServletException {
-        currentAmountOfUsers++;
-
-    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -47,10 +40,4 @@ public class HomePageServlet extends HttpServlet {
         }
     }
 
-    @Override
-    public void destroy() {
-        currentAmountOfUsers--;
-
-
-    }
 }
