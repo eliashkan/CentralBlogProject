@@ -22,14 +22,14 @@
 <body class="d-block bg-dark" cz-shortcut-listen="true">
 
 <div class="header mb-3">
-    <a href="/CentralBlogProject/homepage" class="logo">BLOG CENTRAL</a>
+    <a href="/CentralBlogProject/homepage" class="text-dark logo">BLOG CENTRAL</a>
     <input class="menu-btn" type="checkbox" id="menu-btn">
     <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
     <ul class="menu">
 
 
-        <li><a href="/CentralBlogProject/logout">Log-Out</a></li>
-        <li><a href="/CentralBlogProject/login">My Account</a></li>
+        <li><a class="text-dark" href="/CentralBlogProject/logout">Log-Out</a></li>
+        <li><a class="text-dark" href="/CentralBlogProject/login">My Account</a></li>
 
 
         <li class="column ml-2 mr-3 mt-3 mb-1">

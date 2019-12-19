@@ -23,7 +23,7 @@
 </head>
 
 <body class="d-block bg-dark">
-<!--  <canvas style="position: absolute;" id='canv'></canvas> -->
+
 <jsp:include page="../header/Header.jsp"/>
 
 <div style="height: 20vh;"></div>
@@ -36,7 +36,7 @@
 
     <div class="col-12 col-md-12 col-lg-7 mb-2">
         <button
-                class=" btn rounded btn-info dropdown- h-75"
+                class=" btn rounded btn-info dropdown-toggle"
                 type="button"
                 data-toggle="dropdown"
                 aria-expanded="false"
@@ -86,20 +86,23 @@
                  style="width: 18rem;height: fit-content">
                 <div class="card-body rounded bg-dark mt-2">
 
+
+                        <%--getting comments for every post--%>
+                    <c:set var="comments" value="${article.getComments()}" scope="session">
+
+                    </c:set>
+
                         <%--Setting the url for each post--%>
-                    <c:url var="templink" value="/blogmanager">
+
+
+                    <c:url var="deletelink" value="/blogmanager">
                         <c:param name="command" value="DELETE"/>
                         <c:param name="postId" value="${article.getIdPost()}"/>
                     </c:url>
 
-                    <c:url var="templink" value="/blogmanager">
-                        <c:param name="command" value="LIKE"/>
-                        <c:param name="postId" value="${article.getIdPost()}"/>
-                    </c:url>
-
-                    <c:url var="templink" value="/blogmanager">
-                        <c:param name="command" value="COMMENT"/>
-                        <c:param name="postId" value="${article.getIdPost()}"/>
+                    <c:url var="readmore" value="/comment">
+                        <c:param name="command" value="READMORE"/>
+                        <c:param name="postId" value="${article.getComments()}"/>
                     </c:url>
 
 
@@ -136,23 +139,27 @@
                                     class="btn-link badge-success"
                                     role="button"
                                     href="${templink}">Like
-                            </a></button>
+                                Post</a></button>
 
                             <button type="submit" name="DELETE" class="badge-danger rounded mb-1"><a
                                     class="btn-link badge-danger"
                                     role="button"
-                                    onclick="if(!(confirm('Are you sure you wante to delete'))) return false;"
-                                    href="${templink}">Delete
+                                    href="${deletelink}">Delete
+                                Post</a></button>
 
-                            </a></button>
-
-                            <button type="submit" name="COMMENT" class="badge-info rounded mb-1"><a
+                            <button type="submit" name="READMORE" class="badge-info rounded mb-1"><a
                                     class="btn-link badge-info"
                                     role="button"
-                                    href="${templink}">Comment
+
+                                    href="${readmore}">readmore
+
                             </a></button>
 
+
                         </form>
+
+
+                            <%--                        getting comments--%>
 
 
                     </div>

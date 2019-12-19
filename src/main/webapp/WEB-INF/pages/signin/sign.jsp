@@ -21,15 +21,15 @@
 
 <body class="d-block bg-dark">
 <div class="header mb-3">
-    <a href="${pageContext.request.contextPath}/homepage" class="logo">Blog Central</a>
+    <a href="${pageContext.request.contextPath}/homepage" class="logo text-dark">Blog Central</a>
     <input class="menu-btn" type="checkbox" id="menu-btn"/>
     <label class="menu-icon" for="menu-btn"
     ><span class="navicon"></span
     ></label>
     <ul class="menu">
 
-        <li><a href="${pageContext.request.contextPath}/login">Log-In</a></li>
-        <li><a href="${pageContext.request.contextPath}/sign">Sign-In</a></li>
+        <li><a class="text-dark" href="${pageContext.request.contextPath}/login">Log-In</a></li>
+        <li><a class="text-dark" href="${pageContext.request.contextPath}/sign">Sign-In</a></li>
 
         <li class="column ml-2 mr-3 mt-3">
             <i class="fas fa-search" aria-hidden="true"></i>

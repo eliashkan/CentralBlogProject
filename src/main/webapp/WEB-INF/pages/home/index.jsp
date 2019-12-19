@@ -15,12 +15,14 @@
 
     <link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet"/>
-    <%--        <link href="${pageContext.request.contextPath}/resources/css/snow.css" rel="stylesheet"/>--%>
+    <link href="${pageContext.request.contextPath}/resources/css/snow.css" rel="stylesheet"/>
     <link href="" rel="stylesheet"/>
     <title>Blog App</title>
 </head>
 
 <body class="d-block bg-dark">
+
+<canvas style="position: absolute;" id='canv'></canvas>
 
 
 <jsp:include page="../header/Header.jsp"/>
@@ -192,6 +194,6 @@
 </div>
 
 
-<%--<script src="resources/js/snow.js"></script>--%>
+<script src="resources/js/snow.js"></script>
 </body>
 </html>
