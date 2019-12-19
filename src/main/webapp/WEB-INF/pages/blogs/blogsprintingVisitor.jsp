@@ -44,7 +44,6 @@
                         <p><c:out value="${article.text}"/></p>
                     </div>
 
-                        <%--                    *************************************************--%>
 
                         <%--                    PUT THE COMMENT PLLUs USER ID--%>
                     <div class="text-light">
@@ -63,8 +62,8 @@
                     </div>
                 </div>
 
+                    <%--                    PUT THE COMMENT PLLUs USER ID--%>
 
-                    <%--                *************************************************--%>
 
             </div>
 
