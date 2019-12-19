@@ -27,13 +27,13 @@
                         <containerId>tomee8x</containerId>
                         <type>installed</type>
 
-                        <home>/Applications/apache-tomee-plus-8.0.0/</home>
+                        <home>${env.TOMCAT_HOME}</home>
 
                     </container>
                     <configuration>
                         <type>existing</type>
 
-                        <home>/Applications/apache-tomee-plus-8.0.0/</home>
+                        <home>${env.TOMCAT_HOME}</home>
 
                     </configuration>
                 </configuration>
