@@ -59,11 +59,22 @@
             <input class="dropdown-item text-light" name="showmore" type="submit" value="Show More">
         </form>
 
-        <button type="submit" name="create" class="badge-info rounded mb-1 h-75"><a
-                class="btn-link badge-info "
+        <%--        <button type="submit" name="create" class="badge-info rounded mb-1 h-75"><a--%>
+        <%--                class="btn-link badge-info "--%>
+        <%--                role="button"--%>
+        <%--                onclick="window.location.href='createpost'">Create--%>
+        <%--            Post</a></button>--%>
+
+
+        <a
+                class="btn rounded bg-primary text-light"
                 role="button"
-                onclick="window.location.href='createpost'">Create
-            Post</a></button>
+                name="create"
+                onclick="window.location.href='createpost'">Create a post
+
+        </a>
+
+
     </div>
 </div>
 

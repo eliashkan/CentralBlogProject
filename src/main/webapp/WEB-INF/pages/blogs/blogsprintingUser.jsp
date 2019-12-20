@@ -13,12 +13,13 @@
 
 
             <div class="card rounded d-flex row container-fluid col-12 col-md-12 col-lg-12 mt-3 mb-3 bg-light"
-                 style="width: 18rem;height: fit-content">
+                 style="width: 18rem;height: fit-content;">
 
                     <%--Setting the url for each post--%>
                 <c:url var="COMMENT" value="/blogmanager">
                     <c:param name="command" value="COMMENT"/>
                     <c:param name="postid" value="${article.idPost}"/>
+
                 </c:url>
 
                 <c:url var="DELETE" value="/blogmanager">
@@ -67,17 +68,19 @@
 
                             </c:forEach>
                         </div>
+
+
                     </div>
 
 
                 </div>
 
 
-                        <div class="card-body p-2 font-weight-bold text-info"><c:out
-                                value="${article.formatDateTime()}"/></div>
+                <div class="card-body p-2 font-weight-bold text-info"><c:out
+                        value="${article.formatDateTime()}"/></div>
 
 
-                        <div class="card-body pl-0 d-flex column col-1 col-sm-12">
+                <div class="card-body pl-0 d-flex column col-1 col-sm-12">
                     <div class="m-0 p-0" role="group" aria-label="Basic example">
 
                         <form action="blogmanager" method="GET">
@@ -90,13 +93,13 @@
                                         value="${article.getLikeCounter()}"/> Like
                             </a>
 
-                            <a
-                                    class="badge badge-pill badge-dark p-2 mb-1"
-                                    role="button"
-                                    name="COMMENT"
-                                    href="${COMMENT}" style="text-decoration: none;">
-                                Comment
-                            </a>
+                                <%--                            <button--%>
+                                <%--                                    class="badge dropdown-item-text badge-pill badge-dark p-2 mb-1"--%>
+                                <%--                                    role="button"--%>
+                                <%--                                    name="COMMENT"--%>
+                                <%--                                    href="${COMMENT}" style="text-decoration: none;">--%>
+                                <%--                                Comment--%>
+                                <%--                            </button>--%>
 
                             <a
                                     class="badge badge-pill badge-danger p-2 mb-1"
@@ -104,6 +107,22 @@
                                     name="DELETE"
                                     href="${DELETE}">Delete
                                 Post</a>
+
+                            <a
+                                    class="badge dropdown-item-text badge-pill badge-dark p-2 mb-1"
+                                    role="button"
+                                    name="COMMENT"
+                                    href="${COMMENT}" style="text-decoration: none;">
+
+                                Submit
+                            </a>
+
+
+                            <input class="w3-round-medium bg-secondary" type="text" action="blogmanager"
+                                   value="" name="commentText"
+                                   placeholder="comment" required>
+
+
                         </form>
                     </div>
                 </div>

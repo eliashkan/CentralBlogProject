@@ -1,9 +1,11 @@
 package be.intecbrussel.centralblogproject.servlet.utils;
 
 import be.intecbrussel.centralblogproject.dao.PostDao;
+import be.intecbrussel.centralblogproject.model.Comment;
 import be.intecbrussel.centralblogproject.model.Post;
 import be.intecbrussel.centralblogproject.model.User;
 import be.intecbrussel.centralblogproject.service.VisitorServicesImpl;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,7 +26,10 @@ public class BlogManagementServlet extends HttpServlet {
         PrintWriter printWriter = resp.getWriter();
         HttpSession session = req.getSession();
         List<Post> postList;
-        User user = ( User ) session.getAttribute("loggedUser");
+        Post post = new Post();
+        Comment comment = new Comment();
+        User user = (User) session.getAttribute("loggedUser");
+        int postId;
 
 
         try {
@@ -37,7 +42,6 @@ public class BlogManagementServlet extends HttpServlet {
                 case "CREATE":
                     String blogTitle = req.getParameter("title");
                     String blogText = req.getParameter("blogtext");
-                    Post post = new Post();
                     post.setUser(user);
                     post.setTitle(blogTitle);
                     post.setText(blogText);
@@ -51,7 +55,7 @@ public class BlogManagementServlet extends HttpServlet {
 
                 case "DELETE":
 
-                    int postId = Integer.parseInt(req.getParameter("postId"));
+                    postId = Integer.parseInt(req.getParameter("postId"));
                     new PostDao().deletePost(new PostDao().getPost(postId));
                     postList = new VisitorServicesImpl().getPostsByAuthor(user.getUserName());
                     session.setAttribute("postsFromUser", postList);
@@ -65,10 +69,17 @@ public class BlogManagementServlet extends HttpServlet {
                     resp.sendRedirect("fulluserpage");
                     break;
 
-                case "READMORE":
+                case "COMMENT":
+                    String text = req.getParameter("commentText");
+                    comment.setText(text);
+                    post.setIdPost(Integer.parseInt(req.getParameter("postId")));
+                    post.getComments().add(comment);
+//                    new PostDao().createPost(post);
 
+                    printWriter.println(req.getParameter("postId"));
+                    printWriter.println(text);
 
-                    resp.sendRedirect("fulluserpage");
+//                    resp.sendRedirect("fulluserpage");
 
                     break;
 
