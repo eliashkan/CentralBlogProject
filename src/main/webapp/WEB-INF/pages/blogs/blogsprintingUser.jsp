@@ -7,7 +7,7 @@
 
     <%--        //printing the posts User (only the titles)--%>
     <div class="rounded d-flex row blogdivColor justify-content-center col-12 col-md-12 col-lg-5 mb-3"
-         style="height: 900px;overflow-y: auto;">
+         style="height: fit-content;overflow-y: auto;max-height: 600px">
 
         <c:forEach var="article" items="${postsFromUser}" varStatus="theCount">
 
@@ -41,7 +41,7 @@
                         <button class="btn btn-secondary p-2 rounded" data-toggle="collapse"
                                 aria-expanded="false" data-target="#iteration${theCount.count}"
                                 aria-controls="iteration${theCount.count}">
-                            Show More
+                            Read
                         </button>
                     </p>
 
@@ -105,24 +105,25 @@
                                     class="badge badge-pill badge-danger p-2 mb-1"
                                     role="button"
                                     name="DELETE"
+                                    onclick="return confirm('Are you sure you want to delete this item?');"
                                     href="${DELETE}">Delete
                                 Post</a>
+
+
+                                <%--                            <input class="w3-round-medium bg-secondary" type="text"--%>
+                                <%--                                   id="commentText"--%>
+
+                                <%--                                   placeholder="comment" required>--%>
+
 
                             <a
                                     class="badge dropdown-item-text badge-pill badge-dark p-2 mb-1"
                                     role="button"
+                                <%--                                    onclick="document.getElementById(commentText).value;"--%>
                                     name="COMMENT"
                                     href="${COMMENT}" style="text-decoration: none;">
-
-                                Submit
+                                Comment
                             </a>
-
-
-                            <input class="w3-round-medium bg-secondary" type="text" action="blogmanager"
-                                   value="" name="commentText"
-                                   placeholder="comment" required>
-
-
                         </form>
                     </div>
                 </div>

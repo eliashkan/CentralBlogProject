@@ -38,7 +38,7 @@ public class SortMenuServlet extends HttpServlet {
 
         if (req.getParameter("showmore") != null) {
 
-            int multiplier = (Integer) session.getAttribute("multiplier");
+            int multiplier = ( Integer ) session.getAttribute("multiplier");
             ++multiplier;
 
             List<Post> postList = visitorServices.getSixMorePosts(multiplier);
@@ -47,8 +47,8 @@ public class SortMenuServlet extends HttpServlet {
         }
         if (req.getParameter("mostpopular") != null) {
 
-            int multiplier = (Integer) session.getAttribute("multiplier");
-            List<Post> sessionPostList = (List<Post>) session.getAttribute("postsToShow");
+            int multiplier = ( Integer ) session.getAttribute("multiplier");
+            List<Post> sessionPostList = ( List<Post> ) session.getAttribute("postsToShow");
             visitorServices.setPosts(sessionPostList);
 
             List<Post> postList = visitorServices.sortPostsByPopularity(multiplier * FACTOR, sessionPostList);
@@ -56,16 +56,17 @@ public class SortMenuServlet extends HttpServlet {
 
         }
         if (req.getParameter("date") != null) {
-            int multiplier = (Integer) session.getAttribute("multiplier");
-            List<Post> sessionPostList = (List<Post>) session.getAttribute("postsToShow");
+            int multiplier = ( Integer ) session.getAttribute("multiplier");
+            List<Post> sessionPostList = ( List<Post> ) session.getAttribute("postsToShow");
             visitorServices.setPosts(sessionPostList);
 
             List<Post> postList = visitorServices.sortPostsByDate(multiplier * FACTOR);
             session.setAttribute("postsToShow", postList);
         }
+
+        //No parameter -> reset
         if (req.getMethod().equals("GET")) {
-            int multiplier = (Integer) session.getAttribute("multiplier");
-            multiplier = 1;
+            int multiplier = 1;
             session.setAttribute("postsToShow", visitorServices.getSixMorePosts(multiplier));
             session.setAttribute("multiplier", multiplier);
         }

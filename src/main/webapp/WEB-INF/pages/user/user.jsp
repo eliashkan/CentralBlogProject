@@ -84,7 +84,7 @@
 
 
 <aside class="d-flex-inline flex-nowrap justify-content-center rounded bg-light col-12 col-sm-6 col-md-6 col-lg-3 h-lg-25"
-       style="max-height:600px">
+       style="height:600px">
     <img class="pt-2 col-7 col-md-7 col-lg-6" src="${avatar}" alt="">
 
 

@@ -76,30 +76,33 @@
 
 
     <%--printing the posts global (only the titles)--%>
-        <jsp:include page="../blogs/blogsprintingVisitor.jsp"/>
+    <jsp:include page="../blogs/blogsprintingVisitor.jsp"/>
 
 
+    <aside class="d-flex-block flex-nowrap rounded bg-light col-10 col-sm-6 col-md-6 col-lg-3 h-lg-25"
+           style="max-height:600px">
+        <c:choose>
+            <c:when test="${loggedUser==null}">
+            </c:when>
+            <c:otherwise>
+                <img class="pt-2 rounded" src="${avatar}" alt="">
+            </c:otherwise>
+        </c:choose>
 
-        <aside class="d-flex-block flex-nowrap rounded bg-light col-10 col-sm-6 col-md-6 col-lg-3 h-lg-25"
-               style="max-height:600px">
-            <img class="pt-2 rounded" src="${avatar}" alt="">
 
+        <div class="rounded col-12 object-fit=contain p-2">
+            <p class="rounded blogColors ">
+                Morbi elementum lacus lobortis, faucibus enim vel, ultricies velit.
+                Nam blandit, dui ut sagittis pharetra, odio nisl facilisis velit,
+                sit
+            </p>
 
-            <div class="rounded col-12 object-fit=contain p-2">
-                <p class="rounded blogColors ">
-                    Morbi elementum lacus lobortis, faucibus enim vel, ultricies velit.
-                    Nam blandit, dui ut sagittis pharetra, odio nisl facilisis velit,
-                    sit
-                </p>
-
-            </div>
-            <jsp:include page="../sessioncounterbadges/sessioncounterbadges.jsp"/>
+        </div>
+        <jsp:include page="../sessioncounterbadges/sessioncounterbadges.jsp"/>
 
 
     </aside>
 </div>
-
-
 
 
 <script src="resources/js/snow.js"></script>

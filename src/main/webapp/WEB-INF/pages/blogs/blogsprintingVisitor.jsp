@@ -7,7 +7,7 @@
 
 <%--printing the posts global (only the titles)--%>
 <div class="rounded d-flex row blogdivColor justify-content-center col-12 col-md-12 col-lg-5 mb-2"
-     style="height: 900px;overflow-y: auto;">
+     style="height: 700px;overflow-y: auto;">
 
     <c:forEach var="article" items="${postsToShow}" varStatus="theCount">
 
@@ -34,7 +34,7 @@
                     <button class="btn btn-secondary p-2 rounded" data-toggle="collapse"
                             aria-expanded="false" data-target="#iteration${theCount.count}"
                             aria-controls="iteration${theCount.count}">
-                        Show More
+                        Read
                     </button>
                 </p>
 
