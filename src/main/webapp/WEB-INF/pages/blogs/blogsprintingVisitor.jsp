@@ -18,6 +18,7 @@
             <c:url var="COMMENT" value="/blogmanager">
                 <c:param name="command" value="COMMENT"/>
                 <c:param name="postId" value="${article.idPost}"/>
+                <c:set var="commandType" value="${param.command}" scope="request"/>
             </c:url>
 
             <c:url var="LIKE" value="/blogmanager">
@@ -102,13 +103,12 @@
                                             value="${article.getLikeCounter()}"/> Like
                                 </a>
 
-                                <a
-                                        class="badge badge-pill badge-dark p-2 mb-1"
-                                        role="button"
-                                        name="COMMENT"
-                                        href="${COMMENT}" style="text-decoration: none;">
-                                    Comment
-                                </a>
+                                <label>
+                                    <input type="hidden" name="idPost" value="${article.idPost}">
+                                    <input type="hidden" name="command" value="COMMENT">
+                                    <input type="text" name="commentText" class="bg-light w3-round-medium"/>
+                                    <input class="bg-dark badge-pill text-light p-2 mb-1" type="submit" value="Comment">
+                                </label>
 
 
                             </form>

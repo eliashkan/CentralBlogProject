@@ -25,7 +25,7 @@ public class Post {
     @ManyToOne
     private User user;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "post")
     private List<Comment> comments = new ArrayList<>();
 

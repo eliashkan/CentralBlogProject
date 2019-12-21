@@ -5,19 +5,29 @@ import be.intecbrussel.centralblogproject.dao.CommentDao;
 import be.intecbrussel.centralblogproject.dao.UserDao;
 import be.intecbrussel.centralblogproject.model.Comment;
 import be.intecbrussel.centralblogproject.model.User;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 public class AuthorServicesImpl implements AuthorServices {
 
-    private UserDao userDAO;
-    private CommentDao commentDao;
+    // Create comment, link to author, post, .now()
+    public void submitComment(Integer userId, Integer post, Comment comment) {
+        EntityManager txn = EntityManagerFactoryProvider.getEM();
+        txn.getTransaction().begin();
+        comment = new CommentDao().createComment(comment);
+        Query updateQuery = txn.createNativeQuery("UPDATE Comment p SET p.user_userId = ?1, p.post = ?2 WHERE p.idComment = ?3");
+        updateQuery.setParameter(1, userId);
+        updateQuery.setParameter(2, post);
+        updateQuery.setParameter(3, comment.getIdComment());
+        updateQuery.executeUpdate();
+        txn.getTransaction().commit();
+        txn.close();
 
-
-    @Override
-    public void submitComment(Comment comment) {
-        commentDao.createComment(comment);
 
     }
 
@@ -65,10 +75,11 @@ public class AuthorServicesImpl implements AuthorServices {
 
     @Override
     public void updatePassword(User user, String newPassword) {
-        User userToBeUpdated = userDAO.getUser(user.getUserId());
+        UserDao userDao = new UserDao();
+        User userToBeUpdated = userDao.getUser(user.getUserId());
         userToBeUpdated.setPassword(newPassword);
-        userDAO.createUser(userToBeUpdated);
-        userDAO.updateUser(userToBeUpdated);
+        userDao.createUser(userToBeUpdated);
+        userDao.updateUser(userToBeUpdated);
     }
 
     @Override

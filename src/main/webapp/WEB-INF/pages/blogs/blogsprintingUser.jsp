@@ -19,6 +19,7 @@
                 <c:url var="COMMENT" value="/blogmanager">
                     <c:param name="command" value="COMMENT"/>
                     <c:param name="postid" value="${article.idPost}"/>
+                    <c:set var="commandType" value="${param.command}" scope="request"/>
 
                 </c:url>
 
@@ -76,57 +77,54 @@
                 </div>
 
 
-                <div class="card-body p-2 font-weight-bold text-info"><c:out
-                        value="${article.formatDateTime()}"/></div>
+                        <div class="card-body p-2 font-weight-bold text-info"><c:out
+                                value="${article.formatDateTime()}"/></div>
 
 
-                <div class="card-body pl-0 d-flex column col-1 col-sm-12">
-                    <div class="m-0 p-0" role="group" aria-label="Basic example">
+                        <div class="card-body pl-0 d-flex column col-1 col-sm-12">
+                            <div class="m-0 p-0" role="group" aria-label="Basic example">
 
-                        <form action="blogmanager" method="GET">
-                            <a
-                                    class="badge badge-pill badge-success p-2 mb-1"
-                                    role="button"
-                                    name="LIKE"
-                                    href="${LIKE}">
-                                <c:out
-                                        value="${article.getLikeCounter()}"/> Like
-                            </a>
+                                <form action="blogmanager" method="GET" id="form1">
+                                    <a
+                                            class="badge badge-pill badge-success p-2 mb-1"
+                                            role="button"
+                                            name="LIKE"
+                                            href="${LIKE}">
+                                        <c:out
+                                                value="${article.getLikeCounter()}"/> Like
+                                    </a>
 
-                                <%--                            <button--%>
-                                <%--                                    class="badge dropdown-item-text badge-pill badge-dark p-2 mb-1"--%>
-                                <%--                                    role="button"--%>
-                                <%--                                    name="COMMENT"--%>
-                                <%--                                    href="${COMMENT}" style="text-decoration: none;">--%>
-                                <%--                                Comment--%>
-                                <%--                            </button>--%>
-
-                            <a
-                                    class="badge badge-pill badge-danger p-2 mb-1"
-                                    role="button"
-                                    name="DELETE"
-                                    onclick="return confirm('Are you sure you want to delete this item?');"
-                                    href="${DELETE}">Delete
-                                Post</a>
+                                    <a
+                                            class="badge badge-pill badge-danger p-2 mb-1"
+                                            role="button"
+                                            name="DELETE"
+                                            onclick="return confirm('Are you sure you want to delete this item?');"
+                                            href="${DELETE}">Delete
+                                        Post</a>
 
 
-                                <%--                            <input class="w3-round-medium bg-secondary" type="text"--%>
-                                <%--                                   id="commentText"--%>
+                                    <label>
+                                        <input type="hidden" name="idPost" value="${article.idPost}">
+                                        <input type="hidden" name="command" value="COMMENT">
+                                        <input type="text" name="commentText" class="bg-light w3-round-medium"/>
+                                        <input class="bg-dark badge-pill text-light p-2 mb-1" type="submit"
+                                               value="Comment">
+                                    </label>
 
-                                <%--                                   placeholder="comment" required>--%>
+
+                                        <%--                            < <a--%>
+                                        <%--                                class="badge dropdown-item-text badge-pill badge-dark p-2 mb-1"--%>
+                                        <%--                                role="button"--%>
+
+                                        <%--                                name="COMMENT"--%>
+                                        <%--                                href="${COMMENT}${input}" style="text-decoration: none;">--%>
+                                        <%--                            Comment--%>
+                                        <%--                        </a>--%>
 
 
-                            <a
-                                    class="badge dropdown-item-text badge-pill badge-dark p-2 mb-1"
-                                    role="button"
-                                <%--                                    onclick="document.getElementById(commentText).value;"--%>
-                                    name="COMMENT"
-                                    href="${COMMENT}" style="text-decoration: none;">
-                                Comment
-                            </a>
-                        </form>
-                    </div>
-                </div>
+                                </form>
+                            </div>
+                        </div>
             </div>
         </c:forEach>
     </div>

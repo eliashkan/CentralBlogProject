@@ -1,13 +1,17 @@
 package be.intecbrussel.centralblogproject.service;
 
+import be.intecbrussel.centralblogproject.connection.EntityManagerFactoryProvider;
+import be.intecbrussel.centralblogproject.dao.CommentDao;
 import be.intecbrussel.centralblogproject.model.Comment;
 import be.intecbrussel.centralblogproject.model.User;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 
 public interface AuthorServices {
     // Create comment, link to author, post, .now()
-    void submitComment(Comment comment);
+    void submitComment(Integer userId, Integer post, Comment comment);
 
     // Delete your own post
     void deleteMyPost();

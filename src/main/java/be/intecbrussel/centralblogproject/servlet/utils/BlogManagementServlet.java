@@ -4,6 +4,8 @@ import be.intecbrussel.centralblogproject.dao.PostDao;
 import be.intecbrussel.centralblogproject.model.Comment;
 import be.intecbrussel.centralblogproject.model.Post;
 import be.intecbrussel.centralblogproject.model.User;
+import be.intecbrussel.centralblogproject.service.AuthorServices;
+import be.intecbrussel.centralblogproject.service.AuthorServicesImpl;
 import be.intecbrussel.centralblogproject.service.VisitorServicesImpl;
 
 
@@ -62,28 +64,21 @@ public class BlogManagementServlet extends HttpServlet {
                     resp.sendRedirect("fulluserpage");
                     break;
 
-
                 case "LIKE":
-
-
                     resp.sendRedirect("fulluserpage");
                     break;
 
                 case "COMMENT":
-                    String text = req.getParameter("commentText");
-                    comment.setText(text);
-                    post.setIdPost(Integer.parseInt(req.getParameter("postId")));
-                    post.getComments().add(comment);
-//                    new PostDao().createPost(post);
 
-                    printWriter.println(req.getParameter("postId"));
-                    printWriter.println(text);
-
+                    postId = Integer.parseInt(req.getParameter("idPost"));
+                    comment.setText(req.getParameter("commentText"));
+                    new AuthorServicesImpl().submitComment(user.getUserId(), postId, comment);
+//                    postList = new VisitorServicesImpl().getPostsByAuthor(user.getUserName());
+//                    session.setAttribute("postsFromUser", postList);
 //                    resp.sendRedirect("fulluserpage");
 
+
                     break;
-
-
             }
 
         } catch (Exception e) {
