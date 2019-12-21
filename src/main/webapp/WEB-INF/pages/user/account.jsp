@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
@@ -33,7 +34,8 @@
 
 <div style="height: 20vh;"></div>
 
-<div class="card bg-dark" ; style="border:none">
+<!-- card -->
+<div class="card bg-dark" style="border:none">
     <article class="card-body mx-auto" style="max-width: 500px;">
 
         <h4 class="card-title mt-3 text-light text-center">THE BLOGGERS</h4>
@@ -45,13 +47,13 @@
 
         </form>
     </article>
-</div> <!-- card.// -->
+</div>
 
 </div>
 
 
 <!-- blog post and menus -->
-<div id="block " ;
+<div id="block "
      class="d-flex row container-fluid col-12 col-md-12 col-lg-12 justify-content-around m-auto">
 
     <div class="rounded  blogdivColor col-12 col-md-12 col-lg-6 mt-5"
