@@ -13,9 +13,37 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
-public class AuthorServicesImpl implements AuthorServices {
+public class AuthorServicesImpl {
 
-    // Create comment, link to author, post, .now()
+    public void updateMyPost() {
+
+    }
+
+    public void deleteAComment() {
+
+    }
+
+    public void updateAvatar() {
+
+    }
+
+    public void deleteProfile() {
+
+
+    }
+
+    public void updateUserinformation() {
+
+    }
+
+    public void updatePassword(User user, String newPassword) {
+        UserDao userDao = new UserDao();
+        User userToBeUpdated = userDao.getUser(user.getUserId());
+        userToBeUpdated.setPassword(newPassword);
+        userDao.createUser(userToBeUpdated);
+        userDao.updateUser(userToBeUpdated);
+    }
+
     public void submitComment(Integer userId, Integer post, Comment comment) {
         EntityManager txn = EntityManagerFactoryProvider.getEM();
         txn.getTransaction().begin();
@@ -31,58 +59,21 @@ public class AuthorServicesImpl implements AuthorServices {
 
     }
 
-    @Override
-    public void deleteMyPost() {
-
-    }
-
-    @Override
-    public void updateMyPost() {
-
-    }
-
-    @Override
-    public void deleteAComment() {
-
-    }
-
-    @Override
-    public void submitBlogPost() {
-
-    }
-
-    @Override
-    public void updateAvatar() {
-
-    }
-
-    @Override
-    public void deleteProfile() {
+    public void submitCommentOnOtherUserPost(Integer userId, Integer post, Comment comment) {
+        EntityManager txn = EntityManagerFactoryProvider.getEM();
+        txn.getTransaction().begin();
+        comment = new CommentDao().createComment(comment);
+        Query updateQuery = txn.createNativeQuery("UPDATE Comment p SET p.user_userId = ?1, p.post = ?2 WHERE p.idComment = ?3");
+        updateQuery.setParameter(1, userId);
+        updateQuery.setParameter(2, post);
+        updateQuery.setParameter(3, comment.getIdComment());
+        updateQuery.executeUpdate();
+        txn.getTransaction().commit();
+        txn.close();
 
 
     }
 
-    @Override
-    public void logOut() {
-
-    }
-
-    @Override
-    public void updateUserinformation() {
-
-    }
-
-
-    @Override
-    public void updatePassword(User user, String newPassword) {
-        UserDao userDao = new UserDao();
-        User userToBeUpdated = userDao.getUser(user.getUserId());
-        userToBeUpdated.setPassword(newPassword);
-        userDao.createUser(userToBeUpdated);
-        userDao.updateUser(userToBeUpdated);
-    }
-
-    @Override
     public User getUserByUsername(String userName) {
         //Making The query for getting the username id
         EntityManager entityManager = EntityManagerFactoryProvider.getEM();

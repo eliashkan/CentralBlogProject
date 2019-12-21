@@ -10,8 +10,6 @@
          style="height: fit-content;overflow-y: auto;max-height: 600px">
 
         <c:forEach var="article" items="${postsFromUser}" varStatus="theCount">
-
-
             <div class="card rounded d-flex row container-fluid col-12 col-md-12 col-lg-12 mt-3 mb-3 bg-light"
                  style="width: 18rem;height: fit-content;">
 
@@ -22,12 +20,10 @@
                     <c:set var="commandType" value="${param.command}" scope="request"/>
 
                 </c:url>
-
                 <c:url var="DELETE" value="/blogmanager">
                     <c:param name="command" value="DELETE"/>
                     <c:param name="postId" value="${article.idPost}"/>
                 </c:url>
-
                 <c:url var="LIKE" value="/blogmanager">
                     <c:param name="command" value="LIKE"/>
                     <c:param name="postid" value="${article.idPost}"/>
@@ -48,7 +44,6 @@
 
 
                     <div class="collapse h-25" id="iteration${theCount.count}">
-
                         <div class="card card-body mb-1">
                             <p><c:out value="${article.text}"/></p>
                         </div>
@@ -62,28 +57,18 @@
                                         <h5 class="col-12 text-light" style="font-size: xx-small">
                                             <c:out value="${article.user.fullName} :${comments.text}"/> <br>
                                         </h5>
-
                                     </div>
-
                                 </div>
-
                             </c:forEach>
                         </div>
-
-
                     </div>
-
-
                 </div>
-
-
                         <div class="card-body p-2 font-weight-bold text-info"><c:out
                                 value="${article.formatDateTime()}"/></div>
-
-
                         <div class="card-body pl-0 d-flex column col-1 col-sm-12">
                             <div class="m-0 p-0" role="group" aria-label="Basic example">
 
+                                    <%--                                Redirecting to BlogManagerServlet--%>
                                 <form action="blogmanager" method="GET" id="form1">
                                     <a
                                             class="badge badge-pill badge-success p-2 mb-1"
@@ -102,7 +87,6 @@
                                             href="${DELETE}">Delete
                                         Post</a>
 
-
                                     <label>
                                         <input type="hidden" name="idPost" value="${article.idPost}">
                                         <input type="hidden" name="command" value="COMMENT">
@@ -110,18 +94,6 @@
                                         <input class="bg-dark badge-pill text-light p-2 mb-1" type="submit"
                                                value="Comment">
                                     </label>
-
-
-                                        <%--                            < <a--%>
-                                        <%--                                class="badge dropdown-item-text badge-pill badge-dark p-2 mb-1"--%>
-                                        <%--                                role="button"--%>
-
-                                        <%--                                name="COMMENT"--%>
-                                        <%--                                href="${COMMENT}${input}" style="text-decoration: none;">--%>
-                                        <%--                            Comment--%>
-                                        <%--                        </a>--%>
-
-
                                 </form>
                             </div>
                         </div>

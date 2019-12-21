@@ -37,6 +37,7 @@ public class SignInServlet extends HttpServlet {
         PrintWriter out = resp.getWriter();
         //Getting parameter from SIGN.JSP (Form)
         String userName = req.getParameter("userName");
+        String fullName = req.getParameter("fullName");
         String emailAdress = req.getParameter("emailAdress");
         String passwordCreate = req.getParameter("passwordCreate");
         //todo match 2 samepasswords
@@ -56,6 +57,7 @@ public class SignInServlet extends HttpServlet {
 
             User user = new User();
             user.setUserName(userName);
+            user.setFullName(fullName);
             user.setEmail(emailAdress);
             user.setPassword(passwordCreate);
 

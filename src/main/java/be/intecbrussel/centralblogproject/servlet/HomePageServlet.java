@@ -9,7 +9,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 
-@WebServlet(value = "/homepage")
+@WebServlet(name = "homepage", value = "/homepage")
 public class HomePageServlet extends HttpServlet {
     int multiplier = 1;
     String login = "Log-In";
@@ -19,18 +19,12 @@ public class HomePageServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-
         HttpSession session = req.getSession();
-
         if (req.getSession().getAttribute("multiplier") == null) {
             session.setAttribute("multiplier", multiplier);
         }
-
-
         req.getRequestDispatcher("postsort").forward(req, resp);
-
     }
-
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (req.getSession().isNew() || req.getSession().getAttribute("loggedUser") == null)

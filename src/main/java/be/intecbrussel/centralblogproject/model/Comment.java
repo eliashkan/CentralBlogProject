@@ -11,7 +11,7 @@ public class Comment {
     private Integer idComment;
     private String text;
 
-    @ManyToOne
+    @ManyToOne()
     private User user;
 
 

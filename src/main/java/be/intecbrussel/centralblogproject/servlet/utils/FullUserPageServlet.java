@@ -11,11 +11,8 @@ import java.io.IOException;
 @WebServlet(name = "fulluserpage", value = "/fulluserpage")
 public class FullUserPageServlet extends HttpServlet {
 
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         req.getRequestDispatcher("WEB-INF/pages/user/user.jsp").forward(req, resp);
-
     }
 }

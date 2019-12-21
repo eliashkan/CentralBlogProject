@@ -4,7 +4,6 @@ import be.intecbrussel.centralblogproject.dao.PostDao;
 import be.intecbrussel.centralblogproject.model.Comment;
 import be.intecbrussel.centralblogproject.model.Post;
 import be.intecbrussel.centralblogproject.model.User;
-import be.intecbrussel.centralblogproject.service.AuthorServices;
 import be.intecbrussel.centralblogproject.service.AuthorServicesImpl;
 import be.intecbrussel.centralblogproject.service.VisitorServicesImpl;
 
@@ -26,13 +25,13 @@ public class BlogManagementServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         PrintWriter printWriter = resp.getWriter();
+
         HttpSession session = req.getSession();
         List<Post> postList;
         Post post = new Post();
         Comment comment = new Comment();
         User user = (User) session.getAttribute("loggedUser");
         int postId;
-
 
         try {
             //read the "command" parameter
@@ -56,7 +55,6 @@ public class BlogManagementServlet extends HttpServlet {
                     break;
 
                 case "DELETE":
-
                     postId = Integer.parseInt(req.getParameter("postId"));
                     new PostDao().deletePost(new PostDao().getPost(postId));
                     postList = new VisitorServicesImpl().getPostsByAuthor(user.getUserName());
@@ -69,15 +67,20 @@ public class BlogManagementServlet extends HttpServlet {
                     break;
 
                 case "COMMENT":
-
                     postId = Integer.parseInt(req.getParameter("idPost"));
                     comment.setText(req.getParameter("commentText"));
                     new AuthorServicesImpl().submitComment(user.getUserId(), postId, comment);
-//                    postList = new VisitorServicesImpl().getPostsByAuthor(user.getUserName());
-//                    session.setAttribute("postsFromUser", postList);
-//                    resp.sendRedirect("fulluserpage");
+                    postList = new VisitorServicesImpl().getPostsByAuthor(user.getUserName());
+                    session.setAttribute("postsFromUser", postList);
+                    resp.sendRedirect("fulluserpage");
+                    break;
 
 
+                case "COMMENTHOME":
+                    postId = Integer.parseInt(req.getParameter("idPost"));
+                    comment.setText(req.getParameter("commentText"));
+                    new AuthorServicesImpl().submitCommentOnOtherUserPost(user.getUserId(), postId, comment);
+                    resp.sendRedirect("postsort");
                     break;
             }
 

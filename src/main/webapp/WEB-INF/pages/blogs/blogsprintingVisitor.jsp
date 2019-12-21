@@ -52,7 +52,7 @@
                             <div class="w3-display-container mt-2-container mb-2">
                                 <div class="w3-round-xxlarge w3-black row d-flex col-12 m-0">
                                     <h5 class="col-12 text-light" style="font-size: xx-small">
-                                        <c:out value="${article.user.fullName} :${comments.text}"/> <br>
+                                        <c:out value="${comments.user.fullName} :${comments.text}"/> <br>
                                     </h5>
 
                                 </div>
@@ -105,7 +105,7 @@
 
                                 <label>
                                     <input type="hidden" name="idPost" value="${article.idPost}">
-                                    <input type="hidden" name="command" value="COMMENT">
+                                    <input type="hidden" name="command" value="COMMENTHOME">
                                     <input type="text" name="commentText" class="bg-light w3-round-medium"/>
                                     <input class="bg-dark badge-pill text-light p-2 mb-1" type="submit" value="Comment">
                                 </label>
