@@ -27,7 +27,7 @@
             </c:url>
 
 
-                <%--            Show more collapse--%>
+                <%--Show more collapse--%>
             <div class="card-body rounded bg-dark mt-2">
                 <h5 class="card-title text-light">${article.title}</h5>
 
@@ -43,10 +43,22 @@
 
                     <div class="card card-body mb-1">
                         <p><c:out value="${article.text}"/></p>
+
+                            <%--    tags    --%>
+                        <div class="justify-width-left">
+                            <c:forEach var="tag" items="${article.tags}">
+
+                                <a class="badge badge-pill badge-primary">
+                                    <c:out value="${tag.name}"/>
+                                </a>
+
+                            </c:forEach>
+                        </div>
+
                     </div>
 
 
-                        <%--                    PUT THE COMMENT PLLUs USER ID--%>
+                        <%--PUT THE COMMENTS PLUS USER NAME--%>
                     <div class="text-light">
                         <c:forEach var="comments" items="${article.comments}">
                             <div class="w3-display-container mt-2-container mb-2">
@@ -63,7 +75,7 @@
                     </div>
                 </div>
 
-                    <%--                    PUT THE COMMENT PLLUs USER ID--%>
+                    <%--ARTICLE INFO & ACTIONS--%>
 
 
             </div>
@@ -76,20 +88,20 @@
 
                             <c:choose>
                                 <c:when test="${loggedUser==null}">
-                            <%--Only likes if user is not logged --%>
-                            <form action="blogmanager" method="GET">
+                                    <%--Only likes if user is not logged --%>
+                                    <form action="blogmanager" method="GET">
 
-                                <a
-                                        class="badge badge-pill badge-success p-2 mb-1"
-                                        role="button"
-                                        name="LIKE"
-                                        href="${LIKE}" style="text-decoration: none;">
-                                    <c:out
-                                            value="${article.getLikeCounter()}"/> Like
-                                </a>
+                                        <a
+                                                class="badge badge-pill badge-success p-2 mb-1"
+                                                role="button"
+                                                name="LIKE"
+                                                href="${LIKE}" style="text-decoration: none;">
+                                            <c:out
+                                                    value="${article.getLikeCounter()}"/> Like
+                                        </a>
 
-                            </form>
-                        </c:when>
+                                    </form>
+                                </c:when>
                         <c:otherwise>
 
                             <%--Otherwise Likes comment--%>

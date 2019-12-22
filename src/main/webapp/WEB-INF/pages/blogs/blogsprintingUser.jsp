@@ -46,6 +46,16 @@
                     <div class="collapse h-25" id="iteration${theCount.count}">
                         <div class="card card-body mb-1">
                             <p><c:out value="${article.text}"/></p>
+                                <%--    tags    --%>
+                            <div class="justify-width-left">
+                                <c:forEach var="tag" items="${article.tags}">
+
+                                    <a class="badge badge-pill badge-primary">
+                                        <c:out value="${tag.name}"/>
+                                    </a>
+
+                                </c:forEach>
+                            </div>
                         </div>
 
 
