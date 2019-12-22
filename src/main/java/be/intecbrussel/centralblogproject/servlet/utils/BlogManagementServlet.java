@@ -7,7 +7,6 @@ import be.intecbrussel.centralblogproject.model.User;
 import be.intecbrussel.centralblogproject.service.AuthorServicesImpl;
 import be.intecbrussel.centralblogproject.service.VisitorServicesImpl;
 
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -79,7 +78,7 @@ public class BlogManagementServlet extends HttpServlet {
                 case "COMMENTHOME":
                     postId = Integer.parseInt(req.getParameter("idPost"));
                     comment.setText(req.getParameter("commentText"));
-                    new AuthorServicesImpl().submitCommentOnOtherUserPost(user.getUserId(), postId, comment);
+                    new AuthorServicesImpl().submitComment(user.getUserId(), postId, comment);
                     resp.sendRedirect("postsort");
                     break;
             }
