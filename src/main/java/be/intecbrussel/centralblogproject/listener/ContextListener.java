@@ -18,7 +18,7 @@ public class ContextListener implements ServletContextListener {
     public void contextInitialized(ServletContextEvent sce) {
         EntityManagerFactoryProvider.getEM();
 
-        String scriptPath = "/Users/vincenthonca/Java Cursus/Vincent Honca Intelij/CentralBlogProject/src/main/java/be/intecbrussel/centralblogproject/data/MockarooDataListenerScript.sql";
+        String scriptPath = "/Users/vincenthonca/CentralBlogProject/src/main/java/be/intecbrussel/centralblogproject/data/MockarooDataListenerScript.sql";
         // Create MySql Connection
         Connection con = null;
         try {

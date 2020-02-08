@@ -4,12 +4,11 @@ import be.intecbrussel.centralblogproject.connection.EntityManagerFactoryProvide
 import be.intecbrussel.centralblogproject.dao.CommentDao;
 import be.intecbrussel.centralblogproject.dao.UserDao;
 import be.intecbrussel.centralblogproject.model.Comment;
+import be.intecbrussel.centralblogproject.model.Like_S;
 import be.intecbrussel.centralblogproject.model.User;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
@@ -89,4 +88,26 @@ public class AuthorServicesImpl {
         return userFromDB;
     }
 
+    public boolean userAlreadyLike(int postId, int userId) {
+        EntityManager entityManager = EntityManagerFactoryProvider.getEM();
+        System.out.println("testing query");
+
+        TypedQuery<Like_S> query = entityManager.createQuery("SELECT s from Like_S s where s.post.idPost = ?1 and s.user.userId = ?2", Like_S.class);
+        query.setParameter(1, postId);
+        query.setParameter(2, userId);
+        Like_S like_s;
+        try {
+            System.out.println("try");
+            like_s = query.getSingleResult();
+            return true;
+        } catch (NoResultException e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            System.out.println("finaly");
+            entityManager.close();
+        }
+
+    }
 }
+

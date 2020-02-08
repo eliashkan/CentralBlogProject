@@ -18,10 +18,11 @@ public class Post {
     @Lob
     private String text;
     private LocalDateTime dateTime;
-    @Column(name = "popularity")
-    private int likeCounter;
+
+
     @ManyToMany(mappedBy = "posts")
     private Set<Tag> tags;
+
     @ManyToOne
     private User user;
 
@@ -86,13 +87,7 @@ public class Post {
         this.user = user;
     }
 
-    public int getLikeCounter() {
-        return likeCounter;
-    }
 
-    public void setLikeCounter(int likeCounter) {
-        this.likeCounter = likeCounter;
-    }
 
     public Set<Tag> getTags() {
         return tags;
@@ -111,4 +106,19 @@ public class Post {
     }
 
 
+    @Override
+    public String toString() {
+        return "Post{" +
+                "idPost=" + idPost +
+                ", title='" + title + '\'' +
+                ", text='" + text + '\'' +
+                ", dateTime=" + dateTime +
+//                ", likeCounter=" + likeCounter +
+                ", tags=" + tags +
+                ", user=" + user +
+                ", comments=" + comments +
+                '}';
+    }
 }
+
+

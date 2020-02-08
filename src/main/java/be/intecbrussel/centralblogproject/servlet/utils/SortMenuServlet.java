@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 /* Sorting the list to be showed on homepage.
@@ -49,11 +48,11 @@ public class SortMenuServlet extends HttpServlet {
             session.setAttribute("multiplier", multiplier);
         }
         if (req.getParameter("mostpopular") != null) {
-            int multiplier = (Integer) session.getAttribute("multiplier");
-            List<Post> sessionPostList = (List<Post>) session.getAttribute("postsToShow");
-            visitorServices.setPosts(sessionPostList);
-            List<Post> postList = visitorServices.sortPostsByPopularity(multiplier * FACTOR, sessionPostList);
-            session.setAttribute("postsToShow", postList);
+//            int multiplier = (Integer) session.getAttribute("multiplier");
+//            List<Post> sessionPostList = (List<Post>) session.getAttribute("postsToShow");
+//            visitorServices.setPosts(sessionPostList);
+//            List<Post> postList = visitorServices.sortPostsByPopularity(multiplier * FACTOR, sessionPostList);
+//            session.setAttribute("postsToShow", postList);
         }
         if (req.getParameter("date") != null) {
             int multiplier = (Integer) session.getAttribute("multiplier");

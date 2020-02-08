@@ -75,8 +75,8 @@
                                             role="button"
                                             name="LIKE"
                                             href="${LIKE}">
-                                        <c:out
-                                                value="${article.getLikeCounter()}"/> Like
+                                            <%--                                        <c:out--%>
+                                            <%--                                                value="${article.getLikeCounter()}"/> Like--%>
                                     </a>
 
                                     <a

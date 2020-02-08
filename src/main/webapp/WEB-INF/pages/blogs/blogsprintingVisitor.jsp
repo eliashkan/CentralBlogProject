@@ -17,13 +17,13 @@
                 <%--Setting the url for each post--%>
             <c:url var="COMMENT" value="/blogmanager">
                 <c:param name="command" value="COMMENT"/>
-                <c:param name="postId" value="${article.idPost}"/>
+                <c:param name="postid" value="${article.idPost}"/>
                 <c:set var="commandType" value="${param.command}" scope="request"/>
             </c:url>
 
             <c:url var="LIKE" value="/blogmanager">
                 <c:param name="command" value="LIKE"/>
-                <c:param name="postId" value="${article.idPost}"/>
+                <c:param name="postid" value="${article.idPost}"/>
             </c:url>
 
 
@@ -84,8 +84,8 @@
                                         role="button"
                                         name="LIKE"
                                         href="${LIKE}" style="text-decoration: none;">
-                                    <c:out
-                                            value="${article.getLikeCounter()}"/> Like
+                                        <%--                                    <c:out--%>
+                                        <%--                                            value="${article.getLikeCounter()}"/> Like--%>
                                 </a>
 
                             </form>
@@ -97,10 +97,12 @@
                                 <a
                                         class="badge badge-pill badge-success p-2 mb-1"
                                         role="button"
+                                    <%--                                        onclick="window.location.href='blogmanager'"--%>
+
                                         name="LIKE"
-                                        href="${LIKE}" style="text-decoration: none;">
-                                    <c:out
-                                            value="${article.getLikeCounter()}"/> Like
+                                        href="${LIKE}" style="text-decoration: none;">Like
+                                        <%--                                    <c:out--%>
+                                        <%--                                            value="${article.getLikeCounter()}"/> Like--%>
                                 </a>
 
                                 <label>

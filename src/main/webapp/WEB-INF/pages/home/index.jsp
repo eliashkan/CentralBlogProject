@@ -24,7 +24,7 @@
 
 <body class="d-block bg-dark">
 
-<canvas style="position: absolute;" id='canv'></canvas>
+<%--<canvas style="position: absolute;" id='canv'></canvas>--%>
 
 
 <jsp:include page="../header/Header.jsp"/>
