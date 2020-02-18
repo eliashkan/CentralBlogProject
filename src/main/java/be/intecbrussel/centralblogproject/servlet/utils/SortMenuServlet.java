@@ -28,6 +28,7 @@ public class SortMenuServlet extends HttpServlet {
         int multiplier = 1;
         session = req.getSession();
         VisitorServicesImpl visitorServices = new VisitorServicesImpl();
+
         List<Post> postsList = visitorServices.getSixMorePosts(1);
         session.setAttribute("postsToShow", postsList);
         session.setAttribute("multiplier", multiplier);

@@ -63,14 +63,23 @@ public class BlogManagementServlet extends HttpServlet {
 
                 case "LIKE":
                     postId = Integer.parseInt(req.getParameter("postid"));
+
+
+                    printWriter.println(postId);
+                    printWriter.println(user.getUserId());
+
                     if (new AuthorServicesImpl().userAlreadyLike(postId, user.getUserId())) {
-                        printWriter.println("you already like");
+                        new AuthorServicesImpl().deleteLikeByUserIdandPostId(user.getUserId(), postId);
+                        resp.sendRedirect(req.getHeader("referer"));
+
+
                     } else {
-                        printWriter.println("you like");
                         Like_S likeS = new Like_S();
                         likeS.setUser(user);
                         likeS.setPost(new PostDao().getPost(postId));
                         new LikeDao().createLike(likeS);
+                        resp.sendRedirect(req.getHeader("referer"));
+
                     }
                     break;
 
@@ -81,13 +90,14 @@ public class BlogManagementServlet extends HttpServlet {
                     postList = new VisitorServicesImpl().getPostsByAuthor(user.getUserName());
                     session.setAttribute("postsFromUser", postList);
                     resp.sendRedirect("fulluserpage");
+
                     break;
 
                 case "COMMENTHOME":
                     postId = Integer.parseInt(req.getParameter("postid"));
                     comment.setText(req.getParameter("commentText"));
                     new AuthorServicesImpl().submitCommentOnOtherUserPost(user.getUserId(), postId, comment);
-                    resp.sendRedirect("postsort");
+                    resp.sendRedirect("homempage");
                     break;
             }
 

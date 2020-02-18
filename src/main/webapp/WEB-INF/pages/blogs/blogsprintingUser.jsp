@@ -1,3 +1,4 @@
+<%@ page import="be.intecbrussel.centralblogproject.service.VisitorServicesImpl" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -18,16 +19,29 @@
                     <c:param name="command" value="COMMENT"/>
                     <c:param name="postid" value="${article.idPost}"/>
                     <c:set var="commandType" value="${param.command}" scope="request"/>
-
                 </c:url>
+
+
                 <c:url var="DELETE" value="/blogmanager">
                     <c:param name="command" value="DELETE"/>
                     <c:param name="postId" value="${article.idPost}"/>
                 </c:url>
+
                 <c:url var="LIKE" value="/blogmanager">
                     <c:param name="command" value="LIKE"/>
                     <c:param name="postid" value="${article.idPost}"/>
+                    <c:param name="userid" value="${article.user.userId}"/>
                 </c:url>
+
+                <c:set var="actualLikes" value="${article.idPost}" scope="page"/>
+                <%
+
+                    Integer idPost = ( Integer ) pageContext.getAttribute("actualLikes");
+                    Long likesByPost = new VisitorServicesImpl().getLikeByPost(idPost);
+                    pageContext.setAttribute("likes", likesByPost);
+
+
+                %>
 
 
                     <%--            Show more collapse--%>
@@ -63,40 +77,40 @@
                         </div>
                     </div>
                 </div>
-                        <div class="card-body p-2 font-weight-bold text-info"><c:out
-                                value="${article.formatDateTime()}"/></div>
-                        <div class="card-body pl-0 d-flex column col-1 col-sm-12">
-                            <div class="m-0 p-0" role="group" aria-label="Basic example">
+                <div class="card-body p-2 font-weight-bold text-info"><c:out
+                        value="${article.formatDateTime()}"/></div>
+                <div class="card-body pl-0 d-flex column col-1 col-sm-12">
+                    <div class="m-0 p-0" role="group" aria-label="Basic example">
 
-                                    <%--                                Redirecting to BlogManagerServlet--%>
-                                <form action="blogmanager" method="GET" id="form1">
-                                    <a
-                                            class="badge badge-pill badge-success p-2 mb-1"
-                                            role="button"
-                                            name="LIKE"
-                                            href="${LIKE}">
-                                            <%--                                        <c:out--%>
-                                            <%--                                                value="${article.getLikeCounter()}"/> Like--%>
-                                    </a>
+                            <%--                                Redirecting to BlogManagerServlet--%>
+                        <form action="blogmanager" method="GET" id="form1">
+                            <a
+                                    class="badge badge-pill badge-success p-2 mb-1"
+                                    role="button"
+                                    name="LIKE"
+                                    href="${LIKE}">
+                                <c:out
+                                        value="${likes}"/> Like
+                            </a>
 
-                                    <a
-                                            class="badge badge-pill badge-danger p-2 mb-1"
-                                            role="button"
-                                            name="DELETE"
-                                            onclick="return confirm('Are you sure you want to delete this item?');"
-                                            href="${DELETE}">Delete
-                                        Post</a>
+                            <a
+                                    class="badge badge-pill badge-danger p-2 mb-1"
+                                    role="button"
+                                    name="DELETE"
+                                    onclick="return confirm('Are you sure you want to delete this item?');"
+                                    href="${DELETE}">Delete
+                                Post</a>
 
-                                    <label>
-                                        <input type="hidden" name="idPost" value="${article.idPost}">
-                                        <input type="hidden" name="command" value="COMMENT">
-                                        <input type="text" name="commentText" class="bg-light w3-round-medium"/>
-                                        <input class="bg-dark badge-pill text-light p-2 mb-1" type="submit"
-                                               value="Comment">
-                                    </label>
-                                </form>
-                            </div>
-                        </div>
+                            <label>
+                                <input type="hidden" name="postid" value="${article.idPost}">
+                                <input type="hidden" name="command" value="COMMENT">
+                                <input type="text" name="commentText" class="bg-light w3-round-medium"/>
+                                <input class="bg-dark badge-pill text-light p-2 mb-1" type="submit"
+                                       value="Comment">
+                            </label>
+                        </form>
+                    </div>
+                </div>
             </div>
         </c:forEach>
     </div>

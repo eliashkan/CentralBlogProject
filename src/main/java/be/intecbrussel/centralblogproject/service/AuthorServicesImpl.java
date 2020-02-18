@@ -7,10 +7,8 @@ import be.intecbrussel.centralblogproject.model.Comment;
 import be.intecbrussel.centralblogproject.model.Like_S;
 import be.intecbrussel.centralblogproject.model.User;
 
-import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
-import javax.persistence.Query;
-import javax.persistence.TypedQuery;
+import javax.persistence.*;
+import javax.transaction.Transactional;
 
 public class AuthorServicesImpl {
 
@@ -109,5 +107,27 @@ public class AuthorServicesImpl {
         }
 
     }
+
+    @Transactional
+    public void deleteLikeByUserIdandPostId(int userId, int postId) {
+
+        EntityManager entityManager = EntityManagerFactoryProvider.getEM();
+        System.out.println("testing query");
+
+
+        EntityTransaction transaction = entityManager.getTransaction();
+        transaction.begin();
+
+
+        String hql = "Delete from Like_S p WHERE p.post.idPost = :postId and p.user.userId= :userId";
+        Query query = entityManager.createQuery(hql);
+        query.setParameter("postId", postId);
+        query.setParameter("userId", userId);
+        query.executeUpdate();
+        transaction.commit();
+
+        entityManager.close();
+    }
 }
+
 

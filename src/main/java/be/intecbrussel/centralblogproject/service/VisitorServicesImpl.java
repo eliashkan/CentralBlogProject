@@ -94,7 +94,7 @@ public class VisitorServicesImpl {
 
     }
 
-    private List<Post> searchByAuthorsNameUnionByPostTitle(String text) {
+    public List<Post> searchByAuthorsNameUnionByPostTitle(String text) {
         //testing according to title
         Predicate<Post> conditionPostTitle = p -> p.getTitle().toLowerCase().contains(text.toLowerCase());
         //testing according to author's name
@@ -105,7 +105,7 @@ public class VisitorServicesImpl {
     }
 
     //via JPQL. Can't find any other way
-    private List<Post> searchPostsByTagName(String text) {
+    public List<Post> searchPostsByTagName(String text) {
         EntityManager em = EntityManagerFactoryProvider.getEM();
         TypedQuery<Post> query = em.createQuery("select p from Post p join p.tags tag where tag.name=?1", Post.class);
         query.setParameter(1, text);
@@ -114,4 +114,16 @@ public class VisitorServicesImpl {
         return posts;
 
     }
+
+    public Long getLikeByPost(int postId) {
+        EntityManager em = EntityManagerFactoryProvider.getEM();
+        TypedQuery<Long> query = em.createQuery("SELECT count (post) from Like_S where post.idPost = ?1", Long.class);
+        query.setParameter(1, postId);
+        Long result = query.getSingleResult();
+        em.close();
+        return result;
+    }
 }
+
+
+
