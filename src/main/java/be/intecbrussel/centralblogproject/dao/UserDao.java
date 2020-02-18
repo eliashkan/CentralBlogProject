@@ -3,7 +3,6 @@ package be.intecbrussel.centralblogproject.dao;
 import be.intecbrussel.centralblogproject.connection.EntityManagerFactoryProvider;
 import be.intecbrussel.centralblogproject.model.User;
 
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
@@ -21,7 +20,9 @@ public class UserDao {
 
     public User getUser(Integer id) {
         EntityManager em = EntityManagerFactoryProvider.getEM();
+        em.getTransaction().begin();
         User toReturn = em.find(User.class, id);
+        em.getTransaction().commit();
         em.close();
         return toReturn;
     }
@@ -48,3 +49,4 @@ public class UserDao {
         return dbUser;
     }
 }
+

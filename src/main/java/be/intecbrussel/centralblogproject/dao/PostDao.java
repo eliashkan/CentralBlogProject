@@ -6,21 +6,24 @@ import be.intecbrussel.centralblogproject.model.Post;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
+
 public class PostDao {
 
     public Post createPost(Post post) {
         EntityManager em = EntityManagerFactoryProvider.getEM();
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
-        post = em.merge(post);
+        em.persist(post);
         transaction.commit();
         em.close();
         return post;
     }
 
-    public Post getPost(Integer id) {
+    public Post getPost(Integer idPost) {
         EntityManager em = EntityManagerFactoryProvider.getEM();
-        Post toReturn = em.find(Post.class, id);
+        em.getTransaction().begin();
+        Post toReturn = em.find(Post.class, idPost);
+        em.getTransaction().commit();
         em.close();
         return toReturn;
     }
@@ -46,4 +49,10 @@ public class PostDao {
         em.close();
         return dbPost;
     }
+
+
+
 }
+
+
+

@@ -1,10 +1,10 @@
 package be.intecbrussel.centralblogproject.model;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import be.intecbrussel.centralblogproject.model.Utilities.ImageRecovery;
+
+import javax.persistence.*;
+import java.util.Arrays;
 
 @Entity
 public class User {
@@ -17,6 +17,10 @@ public class User {
     private String password;
     private String adress;
     private String email;
+    @Lob
+    @Column(columnDefinition = "BLOB")
+    private String avatar;
+
 
     public void cloneFrom(User user) {
         this.userId = user.userId;
@@ -72,10 +76,33 @@ public class User {
     }
 
     public void setEmail(String email) {
+//        while (!email.matches("^[A-Z0-9+_.-]+@[A-Z0-9.-]+$\n")) {
+//            System.out.println("Wrong email-format");
+//            setEmail(email);
+//        }
         this.email = email;
     }
 
+    public String getAvatar() {
+        return avatar;
+    }
 
+    public void setAvatar(String url) throws Exception {
+        this.avatar = url;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", userName='" + userName + '\'' +
+                ", fullName='" + fullName + '\'' +
+                ", password='" + password + '\'' +
+                ", adress='" + adress + '\'' +
+                ", email='" + email + '\'' +
+                ", avatar=" + avatar +
+                '}';
+    }
 }
 
 

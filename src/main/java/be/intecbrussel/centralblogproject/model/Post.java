@@ -1,11 +1,12 @@
 package be.intecbrussel.centralblogproject.model;
 
-import org.hibernate.annotations.Cascade;
-
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Post {
@@ -14,13 +15,18 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idPost;
     private String title;
+    @Lob
     private String text;
-    private LocalDate localDate;
+    private LocalDateTime dateTime;
+
+
+    @ManyToMany(mappedBy = "posts")
+    private Set<Tag> tags;
 
     @ManyToOne
     private User user;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "post")
     private List<Comment> comments = new ArrayList<>();
 
@@ -29,7 +35,7 @@ public class Post {
         this.title = post.title;
         this.text = post.text;
         this.user = post.user;
-        this.localDate = post.localDate;
+        this.dateTime = post.dateTime;
         this.comments = post.comments;
     }
 
@@ -57,12 +63,20 @@ public class Post {
         this.text = text;
     }
 
-    public LocalDate getLocalDate() {
-        return localDate;
+    public LocalDateTime getDateTime() {
+
+        return dateTime;
     }
 
-    public void setLocalDate(LocalDate localDate) {
-        this.localDate = localDate;
+    public String formatDateTime() {
+
+        String formatedDateTime = dateTime.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM));
+
+        return formatedDateTime;
+    }
+
+    public void setDateTime(LocalDateTime localDate) {
+        this.dateTime = localDate;
     }
 
     public User getUser() {
@@ -73,6 +87,16 @@ public class Post {
         this.user = user;
     }
 
+
+
+    public Set<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(Set<Tag> tags) {
+        this.tags = tags;
+    }
+
     public List<Comment> getComments() {
         return comments;
     }
@@ -81,15 +105,20 @@ public class Post {
         this.comments = comments;
     }
 
+
     @Override
     public String toString() {
         return "Post{" +
                 "idPost=" + idPost +
                 ", title='" + title + '\'' +
                 ", text='" + text + '\'' +
-                ", localDate=" + localDate +
+                ", dateTime=" + dateTime +
+//                ", likeCounter=" + likeCounter +
+                ", tags=" + tags +
                 ", user=" + user +
                 ", comments=" + comments +
                 '}';
     }
 }
+
+
