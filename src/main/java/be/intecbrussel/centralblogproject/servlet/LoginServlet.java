@@ -2,9 +2,9 @@ package be.intecbrussel.centralblogproject.servlet;
 
 import be.intecbrussel.centralblogproject.model.Post;
 import be.intecbrussel.centralblogproject.model.User;
-import be.intecbrussel.centralblogproject.service.AuthorServicesImpl;
-import be.intecbrussel.centralblogproject.service.RegistrationLoginServicesImpl;
-import be.intecbrussel.centralblogproject.service.VisitorServicesImpl;
+import be.intecbrussel.centralblogproject.service.AuthorServices;
+import be.intecbrussel.centralblogproject.service.RegistrationLoginServices;
+import be.intecbrussel.centralblogproject.service.VisitorServices;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -41,16 +41,16 @@ public class LoginServlet extends HttpServlet {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
         PrintWriter out = resp.getWriter();
-        RegistrationLoginServicesImpl registrationLoginServices = new RegistrationLoginServicesImpl();
+        RegistrationLoginServices registrationLoginServices = new RegistrationLoginServices();
 
         //Checking if user pass the login check
         if (registrationLoginServices.isPasswordMatchingUsername(username, password)) {
-            VisitorServicesImpl visitorServices = new VisitorServicesImpl();
+            VisitorServices visitorServices = new VisitorServices();
 
 
             //Put Logged user in the session and getting data
             HttpSession session = req.getSession();
-            User user = new AuthorServicesImpl().getUserByUsername(username);
+            User user = new AuthorServices().getUserByUsername(username);
             session.setAttribute("loggedUser", user);
             List<Post> postList = visitorServices.getPostsByAuthor(username);
             session.setAttribute("postsFromUser", postList);

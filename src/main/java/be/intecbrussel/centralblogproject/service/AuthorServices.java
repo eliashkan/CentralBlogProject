@@ -10,7 +10,7 @@ import be.intecbrussel.centralblogproject.model.User;
 import javax.persistence.*;
 import javax.transaction.Transactional;
 
-public class AuthorServicesImpl {
+public class AuthorServices {
 
     public void updateMyPost() {
 

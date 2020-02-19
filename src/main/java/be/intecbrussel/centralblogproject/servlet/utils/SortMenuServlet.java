@@ -1,7 +1,7 @@
 package be.intecbrussel.centralblogproject.servlet.utils;
 
 import be.intecbrussel.centralblogproject.model.Post;
-import be.intecbrussel.centralblogproject.service.VisitorServicesImpl;
+import be.intecbrussel.centralblogproject.service.VisitorServices;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -27,7 +27,7 @@ public class SortMenuServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int multiplier = 1;
         session = req.getSession();
-        VisitorServicesImpl visitorServices = new VisitorServicesImpl();
+        VisitorServices visitorServices = new VisitorServices();
 
         List<Post> postsList = visitorServices.getSixMorePosts(1);
         session.setAttribute("postsToShow", postsList);
@@ -38,7 +38,7 @@ public class SortMenuServlet extends HttpServlet {
     }
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        VisitorServicesImpl visitorServices = new VisitorServicesImpl();
+        VisitorServices visitorServices = new VisitorServices();
 
         if (req.getParameter("showmore") != null) {
             int multiplier = (Integer) session.getAttribute("multiplier");
