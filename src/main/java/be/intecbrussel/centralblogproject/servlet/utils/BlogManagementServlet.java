@@ -6,8 +6,8 @@ import be.intecbrussel.centralblogproject.model.Comment;
 import be.intecbrussel.centralblogproject.model.Like_S;
 import be.intecbrussel.centralblogproject.model.Post;
 import be.intecbrussel.centralblogproject.model.User;
-import be.intecbrussel.centralblogproject.service.AuthorServicesImpl;
-import be.intecbrussel.centralblogproject.service.VisitorServicesImpl;
+import be.intecbrussel.centralblogproject.service.AuthorServices;
+import be.intecbrussel.centralblogproject.service.VisitorServices;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -48,7 +48,7 @@ public class BlogManagementServlet extends HttpServlet {
                     post.setText(blogText);
                     post.setDateTime(LocalDateTime.now());
                     new PostDao().createPost(post);
-                    postList = new VisitorServicesImpl().getPostsByAuthor(user.getUserName());
+                    postList = new VisitorServices().getPostsByAuthor(user.getUserName());
                     session.setAttribute("postsFromUser", postList);
                     resp.sendRedirect("fulluserpage");
                     break;
@@ -56,7 +56,7 @@ public class BlogManagementServlet extends HttpServlet {
                 case "DELETE":
                     postId = Integer.parseInt(req.getParameter("postid"));
                     new PostDao().deletePost(new PostDao().getPost(postId));
-                    postList = new VisitorServicesImpl().getPostsByAuthor(user.getUserName());
+                    postList = new VisitorServices().getPostsByAuthor(user.getUserName());
                     session.setAttribute("postsFromUser", postList);
                     resp.sendRedirect("fulluserpage");
                     break;
@@ -68,8 +68,8 @@ public class BlogManagementServlet extends HttpServlet {
                     printWriter.println(postId);
                     printWriter.println(user.getUserId());
 
-                    if (new AuthorServicesImpl().userAlreadyLike(postId, user.getUserId())) {
-                        new AuthorServicesImpl().deleteLikeByUserIdandPostId(user.getUserId(), postId);
+                    if (new AuthorServices().userAlreadyLike(postId, user.getUserId())) {
+                        new AuthorServices().deleteLikeByUserIdandPostId(user.getUserId(), postId);
                         resp.sendRedirect(req.getHeader("referer"));
 
 
@@ -86,8 +86,8 @@ public class BlogManagementServlet extends HttpServlet {
                 case "COMMENT":
                     postId = Integer.parseInt(req.getParameter("postid"));
                     comment.setText(req.getParameter("commentText"));
-                    new AuthorServicesImpl().submitComment(user.getUserId(), postId, comment);
-                    postList = new VisitorServicesImpl().getPostsByAuthor(user.getUserName());
+                    new AuthorServices().submitComment(user.getUserId(), postId, comment);
+                    postList = new VisitorServices().getPostsByAuthor(user.getUserName());
                     session.setAttribute("postsFromUser", postList);
                     resp.sendRedirect("fulluserpage");
 
@@ -96,8 +96,8 @@ public class BlogManagementServlet extends HttpServlet {
                 case "COMMENTHOME":
                     postId = Integer.parseInt(req.getParameter("postid"));
                     comment.setText(req.getParameter("commentText"));
-                    new AuthorServicesImpl().submitCommentOnOtherUserPost(user.getUserId(), postId, comment);
-                    resp.sendRedirect("homempage");
+                    new AuthorServices().submitCommentOnOtherUserPost(user.getUserId(), postId, comment);
+                    resp.sendRedirect("homepage");
                     break;
             }
 

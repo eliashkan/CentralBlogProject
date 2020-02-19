@@ -2,7 +2,7 @@ package be.intecbrussel.centralblogproject.servlet;
 
 import be.intecbrussel.centralblogproject.dao.UserDao;
 import be.intecbrussel.centralblogproject.model.User;
-import be.intecbrussel.centralblogproject.service.RegistrationLoginServicesImpl;
+import be.intecbrussel.centralblogproject.service.RegistrationLoginServices;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -42,7 +42,7 @@ public class SignInServlet extends HttpServlet {
         String passwordCreate = req.getParameter("passwordCreate");
         //todo match 2 samepasswords
         String passwordRepeat = req.getParameter("passwordRepeat");
-        RegistrationLoginServicesImpl registrationLoginServices = new RegistrationLoginServicesImpl();
+        RegistrationLoginServices registrationLoginServices = new RegistrationLoginServices();
 
         if (registrationLoginServices.isUsernameInDB(userName)) {
 

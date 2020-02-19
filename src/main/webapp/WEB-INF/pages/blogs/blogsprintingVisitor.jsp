@@ -1,4 +1,4 @@
-<%@ page import="be.intecbrussel.centralblogproject.service.VisitorServicesImpl" %>
+<%@ page import="be.intecbrussel.centralblogproject.service.VisitorServices" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -35,7 +35,7 @@
             <%
 
                 Integer idPost = ( Integer ) pageContext.getAttribute("actualLikes");
-                Long likesByPost = new VisitorServicesImpl().getLikeByPost(idPost);
+                Long likesByPost = new VisitorServices().getLikeByPost(idPost);
                 pageContext.setAttribute("likes", likesByPost);
 
 
